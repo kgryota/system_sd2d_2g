@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <!--googleFont-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,14 +16,14 @@
 <body>
     <header>
         <div class="header-content">
-            <div class="site-title">
+            <a class="site-title" href="../">
                 <h5>全国のお酒が楽しめる</h5>
                 <h1>乾杯市場</h1>
-            </div>
+            </a>
             <div class="header-menu">
-                <a class="header-menu-btn" href="#"><img src="assets/img/menu/search.svg"></a>
-                <a class="header-menu-btn" href="#"><img src="assets/img/menu/user.svg"></a>
-                <a class="header-menu-btn" href="#"><img src="assets/img/menu/cart.svg"></a>
+                <a class="header-menu-btn" href="../search"><img src="../assets/img/menu/search.svg"></a>
+                <a class="header-menu-btn" href="../user"><img src="../assets/img/menu/user.svg"></a>
+                <a class="header-menu-btn" href="../cart"><img src="../assets/img/menu/cart.svg"></a>
             </div>
         </div>
     </header><!--ヘッダー-->
