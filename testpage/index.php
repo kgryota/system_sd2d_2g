@@ -31,7 +31,7 @@
         <button id="" class="btn">
             <p>テンプレート文</p>
         </button>
-        <button id="" class="btn2">
+        <button id="" class="btn2 addclass">
             <p>テンプレート文</p>
         </button>
         <input type="text" name="" class="forminput1" placeholder="テンプレート文">
