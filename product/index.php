@@ -29,7 +29,23 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-
+    <?php 
+     //DB接続
+     ?>
+     <img class="product-img" src="../assets/img/menu/cart.svg" alt="お酒画像">
+     <div class="product-info">
+        <h5>酒名</h5>
+        <p>金額</p>
+     </div>
+     <p>個数：<select name="" class="selectstyle">
+            <option value="">テスト</option>
+            <option value="">テスト</option>
+        </select></p>
+     <button id="cart-tuika" class="btn">
+            <p>カートに追加</p>
+        </button>
+        <p>お酒の概要</p>
+        お酒の詳しい紹介
     </div>
 </body>
 </html>
