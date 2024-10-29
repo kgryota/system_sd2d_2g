@@ -1,9 +1,11 @@
-
 .page-title{
     width: 100%;
     text-align: center;
     padding: 30px 0;
 }
+
+/*カート追加完了*/
+
 .cart-complete-title{
     font-size: 20px;
     color: #333;
