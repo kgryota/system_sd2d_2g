@@ -11,3 +11,22 @@
 .cart-complete-title-img{
     width: 100px;
 }
+/*ホーム画面・検索結果画面商品カード*/
+.product-card{
+    width: 45%;
+    
+}
+
+.product-card img{
+    width: 100%;
+}
+
+.product-card h5{
+    font-size: 15px;
+    color: #333333;
+}
+
+.product-card-price{
+    font-size: 10px;
+    color: #666;
+}
