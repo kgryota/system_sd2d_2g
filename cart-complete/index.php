@@ -29,6 +29,18 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
+        <div class="page-title">
+            <img class="cart-complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
+            <h1 class="cart-complete-title">カートに商品を<br>
+            追加しました<br></h1>
+        </div>
+        <button id="" class="btn">
+            <p>ショッピングに戻る</p>
+        </button>
+        <button id="" class="btn2">
+            <p>カートを見る</p>
+        </button>
+        <p>おすすめのおつまみ</p>
 
     </div>
 </body>
