@@ -13,6 +13,7 @@
 .cart-complete-title-img{
     width: 100px;
 }
+
 /* product */
 .product-img{
     width: 100%;
@@ -34,10 +35,11 @@
     font-size: 30px;
     overflow-wrap: break-word;
 }
+
+
 /*ホーム画面・検索結果画面商品カード*/
 .product-card{
     width: 45%;
-    
 }
 
 .product-card img{

@@ -37,7 +37,7 @@
         <div>
             <h3>検索結果</h3>
             <div class="product-card">
-                <img src="">
+                <img src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
                 <h5>お酒の名前</h5>
                 <p class="product-card-price">￥2000</p>
                 <button class="product-card-add-btn">カートに追加</button>
