@@ -43,10 +43,11 @@
         //<option value=$row>$row</option>
      ?>-->
      <div class="product-kosu">
-     <p>個数：<select name="" class="selectstyle">
+     <p>個数：</p>
+        <select name="" class="selectstyle product-count">
             <option value="">テスト</option>
             <option value="">テスト</option>
-        </select></p>
+        </select>
      </div>
      <button id="cart-tuika" class="btn">
             <p>カートに追加</p>
