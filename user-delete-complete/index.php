@@ -29,19 +29,14 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-        <div class="page-title">
+    <div class="page-title">
             <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">カートに商品を<br>
-            追加しました<br></h1>
+            <h1 class="complete-title">アカウントを<br>
+            削除しました<br></h1>
         </div>
         <a href="../" class="btn back-home-btn">
-            <p>ショッピングに戻る</p>
+            <p>ホームに戻る</p>
         </a>
-        <a href="../cart/" class="btn2 back-home-btn">
-            <p>カートを見る</p>
-        </a>
-        <p>おすすめのおつまみ</p>
-
     </div>
 </body>
 </html>

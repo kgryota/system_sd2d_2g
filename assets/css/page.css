@@ -4,13 +4,13 @@
     padding: 30px 0;
 }
 
-/*カート追加完了*/
+/*完了画面*/
 
-.cart-complete-title{
+.complete-title{
     font-size: 20px;
     color: #333;
 }
-.cart-complete-title-img{
+.complete-title-img{
     width: 100px;
 }
 
@@ -44,6 +44,13 @@
 
 .product-info2 p{
     overflow-wrap: break-word;
+}
+
+.back-home-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }
 /*ホーム画面・検索結果画面商品カード*/
 .product-card{
