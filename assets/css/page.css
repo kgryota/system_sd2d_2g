@@ -28,8 +28,13 @@
     font-size: 20px;
 }
 .product-kosu{
-    margin: 0 0 0 auto;
+    display: flex;
+    justify-content: right;
+    align-items: center;
     color: #666;
+}
+.product-count{
+    width: 100px;
 }
 .product-info2 h5{
     font-size: 30px;
@@ -37,6 +42,9 @@
 }
 
 
+.product-info2 p{
+    overflow-wrap: break-word;
+}
 /*ホーム画面・検索結果画面商品カード*/
 .product-card{
     width: 45%;
