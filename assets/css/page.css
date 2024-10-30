@@ -41,7 +41,6 @@
     overflow-wrap: break-word;
 }
 
-
 .product-info2 p{
     overflow-wrap: break-word;
 }
@@ -53,20 +52,81 @@
     text-decoration: none;
 }
 /*ホーム画面・検索結果画面商品カード*/
+.index-recommend,.index-repurchase{
+    padding: 10px 0;
+}
+
+.index-list-title{
+    color: #333;
+    font-size: 20px;
+}
+
+.index-recommend-list{
+    overflow-x: scroll;
+    display: flex;
+}
+
+.index-recommend-list::-webkit-scrollbar {
+    height: 5px; /* スクロールバーの高さ */
+  }
+   
+  .index-recommend-list::-webkit-scrollbar-thumb {
+    background: #C5AF7F; /* ツマミの色 */
+    border-radius: 7px; /* ツマミ両端の丸み */
+  }
+   
+  .index-recommend-list::-webkit-scrollbar-track {
+    background: #EEE3D0; /* トラックの色 */
+    border-radius: 7px; /* トラック両端の丸み */
+  }
+
+
+.index-product-card{
+    width: 40%;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.result-title{
+    padding: 20px 0;
+}
+
+.product-list{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .product-card{
     width: 45%;
 }
 
-.product-card img{
+.product-card:hover{
+    width: 50%;
+    transition: 1s;
+}
+
+.product-card-img{
     width: 100%;
 }
 
-.product-card h5{
-    font-size: 15px;
+.product-card-name{
+    font-size: 13px;
     color: #333333;
 }
 
 .product-card-price{
-    font-size: 10px;
+    font-size: 15px;
     color: #666;
+    padding: 5px 0;
+    font-weight: bold;
+}
+
+.product-card-add-btn{
+    background-color: #B79862;
+    color: #fff;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 60px;
 }
