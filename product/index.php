@@ -37,15 +37,24 @@
         <h5>酒名</h5>
         <p>金額</p>
      </div>
+     <!--<?php   
+        //個数の最大を在庫数にするなら下記？
+        //foreach($pdo->query('在庫数を持ってくる') as $row)
+        //<option value=$row>$row</option>
+     ?>-->
+     <div class="product-kosu">
      <p>個数：<select name="" class="selectstyle">
             <option value="">テスト</option>
             <option value="">テスト</option>
         </select></p>
+     </div>
      <button id="cart-tuika" class="btn">
             <p>カートに追加</p>
         </button>
-        <p>お酒の概要</p>
-        お酒の詳しい紹介
+        <div class="product-info2">
+        <h5>お酒の概要</h5>
+        <p>お酒の詳しい紹介</p>
+    </div>
     </div>
 </body>
 </html>
