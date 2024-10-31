@@ -29,33 +29,32 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <?php 
-     //DB接続
-     ?>
-     <img class="product-img" src="../assets/img/menu/cart.svg" alt="お酒画像">
-     <div class="product-info">
-        <h5>酒名</h5>
-        <p>金額</p>
-     </div>
-     <!--<?php   
-        //個数の最大を在庫数にする？
-        //foreach($pdo->query('在庫数を持ってくる') as $row)
-        //<option value=$row>$row</option>
-     ?>-->
-     <div class="product-kosu">
-     <p>個数：</p>
-        <select name="" class="selectstyle product-count">
-            <option value="">テスト</option>
-            <option value="">テスト</option>
-        </select>
-     </div>
-     <button id="cart-tuika" class="btn">
-            <p>カートに追加</p>
-        </button>
-        <div class="product-info2">
-        <h5>お酒の概要</h5>
-        <p>お酒の詳しい紹介</p>
+    <div class="cart-ravel">
+    <img class="cart-img" src="../assets/img/menu/cart.svg" alt="お酒画像" height="100" width="100">
+        <h5>カート</h5>
     </div>
+    <div class="product-rist">
+    <div class="product-card">
+                    <img class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                    <h5 class="product-card-name">お酒の名前</h5>
+                    <p class="product-card-price">個数</p>
+                    <p class="product-card-price">金額</p>
+                    <button href="../product/" class="product-card-add-btn">削除</button>
+                </div><!--product-card-->
+                <div class="product-card">
+                    <img class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                    <h5 class="product-card-name">お酒の名前</h5>
+                    <p class="product-card-price">個数</p>
+                    <p class="product-card-price">金額</p>
+                    <button href="../product/" class="product-card-add-btn">削除</button>
+                </div><!--product-card-->
+    </div>
+    <div class="cart-money">
+        合計：金額
+    </div>
+    <button id="konyu" class="btn">
+            <p>購入手続き</p>
+        </button>
     </div>
 </body>
 </html>
