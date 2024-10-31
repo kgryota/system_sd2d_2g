@@ -33,20 +33,20 @@
     <img class="cart-img" src="../assets/img/menu/cart.svg" alt="お酒画像" height="100" width="100">
         <h5>カート</h5>
     </div>
-    <div class="product-rist">
+    <div class="product-list">
     <div class="product-card">
                     <img class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
                     <h5 class="product-card-name">お酒の名前</h5>
                     <p class="product-card-price">個数</p>
                     <p class="product-card-price">金額</p>
-                    <button href="../product/" class="product-card-add-btn">削除</button>
+                    <button href="../product/" class="cart-delete">削除</button>
                 </div><!--product-card-->
                 <div class="product-card">
                     <img class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
                     <h5 class="product-card-name">お酒の名前</h5>
                     <p class="product-card-price">個数</p>
                     <p class="product-card-price">金額</p>
-                    <button href="../product/" class="product-card-add-btn">削除</button>
+                    <button href="../product/" class="cart-delete">削除</button>
                 </div><!--product-card-->
     </div>
     <div class="cart-money">

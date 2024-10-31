@@ -172,6 +172,14 @@
     text-align: center;
     padding-bottom: 180px;
 }
-.cart-mmoney{
-    
+.cart-money{
+    font-size: 25px;
+    padding: 50px 0 15px 0;
+}
+.cart-delete{
+    background-color: #FF7E7E;
+    color: #fff;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 60px;
 }
