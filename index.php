@@ -28,7 +28,16 @@
             </div>
         </div>
     </header><!--ヘッダー-->
-    <div class="content-area">
+    <div class="hero">
+        <img src="assets/img/index/kanpai-heroimg.svg">
+    </div>
+    <div class="content-area index-content">
+        <form action="search/" method="post" class="index-search-input">
+            <button class="search-btn" type="button" id="search-button">
+                <img class="search-btn-img" src="assets/img/index/search.svg" alt="検索">
+            </button>
+            <input type="text" name="search" placeholder="お酒の名前で検索">
+        </form>
         <div class="index-recommend">
             <h2 class="index-list-title">おすすめ</h2>
             <div class="index-recommend-list">
