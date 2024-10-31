@@ -29,38 +29,14 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-        <div class="page-title">
+    <div class="page-title">
             <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">カートに商品を<br>
-            追加しました<br></h1>
+            <h1 class="complete-title">アカウントから<br>
+            ログアウトしました<br></h1>
         </div>
         <a href="../" class="btn back-home-btn">
-            <p>ショッピングに戻る</p>
+            <p>ホームに戻る</p>
         </a>
-        <a href="../cart/" class="btn2 back-home-btn">
-            <p>カートを見る</p>
-        </a>
-        <div class="osusume-otumami">
-        <p>おすすめのおつまみ</p>
-        <div class="product-list">
-        <div class="product-card">
-                    <img class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
-                    <h5 class="product-card-name">お酒の名前</h5>
-                    <p class="product-card-price">￥2000</p>
-                    <button href="../product/" class="product-card-add-btn">商品を見る</button>
-                </div><!--product-card--> 
-                <div class="product-card">
-                    <img class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
-                    <h5 class="product-card-name">お酒の名前</h5>
-                    <p class="product-card-price">￥2000</p>
-                    <button href="../product/" class="product-card-add-btn">商品を見る</button>
-                </div><!--product-card--> 
-        </div>
-       
-        </div>
-        
-
-
     </div>
 </body>
 </html>

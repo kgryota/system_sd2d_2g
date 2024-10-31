@@ -163,6 +163,9 @@
     padding: 10px 0;
     border-radius: 60px;
 }
+.error-message{
+    color: red;
+}
 
 /* cart */
 .cart-ravel{
@@ -183,3 +186,4 @@
     padding: 10px 0;
     border-radius: 60px;
 }
+
