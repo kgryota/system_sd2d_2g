@@ -40,7 +40,26 @@
         <a href="../cart/" class="btn2 back-home-btn">
             <p>カートを見る</p>
         </a>
+        <div class="osusume-otumami">
         <p>おすすめのおつまみ</p>
+        <div class="product-list">
+        <div class="product-card">
+                    <img class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                    <h5 class="product-card-name">お酒の名前</h5>
+                    <p class="product-card-price">￥2000</p>
+                    <button href="../product/" class="product-card-add-btn">商品を見る</button>
+                </div><!--product-card--> 
+                <div class="product-card">
+                    <img class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                    <h5 class="product-card-name">お酒の名前</h5>
+                    <p class="product-card-price">￥2000</p>
+                    <button href="../product/" class="product-card-add-btn">商品を見る</button>
+                </div><!--product-card--> 
+        </div>
+       
+        </div>
+        
+
 
     </div>
 </body>
