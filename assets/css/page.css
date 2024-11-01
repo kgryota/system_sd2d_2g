@@ -227,3 +227,16 @@
     border-radius: 60px;
 }
 
+.coupon-card{
+    width: 100%;
+    padding: 30px;
+    background-color: #FFC8C8;
+    display: flex;
+    align-items: center;
+    justify-content:  space-evenly;
+    border-radius: 20px;
+   
+}
+.coupon-title{
+    font-size: 30px;
+}

@@ -29,19 +29,21 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <div class="page-title">
-    <img class="complete-title-img" src="../assets/img/coupon/coupon.svg"><br>
-    <h1 class="page-title">クーポン</h1><br>
-    <p>現在所有しているクーポン一覧です。クーポンは購<br>
-        入手続き画面で使用できます。</p>
-    </div>
-    <div class="coupon-card">
-        <img src="../assets/img/coupon/beer_woman 1.png">
-        <div class="coupon-card-viwe">
-            <p class="coupon-title">15%OFF</p>
-            <p>日頃の感謝の気持ちです。ぜひご利用ください</p>
-        </div>
-    </div>
+    <h1 class="page-title">ユーザ情報</h1><br>
+    <p>麻生太郎</p><br>
+    <p>aso@aso.com</p><br>
+    <p>aiueokaki2024</p><br>
+    <p>***********</p><br>
+    <p>〒812-0016福岡県福岡市博多区博多駅南2丁目12-32</p>
+    <button id="" class="btn">
+            <p>ログアウト</p>
+        </button>
+    <button id="" class="btn">
+            <p>編集</p>
+        </button>
+    <button id="" class="btn">
+            <p>アカウント削除</p>
+        </button>
     </div>
 </body>
 </html>
