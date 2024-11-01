@@ -1,3 +1,27 @@
+<?php
+ $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+ dbname=LAA1554918-kanpaisd2d;charset=utf8',
+ 'LAA1554918',
+ 'pass2g');
+ foreach($pdo->query('SELECT * FROM product WHERE product_id=1') as $row){
+ echo $product_id=$row['product_id'],'<br>';
+ echo $product_name=$row['product_name'],'<br>';
+ echo $zaiko_kosuu=$row['zaiko_kosuu'],'<br>';
+ echo $pref_id=$row['pref_id'],'<br>';
+ echo $alcohol_dosuu=$row['alcohol_dosuu'],'<br>';
+ echo $price=$row['price'],'<br>';
+ echo $product_image=$row['product_image'],'<br>';
+ echo $product_detel=$row['product_detel'],'<br>';
+ echo $Detailed_ex=$row['Detailed_ex'];
+ echo $category_id=$row['category_id'],'<br>';
+ }
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -30,10 +54,7 @@
     </header><!--ヘッダー-->
     <div class="content-area">
     <?php 
-     $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
-     dbname=LAA1554918-kanpaisd2d;charset=utf8',
-     'LAA1554918',
-     'pass2g');
+    
     foreach($pdo->query('SELECT * FROM product') as $row){
     echo $row['product_name'];
     echo $row['zaiko_kosuu'];
@@ -41,13 +62,16 @@
      ?>
      <img class="product-img" src="../assets/img/menu/cart.svg" alt="お酒画像">
      <div class="product-info">
-        <h5>酒名</h5>
-        <p>金額</p>
+        <h5><?= $product_name ?></h5>
+        <p><?= $price ?></p>
      </div>
      <?php   
-        foreach($pdo->query('SELECT zaiko_kosuu FROM product WHERE product_id=1') as $row){
-        echo '<option value="',$row['zaiko_kosuu'],'"></option>';
+        echo '<select name="" class="selectstyle product-count">';
+        $num=1;
+        for($i=1;$i<=$zaiko_kosuu;$i++){
+        echo '<option value="',$i,'">',$i,'</option>';
         }
+        echo '</select>'
      ?>
      <div class="product-kosu">
      <p>個数：</p>
@@ -60,7 +84,7 @@
             <p>カートに追加</p>
         </button>
         <div class="product-info2">
-        <h5>お酒の概要</h5>
+        <h5><?= $product_detel ?></h5>
         <p>お酒の詳しい紹介</p>
     </div>
     </div>
