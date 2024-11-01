@@ -4,16 +4,16 @@
  'LAA1554918',
  'pass2g');
  foreach($pdo->query('SELECT * FROM product WHERE product_id=1') as $row){
- echo $product_id=$row['product_id'],'<br>';
- echo $product_name=$row['product_name'],'<br>';
- echo $zaiko_kosuu=$row['zaiko_kosuu'],'<br>';
- echo $pref_id=$row['pref_id'],'<br>';
- echo $alcohol_dosuu=$row['alcohol_dosuu'],'<br>';
- echo $price=$row['price'],'<br>';
- echo $product_image=$row['product_image'],'<br>';
- echo $product_detel=$row['product_detel'],'<br>';
- echo $Detailed_ex=$row['Detailed_ex'];
- echo $category_id=$row['category_id'],'<br>';
+  $product_id=$row['product_id'];
+  $product_name=$row['product_name'];
+  $zaiko_kosuu=$row['zaiko_kosuu'];
+  $pref_id=$row['pref_id'];
+  $alcohol_dosuu=$row['alcohol_dosuu'];
+  $price=$row['price'];
+  $product_image=$row['product_image'];
+  $product_detel=$row['product_detel'];
+  $Detailed_ex=$row['Detailed_ex'];
+  $category_id=$row['category_id'];
  }
 
 ?>
@@ -55,37 +55,31 @@
     <div class="content-area">
     <?php 
     
-    foreach($pdo->query('SELECT * FROM product') as $row){
-    echo $row['product_name'];
-    echo $row['zaiko_kosuu'];
-    }
+    
      ?>
      <img class="product-img" src="../assets/img/menu/cart.svg" alt="お酒画像">
      <div class="product-info">
         <h5><?= $product_name ?></h5>
         <p><?= $price ?></p>
      </div>
+     <div class="product-kosu">
+     <p>個数：</p>
      <?php   
-        echo '<select name="" class="selectstyle product-count">';
+        echo '<select name="kosuu" class="selectstyle product-count">';
         $num=1;
         for($i=1;$i<=$zaiko_kosuu;$i++){
         echo '<option value="',$i,'">',$i,'</option>';
         }
         echo '</select>'
      ?>
-     <div class="product-kosu">
-     <p>個数：</p>
-        <select name="" class="selectstyle product-count">
-            <option value="">テスト</option>
-            <option value="">テスト</option>
-        </select>
      </div>
      <button id="cart-tuika" class="btn">
             <p>カートに追加</p>
         </button>
         <div class="product-info2">
         <h5><?= $product_detel ?></h5>
-        <p>お酒の詳しい紹介</p>
+        <p><?= $Detailed_ex ?></p>
+        <form action=""></form>
     </div>
     </div>
 </body>
