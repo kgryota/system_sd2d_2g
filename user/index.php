@@ -29,7 +29,21 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-
+    <h1 class="page-title">ユーザ情報</h1><br>
+    <p>麻生太郎</p><br>
+    <p>aso@aso.com</p><br>
+    <p>aiueokaki2024</p><br>
+    <p>***********</p><br>
+    <p>〒812-0016福岡県福岡市博多区博多駅南2丁目12-32</p>
+    <button id="" class="btn">
+            <p>ログアウト</p>
+        </button>
+    <button id="" class="btn">
+            <p>編集</p>
+        </button>
+    <button id="" class="btn">
+            <p>アカウント削除</p>
+        </button>
     </div>
 </body>
 </html>

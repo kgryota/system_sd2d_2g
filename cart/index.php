@@ -1,3 +1,15 @@
+<?php
+$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+dbname=LAA1554918-kanpaisd2d;charset=utf8',
+'LAA1554918',
+'pass2g');
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
