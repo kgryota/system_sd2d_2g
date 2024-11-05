@@ -38,7 +38,7 @@
                 <button class="search-btn" type="button" id="search-button">
                     <img class="search-btn-img" src="assets/img/index/search.svg" alt="検索">
                 </button>
-                <input type="text" name="search" placeholder="お酒の名前で検索">
+                <input type="text" name="keyword" placeholder="お酒の名前で検索">
             </form>
             <div class="index-recommend">
                 <h2 class="index-list-title">おすすめ</h2>
