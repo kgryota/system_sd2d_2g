@@ -35,7 +35,11 @@
             <option value="">テスト</option>
         </select>
         <div>
-            <h3 class="result-title">「」の検索結果</h3>
+            <h3 class="result-title">「<?= $_POST['keyword']  ?>」の検索結果</h3>
+            <?php
+                /*検索結果*/
+                
+            ?>
             <div class="product-list">
                 <div class="product-card">
                     <img class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
