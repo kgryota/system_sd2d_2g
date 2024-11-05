@@ -5,9 +5,10 @@ dbname=LAA1554918-kanpaisd2d;charset=utf8',
 'pass2g');
 
 
+
 ?>
 
-
+<a href="../product/index.php?product_id=1000">テスト</a>
 
 
 <!DOCTYPE html>

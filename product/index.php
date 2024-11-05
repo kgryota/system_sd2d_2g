@@ -1,10 +1,14 @@
 <?php
+
  $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
- dbname=LAA1554918-kanpaisd2d;charset=utf8',
- 'LAA1554918',
+ dbname=LAA1554899-sd2d2g;charset=utf8',
+ 'LAA1554899',
  'pass2g');
- foreach($pdo->query('SELECT * FROM product WHERE product_id=1') as $row){
-  $product_id=$row['product_id'];
+ $product_id=$_GET['product_id'];
+ echo $product_id;
+ $sql=$pdo->prepare('SELECT * FROM product WHERE product_id=?');
+ $sql->execute([$product_id]);
+ foreach($sql as $row){
   $product_name=$row['product_name'];
   $zaiko_kosuu=$row['zaiko_kosuu'];
   $pref_id=$row['pref_id'];
@@ -12,7 +16,7 @@
   $price=$row['price'];
   $product_image=$row['product_image'];
   $product_detel=$row['product_detel'];
-  $Detailed_ex=$row['Detailed_ex'];
+  $detailed_ex=$row['detailed_ex'];
   $category_id=$row['category_id'];
  }
 
@@ -53,14 +57,10 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <?php 
-    
-    
-     ?>
-     <img class="product-img" src="../assets/img/menu/cart.svg" alt="お酒画像">
+     <img class="product-img" src="../assets/img/product-img/<?= $product_image ?>.webp" alt="お酒画像">
      <div class="product-info">
         <h5><?= $product_name ?></h5>
-        <p><?= $price ?></p>
+        <p>￥<?= $price ?></p>
      </div>
      <div class="product-kosu">
      <p>個数：</p>
@@ -78,7 +78,7 @@
         </button>
         <div class="product-info2">
         <h5><?= $product_detel ?></h5>
-        <p><?= $Detailed_ex ?></p>
+        <p><?= $detailed_ex ?></p>
         <form action=""></form>
     </div>
     </div>
