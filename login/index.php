@@ -31,12 +31,16 @@
     <div class="content-area">
     <h1 class="page-title">ログイン</h1><br>
     アカウントをお持ちでない場合、<a href="../singup">新規作成</a>
-    <input type="text" name="" class="forminput1" placeholder="ID">
-    <input type="text" name="" class="forminput1" placeholder="パスワード">
-    <p class="error-message">エラー：IDまたはパスワードが違います。</p>
-    <button id="" class="btn">
+    <form action="../login-complete/index.php" method="post">
+        <input type="text" name="email" class="forminput1" placeholder="メール">
+        <input type="text" name="password" class="forminput1" placeholder="パスワード">
+        <button id="" class="btn">
             <p>ログイン</p>
         </button>
+    </form>
+
+    <p class="error-message">エラー：IDまたはパスワードが違います。</p>
+
         <button id="" class="btn2">
             <p>ゲストで続ける</p>
         </button>

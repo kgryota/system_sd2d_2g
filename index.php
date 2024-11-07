@@ -22,9 +22,9 @@
                 <h1>乾杯市場</h1>
             </div>
             <div class="header-menu">
-                <a class="header-menu-btn" href="#"><img src="assets/img/menu/search.svg"></a>
-                <a class="header-menu-btn" href="#"><img src="assets/img/menu/user.svg"></a>
-                <a class="header-menu-btn" href="#"><img src="assets/img/menu/cart.svg"></a>
+                <a class="header-menu-btn" href="./search/index.php"><img src="assets/img/menu/search.svg"></a>
+                <a class="header-menu-btn" href="./user/index.php"><img src="assets/img/menu/user.svg"></a>
+                <a class="header-menu-btn" href="./cart/index.php"><img src="assets/img/menu/cart.svg"></a>
             </div>
         </div>
     </header>

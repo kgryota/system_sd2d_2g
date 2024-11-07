@@ -64,22 +64,25 @@
      </div>
      <div class="product-kosu">
      <p>個数：</p>
+     <form action="../cart-complete/index.php" method="post">
      <?php   
         echo '<select name="kosuu" class="selectstyle product-count">';
         $num=1;
         for($i=1;$i<=$zaiko_kosuu;$i++){
         echo '<option value="',$i,'">',$i,'</option>';
         }
-        echo '</select>'
+        echo '<input type=hidden value=',$i,'';
+        echo '<input type=hidden value=',$product_id,'';
+        echo '</select>';
      ?>
      </div>
-     <button id="cart-tuika" class="btn">
+     <button id="cart-tuika" class="btn" onclick="location.href='../cart/index.php'">
             <p>カートに追加</p>
         </button>
+        </form>
         <div class="product-info2">
         <h5><?= $product_detel ?></h5>
         <p><?= $detailed_ex ?></p>
-        <form action=""></form>
     </div>
     </div>
 </body>
