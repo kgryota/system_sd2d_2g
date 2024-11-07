@@ -1,4 +1,5 @@
 <?php
+            session_start();
             $email = $_POST['email'];
             $password = $_POST['password'];
             
@@ -9,11 +10,15 @@
             $sql = $pdo->prepare('SELECT * FROM user WHERE email=? and password=?');
             $sql->execute([$email,$password]);
             $rowCount = $sql->rowCount();
-            echo $rowCount;
-            foreach ($sql as $row) {
-                $_SESSION['user_id'] = $row['user_id'];
-                $_SESSION['user_name'] = $row['user_name'];
+            if($rowCount == 1){
+                foreach ($sql as $row) {
+                    $_SESSION['user_id'] = $row['user_id'];
+                    $_SESSION['user_name'] = $row['user_name'];
+                }
+            }else{
+                exit;
             }
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">

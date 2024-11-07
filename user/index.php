@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    $user_id = $_SESSION['user_id'];
+    if(isset($user_id)){
+        echo 'ログインしています。';
+    }else{
+        echo 'ログインしていません';
+        exit;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -30,7 +41,7 @@
     </header><!--ヘッダー-->
     <div class="content-area">
     <h1 class="page-title">ユーザ情報</h1><br>
-    <p>麻生太郎</p><br>
+    <p><?</p><br>
     <p>aso@aso.com</p><br>
     <p>aiueokaki2024</p><br>
     <p>***********</p><br>
