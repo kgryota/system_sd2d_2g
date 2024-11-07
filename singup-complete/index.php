@@ -3,22 +3,15 @@ $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
 dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
 'pass2g');
-$count=$_POST['kosuu'];
-$product_id=$_POST['product_id'];
-$sql=$pdo->prepare('INSERT INTO cart(product_id,user_id,count) VALUES(?,?,?)');
-$sql->execute([$product_id,$user_id,$count]);
+$email=$_POST['email'];
+$password=$_POST['password'];
+$date=$_POST['date'];
+$user_name=$_POST['user_name'];
+$address=$_POST['address'];
+$sql=$pdo->prepare('INSERT INTO user(email,password,date,user_name,address) VALUES(?,?,?,?,?)');
+$sql->execute([$email,$password,$date,$user_name,$address]);
 $pdo=null;
-
-
-
 ?>
-
-
-
-
-
-
-
 
 
 <!DOCTYPE html>
@@ -52,38 +45,14 @@ $pdo=null;
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-        <div class="page-title">
+    <div class="page-title">
             <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">カートに商品を<br>
-            追加しました<br></h1>
+            <h1 class="complete-title">登録が<br>
+            完了しました！<br></h1>
         </div>
         <a href="../" class="btn back-home-btn">
-            <p>ショッピングに戻る</p>
+            <p>商品を見る</p>
         </a>
-        <a href="../cart/" class="btn2 back-home-btn">
-            <p>カートを見る</p>
-        </a>
-        <div class="osusume-otumami">
-        <p>おすすめのおつまみ</p>
-        <div class="product-list">
-        <div class="product-card">
-                    <img class="product-card-img" src="../assets/img/product-img/1000.webp">
-                    <h5 class="product-card-name">お酒の名前</h5>
-                    <p class="product-card-price">￥2000</p>
-                    <button href="../product/" class="product-card-add-btn">商品を見る</button>
-                </div><!--product-card--> 
-                <div class="product-card">
-                    <img class="product-card-img" src="../assets/img/product-img/1000.webp">
-                    <h5 class="product-card-name">お酒の名前</h5>
-                    <p class="product-card-price">￥2000</p>
-                    <button href="../product/" class="product-card-add-btn">商品を見る</button>
-                </div><!--product-card--> 
-        </div>
-       
-        </div>
-        
-
-
     </div>
 </body>
 </html>
