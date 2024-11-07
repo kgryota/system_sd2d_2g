@@ -1,4 +1,13 @@
 <?php 
+    session_start();
+    $user_id = $_SESSION['user_id'];
+    if(isset($user_id)){
+        echo 'ログインしています。';
+        $user_name = $_SESSION['user_name'];
+    }else{
+        echo 'ログインしていません';
+        exit;
+    }
 $user_id=$_SESSION['user_id'];
 $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
 dbname=LAA1554899-sd2d2g;charset=utf8',
@@ -12,20 +21,6 @@ foreach($sql as $row){
     $user_name=$row['user_name'];
     $address=$row['address'];
 }
-?>
-
-
-
-<?php
-    session_start();
-    $user_id = $_SESSION['user_id'];
-    if(isset($user_id)){
-        echo 'ログインしています。';
-        $user_name = $_SESSION['user_name'];
-    }else{
-        echo 'ログインしていません';
-        exit;
-    }
 ?>
 
 <!DOCTYPE html>
@@ -60,6 +55,18 @@ foreach($sql as $row){
     </header><!--ヘッダー-->
     <div class="content-area">
     <h1 class="page-title">ユーザ情報</h1><br>
-
+    <p>aso@aso.com</p><br>
+    <p>aiueokaki2024</p><br>
+    <p>***********</p><br>
+    <p>〒812-0016福岡県福岡市博多区博多駅南2丁目12-32</p>
+    <button id="" class="btn">
+    <p>ログアウト</p>
+        </button>
+    <button id="hensyu" class="btn" onclick="location.href='../user-update/index.php'">
+            <p>編集</p>
+        </button>
+    <button id="sakujo" class="btn" onclick="location.href='../user-delete-complete/index.php'">
+            <p>アカウント削除</p>
+    </button>
 </body>
 </html>
