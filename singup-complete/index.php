@@ -31,11 +31,11 @@
     <div class="content-area">
     <div class="page-title">
             <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">ご注文ありがとうご<br>
-            ざいました<br></h1>
+            <h1 class="complete-title">登録が<br>
+            完了しました！<br></h1>
         </div>
         <a href="../" class="btn back-home-btn">
-            <p>ホームに戻る</p>
+            <p>商品を見る</p>
         </a>
     </div>
 </body>
