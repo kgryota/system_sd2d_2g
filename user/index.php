@@ -1,3 +1,21 @@
+<?php 
+$user_id=$_SESSION['user_id'];
+$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+dbname=LAA1554899-sd2d2g;charset=utf8',
+'LAA1554899',
+'pass2g');
+$sql=$pdo->prepare('SELECT * FROM user WHERE user_id=?');
+$sql->execute([$user_id]);
+foreach($sql as $row){
+    $email=$row['email'];
+    $password=$row['password'];
+    $user_name=$row['user_name'];
+    $address=$row['address'];
+}
+?>
+
+
+
 <?php
     session_start();
     $user_id = $_SESSION['user_id'];
@@ -42,20 +60,6 @@
     </header><!--ヘッダー-->
     <div class="content-area">
     <h1 class="page-title">ユーザ情報</h1><br>
-    <p><?= $?></p><br>
-    <p>aso@aso.com</p><br>
-    <p>aiueokaki2024</p><br>
-    <p>***********</p><br>
-    <p>〒812-0016福岡県福岡市博多区博多駅南2丁目12-32</p>
-    <button id="" class="btn">
-            <p>ログアウト</p>
-        </button>
-    <button id="" class="btn">
-            <p>編集</p>
-        </button>
-    <button id="" class="btn">
-            <p>アカウント削除</p>
-        </button>
-    </div>
+
 </body>
 </html>

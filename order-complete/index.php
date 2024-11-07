@@ -1,3 +1,17 @@
+<?php
+$user_id=$_SESSION['user_id'];
+$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+dbname=LAA1554899-sd2d2g;charset=utf8',
+'LAA1554899',
+'pass2g');
+$sql=$pdo->prepare('DELETE FROM cart WHERE user_id=?');
+$sql->execute([$user_id]);
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
