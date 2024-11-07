@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php 
 $user_id=$_SESSION['user_id'];
 $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
@@ -16,6 +17,19 @@ foreach($sql as $row){
 
 
 
+=======
+<?php
+    session_start();
+    $user_id = $_SESSION['user_id'];
+    if(isset($user_id)){
+        echo 'ログインしています。';
+    }else{
+        echo 'ログインしていません';
+        exit;
+    }
+?>
+
+>>>>>>> 71fe41bea7d243ef30a72e1784a2c82afc227c7a
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -48,11 +62,20 @@ foreach($sql as $row){
     </header><!--ヘッダー-->
     <div class="content-area">
     <h1 class="page-title">ユーザ情報</h1><br>
+<<<<<<< HEAD
     <p><?= $user_name ?></p><br>
     <p><?= $email ?></p><br>
     <p><?= $password ?></p><br>
     <p><?= $address ?></p><br>
     <button id="logout" class="btn" onclick="location.href='../logout/index.php'">
+=======
+    <p><?</p><br>
+    <p>aso@aso.com</p><br>
+    <p>aiueokaki2024</p><br>
+    <p>***********</p><br>
+    <p>〒812-0016福岡県福岡市博多区博多駅南2丁目12-32</p>
+    <button id="" class="btn">
+>>>>>>> 71fe41bea7d243ef30a72e1784a2c82afc227c7a
             <p>ログアウト</p>
         </button>
     <button id="hensyu" class="btn" onclick="location.href='../user-update/index.php'">

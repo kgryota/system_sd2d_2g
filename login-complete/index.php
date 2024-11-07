@@ -1,3 +1,25 @@
+<?php
+            session_start();
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            
+            $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+            dbname=LAA1554899-sd2d2g;charset=utf8',
+            'LAA1554899',
+            'pass2g');
+            $sql = $pdo->prepare('SELECT * FROM user WHERE email=? and password=?');
+            $sql->execute([$email,$password]);
+            $rowCount = $sql->rowCount();
+            if($rowCount == 1){
+                foreach ($sql as $row) {
+                    $_SESSION['user_id'] = $row['user_id'];
+                    $_SESSION['user_name'] = $row['user_name'];
+                }
+            }else{
+                exit;
+            }
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -29,21 +51,14 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <h1 class="page-title">ログイン</h1><br>
-    アカウントをお持ちでない場合、<a href="../singup">新規作成</a>
-    <form action="../login-complete/index.php" method="post">
-        <input type="text" name="email" class="forminput1" placeholder="メール">
-        <input type="text" name="password" class="forminput1" placeholder="パスワード">
-        <button id="" class="btn">
-            <p>ログイン</p>
-        </button>
-    </form>
-
-    <p class="error-message">エラー：IDまたはパスワードが違います。</p>
-
-        <button id="" class="btn2">
-            <p>ゲストで続ける</p>
-        </button>
+    <div class="page-title">
+            <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
+            <h1 class="complete-title">こんにちは<?= $_SESSION['user_name'] ?>さん<br>
+            <br></h1>
+        </div>
+        <a href="../" class="btn back-home-btn">
+            <p>ホームに戻る</p>
+        </a>
     </div>
 </body>
 </html>
