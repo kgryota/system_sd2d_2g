@@ -44,47 +44,47 @@
                 <h2 class="index-list-title">おすすめ</h2>
                 <div class="index-recommend-list">
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
@@ -95,47 +95,47 @@
                 <h2 class="index-list-title">再度購入</h2>
                 <div class="index-recommend-list">
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->
                     <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">お酒の名前</h5>
                         <p class="product-card-price">￥2000</p>
                     </a><!--product-card-->

@@ -35,28 +35,32 @@
             <option value="">テスト</option>
         </select>
         <div>
-            <h3 class="result-title">「」の検索結果</h3>
+            <h3 class="result-title">「<?= $_POST['keyword']  ?>」の検索結果</h3>
+            <?php
+                /*検索結果*/
+                
+            ?>
             <div class="product-list">
                 <div class="product-card">
-                    <img class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                    <img class="product-card-img" src="../assets/img/product-img/1000.webp">
                     <h5 class="product-card-name">お酒の名前</h5>
                     <p class="product-card-price">￥2000</p>
                     <button href="../product/" class="product-card-add-btn">商品を見る</button>
                 </div><!--product-card-->
                 <div class="product-card">
-                    <img class="product-card-img"  src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                    <img class="product-card-img"  src="../assets/img/product-img/1000.webp">
                     <h5 class="product-card-name">お酒の名前</h5>
                     <p class="product-card-price">￥2000</p>
                     <button class="product-card-add-btn">商品を見る</button>
                 </div><!--product-card-->
                 <div  class="product-card">
-                    <img  class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                    <img  class="product-card-img" src="../assets/img/product-img/1000.webp">
                     <h5 class="product-card-name">お酒の名前</h5>
                     <p class="product-card-price">￥2000</p>
                     <button class="product-card-add-btn">商品を見る</button>
                 </div><!--product-card-->
                 <div class="product-card">
-                    <img class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                    <img class="product-card-img" src="../assets/img/product-img/1000.webp">
                     <h5 class="product-card-name">お酒の名前</h5>
                     <p class="product-card-price">￥2000</p>
                     <button class="product-card-add-btn">商品を見る</button>
