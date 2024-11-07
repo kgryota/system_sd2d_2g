@@ -3,6 +3,7 @@
     $user_id = $_SESSION['user_id'];
     if(isset($user_id)){
         echo 'ログインしています。';
+        $user_name = $_SESSION['user_name'];
     }else{
         echo 'ログインしていません';
         exit;
@@ -41,7 +42,7 @@
     </header><!--ヘッダー-->
     <div class="content-area">
     <h1 class="page-title">ユーザ情報</h1><br>
-    <p><?</p><br>
+    <p><?= $?></p><br>
     <p>aso@aso.com</p><br>
     <p>aiueokaki2024</p><br>
     <p>***********</p><br>
