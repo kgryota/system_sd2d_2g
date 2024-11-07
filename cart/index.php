@@ -48,14 +48,14 @@ dbname=LAA1554918-kanpaisd2d;charset=utf8',
     </div>
     <div class="product-list">
     <div class="product-card">
-                    <img class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                    <img class="product-card-img" src="../assets/img/product-img/1000.webp">
                     <h5 class="product-card-name">お酒の名前</h5>
                     <p class="product-card-price">個数</p>
                     <p class="product-card-price">金額</p>
                     <button href="../product/" class="cart-delete">削除</button>
                 </div><!--product-card-->
                 <div class="product-card">
-                    <img class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                    <img class="product-card-img" src="../assets/img/product-img/1000.webp">
                     <h5 class="product-card-name">お酒の名前</h5>
                     <p class="product-card-price">個数</p>
                     <p class="product-card-price">金額</p>

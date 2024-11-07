@@ -44,13 +44,13 @@
         <p>おすすめのおつまみ</p>
         <div class="product-list">
         <div class="product-card">
-                    <img class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                    <img class="product-card-img" src="../assets/img/product-img/1000.webp">
                     <h5 class="product-card-name">お酒の名前</h5>
                     <p class="product-card-price">￥2000</p>
                     <button href="../product/" class="product-card-add-btn">商品を見る</button>
                 </div><!--product-card--> 
                 <div class="product-card">
-                    <img class="product-card-img" src="../assets/img/product-img/0825133343_6306fba7e8d6e.webp">
+                    <img class="product-card-img" src="../assets/img/product-img/1000.webp">
                     <h5 class="product-card-name">お酒の名前</h5>
                     <p class="product-card-price">￥2000</p>
                     <button href="../product/" class="product-card-add-btn">商品を見る</button>
