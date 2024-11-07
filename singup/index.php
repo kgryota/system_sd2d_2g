@@ -31,12 +31,11 @@
     <div class="content-area">
     <h1 class="page-title">新規登録</h1><br>
     アカウントをお持ちの場合、<a href="../login">ログイン</a>
-    <input type="text" name="" class="forminput1" placeholder="お名前">
-    <input type="text" name="" class="forminput1" placeholder="生年月日">
-    <input type="text" name="" class="forminput1" placeholder="メールアドレス">
-    <input type="text" name="" class="forminput1" placeholder="ID">
-    <input type="text" name="" class="forminput1" placeholder="パスワード">
-    <input type="text" name="" class="forminput1" placeholder="住所"><br>
+    <input type="text" name="user_name" class="forminput1" placeholder="お名前">
+    <input type="text" name="date" class="forminput1" placeholder="生年月日">
+    <input type="text" name="email" class="forminput1" placeholder="メールアドレス">
+    <input type="text" name="password" class="forminput1" placeholder="パスワード">
+    <input type="text" name="address" class="forminput1" placeholder="住所"><br>
     <p class="error-message">エラー：未入力の項目があります。</p><br>
     <p class="error-message">エラー：IDまたはパスワードが違います。</p>
     <button id="" class="btn">
