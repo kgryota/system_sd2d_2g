@@ -1,33 +1,3 @@
-<?php 
-$user_id=$_SESSION['user_id'];
-$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
-dbname=LAA1554899-sd2d2g;charset=utf8',
-'LAA1554899',
-'pass2g');
-$sql=$pdo->prepare('SELECT * FROM user WHERE user_id=?');
-$sql->execute([$user_id]);
-foreach($sql as $row){
-    $email=$row['email'];
-    $password=$row['password'];
-    $user_name=$row['user_name'];
-    $address=$row['address'];
-}
-?>
-
-
-
-<?php
-    session_start();
-    $user_id = $_SESSION['user_id'];
-    if(isset($user_id)){
-        echo 'ログインしています。';
-        $user_name = $_SESSION['user_name'];
-    }else{
-        echo 'ログインしていません';
-        exit;
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -59,21 +29,23 @@ foreach($sql as $row){
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <h1 class="page-title">ユーザ情報</h1><br>
-    <p><?= $user_name ?></p><br>
-    <p><?= $email ?></p><br>
-    <p><?= $password ?></p><br>
-    <p><?= $address ?></p><br>
-    <button id="logout" class="btn" onclick="location.href='../logout/index.php'">
-            <p>ログアウト</p>
-        </button>
-    <button id="hensyu" class="btn" onclick="location.href='../user-update/index.php'">
-            <p>編集</p>
-        </button>
-    <button id="sakujo" class="btn" onclick="location.href='../user-delete-complete/index.php'">
-            <p>アカウント削除</p>
+    <h2 class="page-title">性別を教えてください</h2><br>
+    <div class="favorite-sei">
+    <input type="radio" name="sei" value="man">男性
+    <input type="radio" name="sei" value="woman">女性<br>
+    <input type="radio" name="sei" value="other">その他
+    <input type="radio" name="sei" value="not">回答しない<br>
+    </div>
+    <h2 class="page-title">好きなお酒のカテゴリーを教えてください</h2><br>
+    <p>*複数回答可</p>
+    <input type="checkbox" name="cotegory" value="brrr">ビール<br>
+    <input type="checkbox" name="cotegory" value="brrr">ビール<br>
+    <input type="checkbox" name="cotegory" value="brrr">ビール<br>
+    <input type="checkbox" name="cotegory" value="brrr">ビール<br>
+    <input type="checkbox" name="cotegory" value="brrr">ビール<br>
+    <button id="" class="btn">
+            <p>登録</p>
         </button>
     </div>
-
 </body>
 </html>
