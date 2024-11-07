@@ -1,9 +1,27 @@
 <?php
+    session_start();
+    $user_id = $_SESSION['user_id'];
+    if(isset($user_id)){
+        echo 'ログインしています。';
+        $user_name = $_SESSION['user_name'];
+    }else{
+        echo 'ログインしていません';
+        exit;
+    }
+
 $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
 dbname=LAA1554918-kanpaisd2d;charset=utf8',
 'LAA1554918',
 'pass2g');
+$sql=$pdo->prepare('SELECT * FROM cart  JOIN product ON cart.product_id=product.product_id WHERE user_id=?');
+ $sql->execute([$user_id]);
+ foreach($sql as $row){
+    $product_id=$row['product_id'];
+    $count=$row['count'];
+    echo $product_price=$row['price'];
+    echo $product_name=$row['product_name'];
 
+ }
 
 
 ?>

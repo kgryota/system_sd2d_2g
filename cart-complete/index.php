@@ -1,4 +1,14 @@
 <?php
+    session_start();
+    $user_id = $_SESSION['user_id'];
+    if(isset($user_id)){
+        echo 'ログインしています。';
+        $user_name = $_SESSION['user_name'];
+    }else{
+        echo 'ログインしていません';
+        exit;
+    }
+ 
 $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
 dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
