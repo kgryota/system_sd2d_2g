@@ -88,6 +88,10 @@ $pdo=null;
                     <p class="product-card-price">￥2000</p>
                     <button href="../product/" class="product-card-add-btn">商品を見る</button>
                 </div><!--product-card--> 
+                <form action="../order-complete/index.php" method="post">
+                    <input type="hidden" value="$count">
+                    <input type="hidden" value="$product_id">
+                </form>
         </div>
        
         </div>

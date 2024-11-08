@@ -4,8 +4,15 @@ $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
 dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
 'pass2g');
-$sql=$pdo->prepare('DELETE FROM cart WHERE user_id=?');
-$sql->execute([$user_id]);
+$purchase_date=date("Y-m-d");
+$purchase_count=$_POST['purchase_count'];
+$states='未発送';
+$product_id=$_POST['product_id'];
+$sql=$pdo->prepare('INSERT INTO purchase_history(purchase_date,purchase_count,status,user_id,product_id) VALUES(?,?,?,?,?)');
+$sql->execute([$purchase_date,$purchase_count,$states,$user_id,$product_id]);
+
+$sql1=$pdo->prepare('DELETE FROM cart WHERE user_id=?');
+$sql1->execute([$user_id]);
 
 ?>
 
