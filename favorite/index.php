@@ -30,12 +30,23 @@
     </header><!--ヘッダー-->
     <div class="content-area">
     <h2 class="page-title">性別を教えてください</h2><br>
-    <div class="favorite-sei">
-    <input type="radio" name="sei" value="man">男性
-    <input type="radio" name="sei" value="woman">女性<br>
-    <input type="radio" name="sei" value="other">その他
-    <input type="radio" name="sei" value="not">回答しない<br>
-    </div>
+    <div class="option-container">
+    <label class="option">
+        <input type="radio" name="gender" value="男性">
+        男性
+    </label>
+    <label class="option">
+        <input type="radio" name="gender" value="女性">
+        女性
+    </label>
+    <label class="option">
+        <input type="radio" name="gender" value="その他">
+        その他
+    </label>
+    <label class="option">
+        <input type="radio" name="gender" value="回答しない">
+        回答しない
+    </label>
     <h2 class="page-title">好きなお酒のカテゴリーを教えてください</h2><br>
     <p>*複数回答可</p>
     <input type="checkbox" name="cotegory" value="brrr">ビール<br>

@@ -2,22 +2,20 @@
     session_start();
     $user_id = $_SESSION['user_id'];
     if(isset($user_id)){
-        echo 'ログインしています。';
         $user_name = $_SESSION['user_name'];
     }else{
-        echo 'ログインしていません';
+        header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
         exit;
     }
-$user_id=$_SESSION['user_id'];
-$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
-dbname=LAA1554899-sd2d2g;charset=utf8',
-'LAA1554899',
-'pass2g');
-$sql=$pdo->prepare('SELECT * FROM user WHERE user_id=?');
-$sql->execute([$user_id]);
-foreach($sql as $row){
+
+    $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+    dbname=LAA1554899-sd2d2g;charset=utf8',
+    'LAA1554899',
+    'pass2g');
+    $sql=$pdo->prepare('SELECT * FROM user WHERE user_id=?');
+    $sql->execute([$user_id]);
+    foreach($sql as $row){
     $email=$row['email'];
-    $password=$row['password'];
     $user_name=$row['user_name'];
     $address=$row['address'];
 }
@@ -59,21 +57,13 @@ foreach($sql as $row){
     <p><?= $email ?></p><br>
     <p><?= $password ?></p><br>
     <p><?= $address ?></p><br>
-    <button id="logout" class="btn" onclick="location.href='../logout/index.php'">
-            <p>ログアウト</p>
-    <p>aso@aso.com</p><br>
-    <p>aiueokaki2024</p><br>
-    <p>***********</p><br>
-    <p>〒812-0016福岡県福岡市博多区博多駅南2丁目12-32</p>
-    <button id="" class="btn">
-    <p>ログアウト</p>
-        </button>
+    <a class="btn" href="../logout/index.php">ログアウト</a>
     <button id="hensyu" class="btn" onclick="location.href='../user-update/index.php'">
             <p>編集</p>
-        </button>
+    </button>
     <button id="sakujo" class="btn" onclick="location.href='../user-delete-complete/index.php'">
             <p>アカウント削除</p>
-        </button>
+    </button>
     </div>
 
     </button>
