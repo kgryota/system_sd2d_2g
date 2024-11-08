@@ -1,4 +1,5 @@
 <?php
+session_start();
 $user_id=$_SESSION['user_id'];
 $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
 dbname=LAA1554899-sd2d2g;charset=utf8',
