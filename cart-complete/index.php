@@ -17,6 +17,8 @@ $count=$_POST['kosuu'];
 $product_id=$_POST['product_id'];
 $sql=$pdo->prepare('INSERT INTO cart(product_id,user_id,count) VALUES(?,?,?)');
 $sql->execute([$product_id,$user_id,$count]);
+
+
 $pdo=null;
 
 
