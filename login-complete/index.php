@@ -16,6 +16,7 @@
                     $_SESSION['user_name'] = $row['user_name'];
                 }
             }else{
+                header("Location: ../login/index.php?err=notpassid"); // ログイン画面へのリダイレクト
                 exit;
             }
 
