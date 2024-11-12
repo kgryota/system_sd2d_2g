@@ -7,7 +7,6 @@ session_start();
 $user_id = $_SESSION['user_id'];
 echo $user_id;
 if(isset($user_id)){
-    $user_id=$_SESSION['user_id'];
     $user_name = $_SESSION['user_name'];
 }else{
     header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
