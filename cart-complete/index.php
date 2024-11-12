@@ -1,13 +1,13 @@
 <?php
-    session_start();
-    $user_id = $_SESSION['user_id'];
-    if(isset($user_id)){
-        echo 'ログインしています。';
-        $user_name = $_SESSION['user_name'];
-    }else{
-        echo 'ログインしていません';
-        exit;
-    }
+session_start();
+$user_id = $_SESSION['user_id'];
+if(isset($user_id)){
+    $user_id=$_SESSION['user_id'];
+    $user_name = $_SESSION['user_name'];
+}else{
+    header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
+    exit;
+}
  
 $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
 dbname=LAA1554899-sd2d2g;charset=utf8',
@@ -19,7 +19,7 @@ $sql=$pdo->prepare('INSERT INTO cart(product_id,user_id,count) VALUES(?,?,?)');
 $sql->execute([$product_id,$user_id,$count]);
 
 
-$pdo=null;
+
 
 
 
