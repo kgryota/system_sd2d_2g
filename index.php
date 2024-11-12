@@ -62,7 +62,7 @@ $pdo = new PDO(
                     <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
                         <img class="product-card-img"  src="assets/img/product-img/1000.webp">
                         <h5 class="product-card-name">' . $row['product_name'] . '</h5>
-                        <p class="product-card-price">￥2000</p>
+                        <p class="product-card-price">¥' . $row['price'] . '</p>
                     </a><!--product-card-->
                     ';
                     }

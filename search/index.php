@@ -49,20 +49,26 @@
         </form>
 
         <div>
-            <h3 class="result-title">「<?= $_POST['keyword'] ?>」の検索結果</h3>
+            <h3 class="result-title">「<?= $_POST['keyword'] ,$_POST['keypref']?>」の検索結果</h3>
             <div class="product-list">
             <?php
-                /*検索結果*/
-
-                $sql = $pdo->prepare('SELECT * FROM product WHERE product_name LIKE ? or seisanchi=?');
+                // 検索キーワードを準備
                 $keyword = '%' . $_POST['keyword'] . '%';
-                $sql->execute([$keyword,$_POST['keypref']]);
+
+                if (!$_POST['keyword']){
+                    $sql = $pdo->prepare('SELECT * FROM product WHERE seisanchi = ?');
+                    $sql->execute([$_POST['keypref']]);
+                } else {
+                    $sql = $pdo->prepare('SELECT * FROM product WHERE product_name LIKE ?');
+                    $sql->execute([$keyword]);
+                }
+
                 foreach ($sql as $row) {
                     echo '
                     <a class="product-card" href="../product/?product_id='.$row['product_id'].'">
                         <img class="product-card-img"  src="../assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">'. $row['product_name'].'</h5>
-                        <p class="product-card-price">￥2000</p>
+                        <h5 class="product-card-name">'. $row['product_name']. '</h5>
+                        <p class="product-card-price">¥'.$row['price'].'</p>
                         <button href="../product/" class="product-card-add-btn">商品を見る</button>
                     </a><!--product-card-->
                     ';
