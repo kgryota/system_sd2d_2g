@@ -71,8 +71,8 @@
         for($i=1;$i<=$zaiko_kosuu;$i++){
         echo '<option value="',$i,'">',$i,'</option>';
         }
-        echo '<input type=hidden value=',$i,'>';
-        echo '<input type=hidden value=',$product_id,'>';
+        echo '<input type=hidden name=kosuu value=',$i,'>';
+        echo '<input type="hidden" name="product_id"　value=',$product_id,'>';
         echo '</select>';
      ?>
      </div>
