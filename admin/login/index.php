@@ -29,36 +29,27 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-        <?php
-        $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
-        dbname=LAA1554899-sd2d2g;charset=utf8',
-        'LAA1554899',
-        'pass2g');
-        foreach ($pdo->query('select * from coupon') as $row){
-            echo '<p>';
-            echo $row['coupon_id'], ':';
-            echo $row['coupon_name'], ':';
-            echo $row['coupon_explanation'], ':';
-            echo $row['expiration_date'], ':';
-            echo $row['user_name'], ':';
-            echo '</p>';
+    <h1 class="page-title">ログイン</h1><br>
+    アカウントをお持ちでない場合、<a href="../singup">新規作成</a>
+    <form action="../login-complete/index.php" method="post">
+        <input type="text" name="email" class="forminput1" placeholder="メール">
+        <input type="password" name="password" class="forminput1" placeholder="パスワード">
+        <button id="" class="btn">
+            <p>ログイン</p>
+        </button>
+    </form>
+
+    <?php
+        $err = $_GET['err'];
+        if($err){
+            echo '<p class="error-message">エラー：IDまたはパスワードが違います。</p>';
         }
-        $pdo = null;
-        ?>
-        
-    <div class="page-title">
-    <img class="complete-title-img" src="../assets/img/coupon/coupon.svg"><br>
-    <h1 class="page-title">クーポン</h1><br>
-    <p>現在所有しているクーポン一覧です。クーポンは購<br>
-        入手続き画面で使用できます。</p>
-    </div>
-    <div class="coupon-card">
-        <img src="../assets/img/coupon/beer_woman 1.png">
-        <div class="coupon-card-viwe">
-            <p class="coupon-title">15%OFF</p>
-            <p>日頃の感謝の気持ちです。ぜひご利用ください</p>
-        </div>
-    </div>
+    ?>
+    
+
+        <button id="" class="btn2">
+            <p>ゲストで続ける</p>
+        </button>
     </div>
 </body>
 </html>
