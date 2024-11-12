@@ -1,25 +1,3 @@
-<?php
-session_start();
-$user_id=$_SESSION['user_id'];
-$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
-dbname=LAA1554899-sd2d2g;charset=utf8',
-'LAA1554899',
-'pass2g');
-$purchase_date=date("Y-m-d");
-$purchase_count=$_POST['purchase_count'];
-$states='未発送';
-$product_id=$_POST['product_id'];
-$sql=$pdo->prepare('INSERT INTO purchase_history(purchase_date,purchase_count,status,user_id,product_id) VALUES(?,?,?,?,?)');
-$sql->execute([$purchase_date,$purchase_count,$states,$user_id,$product_id]);
-
-$sql1=$pdo->prepare('DELETE FROM cart WHERE user_id=?');
-$sql1->execute([$user_id]);
-
-?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -51,14 +29,34 @@ $sql1->execute([$user_id]);
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">ご注文ありがとうご<br>
-            ざいました<br></h1>
-        </div>
-        <a href="../" class="btn back-home-btn">
-            <p>ホームに戻る</p>
-        </a>
+    <h2 class="page-title">性別を教えてください</h2><br>
+    <div class="option-container">
+    <label class="option">
+        <input type="radio" name="gender" value="男性">
+        男性
+    </label>
+    <label class="option">
+        <input type="radio" name="gender" value="女性">
+        女性
+    </label>
+    <label class="option">
+        <input type="radio" name="gender" value="その他">
+        その他
+    </label>
+    <label class="option">
+        <input type="radio" name="gender" value="回答しない">
+        回答しない
+    </label>
+    <h2 class="page-title">好きなお酒のカテゴリーを教えてください</h2><br>
+    <p>*複数回答可</p>
+    <input type="checkbox" name="cotegory" value="brrr">ビール<br>
+    <input type="checkbox" name="cotegory" value="brrr">ビール<br>
+    <input type="checkbox" name="cotegory" value="brrr">ビール<br>
+    <input type="checkbox" name="cotegory" value="brrr">ビール<br>
+    <input type="checkbox" name="cotegory" value="brrr">ビール<br>
+    <button id="" class="btn">
+            <p>登録</p>
+        </button>
     </div>
 </body>
 </html>

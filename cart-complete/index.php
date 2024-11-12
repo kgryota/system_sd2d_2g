@@ -1,13 +1,30 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+$user_id = $_SESSION['user_id'];
+if(isset($user_id)){
+    $user_id=$_SESSION['user_id'];
+    $user_name = $_SESSION['user_name'];
+}else{
+    header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
+    exit;
+}
+ 
 $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
 dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
 'pass2g');
 $count=$_POST['kosuu'];
+echo $_POST['product_id'];
 $product_id=$_POST['product_id'];
 $sql=$pdo->prepare('INSERT INTO cart(product_id,user_id,count) VALUES(?,?,?)');
 $sql->execute([$product_id,$user_id,$count]);
-$pdo=null;
+
+
+
 
 
 
@@ -78,6 +95,10 @@ $pdo=null;
                     <p class="product-card-price">￥2000</p>
                     <button href="../product/" class="product-card-add-btn">商品を見る</button>
                 </div><!--product-card--> 
+                <form action="../order-complete/index.php" method="post">
+                    <input type="hidden" value="$count">
+                    <input type="hidden" value="$product_id">
+                </form>
         </div>
        
         </div>

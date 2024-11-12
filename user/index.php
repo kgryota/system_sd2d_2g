@@ -1,3 +1,66 @@
+<?php 
+    session_start();
+    $user_id = $_SESSION['user_id'];
+    if(isset($user_id)){
+        $user_name = $_SESSION['user_name'];
+    }else{
+        header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
+        exit;
+    }
+    try{
+        $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+        dbname=LAA1554899-sd2d2g;charset=utf8',
+        'LAA1554899',
+        'pass2g');
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->beginTransaction();
+        $email1=$_POST['email1'];
+        $password1=$_POST['password1'];
+        $user_name1=$_POST['user_name1'];
+        $address1=$_POST['address1'];
+
+        $sql1=$pdo->prepare('UPDATE user SET email=?,password=?,user_name=?,address=? WHERE user_id=?)');
+        $sql1->execute([$email1,$password1,$user_name1,$address1,$user_id]);
+
+        $sql=$pdo->prepare('SELECT * FROM user WHERE user_id=?');
+        $sql->execute([$user_id]);
+        foreach($sql as $row){
+        $email=$row['email'];
+        $user_name=$row['user_name'];
+        $address=$row['address'];
+
+        $pdo->commit();
+}
+
+    }catch (Exception $e) {
+        // エラーが発生した場合はロールバック
+        $pdo->rollBack();
+        echo "エラーが発生しました: " . $e->getMessage();
+    }
+    $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+    dbname=LAA1554899-sd2d2g;charset=utf8',
+    'LAA1554899',
+    'pass2g');
+
+    $email1=$_POST['email1'];
+    $password1=$_POST['password1'];
+    $user_name1=$_POST['user_name1'];
+    $address1=$_POST['address1'];
+
+    $sql1=$pdo->prepare('UPDATE user SET email=?,password=?,user_name=?,address=? WHERE user_id=?)');
+    $sql1->execute([$email1,$password1,$user_name1,$address1,$user_id]);
+    
+
+
+    $sql=$pdo->prepare('SELECT * FROM user WHERE user_id=?');
+    $sql->execute([$user_id]);
+    foreach($sql as $row){
+    $email=$row['email'];
+    $user_name=$row['user_name'];
+    $address=$row['address'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -30,20 +93,19 @@
     </header><!--ヘッダー-->
     <div class="content-area">
     <h1 class="page-title">ユーザ情報</h1><br>
-    <p>麻生太郎</p><br>
-    <p>aso@aso.com</p><br>
-    <p>aiueokaki2024</p><br>
-    <p>***********</p><br>
-    <p>〒812-0016福岡県福岡市博多区博多駅南2丁目12-32</p>
-    <button id="" class="btn">
-            <p>ログアウト</p>
-        </button>
-    <button id="" class="btn">
+    <p><?= $user_name ?></p><br>
+    <p><?= $email ?></p><br>
+    <p><?= $password ?></p><br>
+    <p><?= $address ?></p><br>
+    <a class="btn" href="../logout/index.php">ログアウト</a>
+    <button id="hensyu" class="btn" onclick="location.href='../user-update/index.php'">
             <p>編集</p>
-        </button>
-    <button id="" class="btn">
+    </button>
+    <button id="sakujo" class="btn" onclick="location.href='../user-delete-complete/index.php'">
             <p>アカウント削除</p>
-        </button>
+    </button>
     </div>
+
+    </button>
 </body>
 </html>

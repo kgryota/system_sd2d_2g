@@ -1,25 +1,26 @@
 <?php
-session_start();
-$user_id=$_SESSION['user_id'];
-$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
-dbname=LAA1554899-sd2d2g;charset=utf8',
-'LAA1554899',
-'pass2g');
-$purchase_date=date("Y-m-d");
-$purchase_count=$_POST['purchase_count'];
-$states='未発送';
-$product_id=$_POST['product_id'];
-$sql=$pdo->prepare('INSERT INTO purchase_history(purchase_date,purchase_count,status,user_id,product_id) VALUES(?,?,?,?,?)');
-$sql->execute([$purchase_date,$purchase_count,$states,$user_id,$product_id]);
-
-$sql1=$pdo->prepare('DELETE FROM cart WHERE user_id=?');
-$sql1->execute([$user_id]);
+            session_start();
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            
+            $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+            dbname=LAA1554899-sd2d2g;charset=utf8',
+            'LAA1554899',
+            'pass2g');
+            $sql = $pdo->prepare('SELECT * FROM user WHERE email=? and password=?');
+            $sql->execute([$email,$password]);
+            $rowCount = $sql->rowCount();
+            if($rowCount == 1){
+                foreach ($sql as $row) {
+                    $_SESSION['user_id'] = $row['user_id'];
+                    $_SESSION['user_name'] = $row['user_name'];
+                }
+            }else{
+                header("Location: ../login/index.php?err=notpassid"); // ログイン画面へのリダイレクト
+                exit;
+            }
 
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -53,8 +54,8 @@ $sql1->execute([$user_id]);
     <div class="content-area">
     <div class="page-title">
             <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">ご注文ありがとうご<br>
-            ざいました<br></h1>
+            <h1 class="complete-title">こんにちは<?= $_SESSION['user_name'] ?>さん<br>
+            <br></h1>
         </div>
         <a href="../" class="btn back-home-btn">
             <p>ホームに戻る</p>

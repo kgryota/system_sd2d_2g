@@ -1,3 +1,17 @@
+<?php
+session_start();
+$user_id=$_SESSION['user_id'];
+$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+dbname=LAA1554899-sd2d2g;charset=utf8',
+'LAA1554899',
+'pass2g');
+
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -30,15 +44,16 @@
     </header><!--ヘッダー-->
     <div class="content-area">
     <h1 class="page-title">情報更新</h1><br>
-    <input type="text" name="" class="forminput1" placeholder="お名前">
-    <input type="text" name="" class="forminput1" placeholder="メールアドレス">
-    <input type="text" name="" class="forminput1" placeholder="ID">
-    <input type="text" name="" class="forminput1" placeholder="パスワード">
-    <input type="text" name="" class="forminput1" placeholder="住所"><br>
+    <form action="../user/index.php" method="post">
+    <input type="text" name="user_name1" class="forminput1" placeholder="お名前">
+    <input type="text" name="email1" class="forminput1" placeholder="メールアドレス">
+    <input type="text" name="password1" class="forminput1" placeholder="パスワード">
+    <input type="text" name="address1" class="forminput1" placeholder="住所"><br>
     <p class="error-message">エラー：未入力の項目があります。</p><br>
-    <button id="" class="btn">
+    <a href="../user/index.php" class="btn back-home-btn">
             <p>更新</p>
-        </button>
+    </a>
+    </form>
     </div>
 </body>
 </html>

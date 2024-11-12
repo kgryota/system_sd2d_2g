@@ -1,14 +1,22 @@
 <?php
-$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
-dbname=LAA1554918-kanpaisd2d;charset=utf8',
-'LAA1554918',
-'pass2g');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+$user_id = $_SESSION['user_id'];
+if(isset($user_id)){
+    $user_id=$_SESSION['user_id'];
+    $user_name = $_SESSION['user_name'];
+}else{
+    header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
+    exit;
+}
+
 
 
 
 ?>
-
-<a href="../product/index.php?product_id=1000">テスト</a>
 
 
 <!DOCTYPE html>
@@ -42,6 +50,17 @@ dbname=LAA1554918-kanpaisd2d;charset=utf8',
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
+    <?php
+        $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+        dbname=LAA1554918-kanpaisd2d;charset=utf8',
+        'LAA1554918',
+        'pass2g');
+        $sql = $pdo->prepare('SELECT * FROM cart JOIN product ON cart.product_id = product.product_id WHERE user_id = ?');
+        $sql->execute([$user_id]);
+        foreach ($sql as $row) {
+            echo $row['price'];
+        }
+    ?>
     <div class="cart-ravel">
     <img class="cart-img" src="../assets/img/menu/cart.svg" alt="お酒画像" height="100" width="100">
         <h5>カート</h5>
