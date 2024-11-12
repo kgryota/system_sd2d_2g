@@ -1,32 +1,18 @@
 <?php
-    session_start();
-    $user_id = $_SESSION['user_id'];
-    if(isset($user_id)){
-        echo 'ログインしています。';
-        $user_name = $_SESSION['user_name'];
-    }else{
-        echo 'ログインしていません';
-        exit;
-    }
+session_start();
+$user_id = $_SESSION['user_id'];
+if(isset($user_id)){
+    $user_id=$_SESSION['user_id'];
+    $user_name = $_SESSION['user_name'];
+}else{
+    header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
+    exit;
+}
 
-$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
-dbname=LAA1554918-kanpaisd2d;charset=utf8',
-'LAA1554918',
-'pass2g');
-$sql=$pdo->prepare('SELECT * FROM cart  JOIN product ON cart.product_id=product.product_id WHERE user_id=?');
- $sql->execute([$user_id]);
- foreach($sql as $row){
-    $product_id=$row['product_id'];
-    $count=$row['count'];
-    echo $product_price=$row['price'];
-    echo $product_name=$row['product_name'];
 
- }
 
 
 ?>
-
-<a href="../product/index.php?product_id=1000">テスト</a>
 
 
 <!DOCTYPE html>
@@ -65,6 +51,23 @@ $sql=$pdo->prepare('SELECT * FROM cart  JOIN product ON cart.product_id=product.
         <h5>カート</h5>
     </div>
     <div class="product-list">
+    <?php
+        $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+        dbname=LAA1554918-kanpaisd2d;charset=utf8',
+        'LAA1554918',
+        'pass2g');
+        $sql=$pdo->prepare('SELECT * FROM cart  JOIN product ON cart.product_id=product.product_id WHERE user_id=?');
+        $sql->execute(7);
+        foreach($sql as $row){
+            $product_id=$row['product_id'];
+            $count=$row['count'];
+            echo $user_id;
+            echo $product_price;
+            echo $product_name;
+            echo $product_id;
+        }
+
+?>
     <div class="product-card">
                     <img class="product-card-img" src="../assets/img/product-img/1000.webp">
                     <h5 class="product-card-name">お酒の名前</h5>
