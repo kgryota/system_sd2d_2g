@@ -29,6 +29,23 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
+        <?php
+        $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+        dbname=LAA1554899-sd2d2g;charset=utf8',
+        'LAA1554899',
+        'pass2g');
+        foreach ($pdo->query('select * from coupon') as $row){
+            echo '<p>';
+            echo $row['coupon_id'], ':';
+            echo $row['coupon_name'], ':';
+            echo $row['coupon_explanation'], ':';
+            echo $row['expiration_date'], ':';
+            echo $row['user_name'], ':';
+            echo '</p>';
+        }
+        $pdo = null;
+        ?>
+        
     <div class="page-title">
     <img class="complete-title-img" src="../assets/img/coupon/coupon.svg"><br>
     <h1 class="page-title">クーポン</h1><br>
