@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/reset.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/page.css">
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/page.css">
 
     <!--googleFont-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,17 +22,17 @@
                 <h1>乾杯市場</h1>
             </a>
             <div class="header-menu">
-                <a class="header-menu-btn" href="../search"><img src="../assets/img/menu/search.svg"></a>
-                <a class="header-menu-btn" href="../user"><img src="../assets/img/menu/user.svg"></a>
-                <a class="header-menu-btn" href="../cart"><img src="../assets/img/menu/cart.svg"></a>
+                <a class="header-menu-btn" href="../../search"><img src="../../assets/img/menu/search.svg"></a>
+                <a class="header-menu-btn" href="../../user"><img src="../../assets/img/menu/user.svg"></a>
+                <a class="header-menu-btn" href="../../cart"><img src="../../assets/img/menu/cart.svg"></a>
             </div>
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <h1 class="page-title">ログイン</h1><br>
-    アカウントをお持ちでない場合、<a href="../singup">新規作成</a>
+    <h1 class="page-title"><span class="page-title-admin">管理者</span><br>ログイン</h1><br>
+    管理者アカウントをお持ちでない場合、<a href="../singup">新規作成</a>
     <form action="../login-complete/index.php" method="post">
-        <input type="text" name="email" class="forminput1" placeholder="メール">
+        <input type="text" name="email" class="forminput1" placeholder="メールアドレス">
         <input type="password" name="password" class="forminput1" placeholder="パスワード">
         <button id="" class="btn">
             <p>ログイン</p>
