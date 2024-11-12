@@ -1,5 +1,14 @@
+<?php
+$pdo = new PDO(
+    'mysql:host=mysql309.phy.lolipop.lan;
+    dbname=LAA1554899-sd2d2g;charset=utf8',
+    'LAA1554899',
+    'pass2g'
+);
+?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +23,7 @@
 
     <title>乾杯市場 ～全国のお酒を販売～</title>
 </head>
+
 <body style="background-color: #F7F5EF;">
     <header>
         <div class="header-content">
@@ -41,54 +51,22 @@
                 <input type="text" name="keyword" placeholder="お酒の名前で検索">
             </form>
             <div class="index-recommend">
-                <h2 class="index-list-title">おすすめ</h2>
+                <h2 class="index-list-title">商品一覧</h2>
                 <div class="index-recommend-list">
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
+                    <?php
+                    /*検索結果*/
 
+                    $sql = $pdo->query('SELECT * FROM product');
+                    foreach ($sql as $row) {
+                        echo '
+                    <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
+                        <img class="product-card-img"  src="assets/img/product-img/1000.webp">
+                        <h5 class="product-card-name">' . $row['product_name'] . '</h5>
+                        <p class="product-card-price">￥2000</p>
+                    </a><!--product-card-->
+                    ';
+                    }
+                    ?>
                 </div>
             </div>
             <div class="index-repurchase">
@@ -146,4 +124,5 @@
 
     </div>
 </body>
+
 </html>
