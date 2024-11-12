@@ -51,13 +51,14 @@ if(isset($user_id)){
     <div class="content-area">
     <?php
         $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
-        dbname=LAA1554918-kanpaisd2d;charset=utf8',
-        'LAA1554918',
+        dbname=LAA1554899-sd2d2g;charset=utf8',
+        'LAA1554899',
         'pass2g');
         $sql = $pdo->prepare('SELECT cart.product_id, cart.user_id, cart.count, product.product_name, product.price FROM cart JOIN product ON cart.product_id = product.product_id WHERE user_id = ?');
         $sql->execute([$user_id]);
         foreach ($sql as $row) {
-            echo $row['price'];
+            $count=$row['count'];
+            $price=$row['price'];
             $product_name=$row['product_name'];
         }
     ?>
@@ -69,8 +70,8 @@ if(isset($user_id)){
     <div class="product-card">
                     <img class="product-card-img" src="../assets/img/product-img/1000.webp">
                     <h5 class="product-card-name"><?= $product_name ?></h5>
-                    <p class="product-card-price">個数</p>
-                    <p class="product-card-price">金額</p>
+                    <p class="product-card-price"><?= $count ?></p>
+                    <p class="product-card-price"><?= $price ?></p>
                     <button href="../product/" class="cart-delete">削除</button>
                 </div><!--product-card-->
                 <div class="product-card">
