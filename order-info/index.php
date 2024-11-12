@@ -1,6 +1,11 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 $user_id = $_SESSION['user_id'];
+echo $user_id;
 if(isset($user_id)){
     $user_id=$_SESSION['user_id'];
     $user_name = $_SESSION['user_name'];
@@ -59,6 +64,17 @@ $address=$row['address'];
     <input type="date" name="" class="forminput1" placeholder="お届け日指定">
     <p class="error-message">エラー：未入力の項目があります。</p>
     <h2 class="order-page-title siharai">支払方法</h2><br>
+    <?php
+        $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+        dbname=LAA1554918-kanpaisd2d;charset=utf8',
+        'LAA1554918',
+        'pass2g');
+        $sql = $pdo->prepare('SELECT * FROM cart JOIN product ON cart.product_id = product.product_id WHERE user_id = ?');
+        $sql->execute([$user_id]);
+        foreach ($sql as $row) {
+            echo $row['price'];
+        }
+    ?>
     <h2>合計：5,600円</h2>
     <input type="text" name="" class="forminput1" placeholder="クレジットカード番号">
     <input type="text" name="" class="forminput1" placeholder="有効期限">
