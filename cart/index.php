@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 $user_id = $_SESSION['user_id'];
 if(isset($user_id)){
@@ -56,16 +60,14 @@ if(isset($user_id)){
         dbname=LAA1554918-kanpaisd2d;charset=utf8',
         'LAA1554918',
         'pass2g');
-        $sql=$pdo->prepare('SELECT * FROM cart  JOIN product ON cart.product_id=product.product_id WHERE user_id=?');
-        $sql->execute(7);
-        foreach($sql as $row){
-            $product_id=$row['product_id'];
-            $count=$row['count'];
+        $sql = $pdo->prepare('SELECT * FROM cart JOIN product ON cart.product_id = product.product_id WHERE user_id = ?');
+        $sql->execute([$user_id]);
+        foreach ($sql as $row) {
             echo $user_id;
-            echo $product_price;
-            echo $product_name;
-            echo $product_id;
+            echo $row['price'];
+            echo $row['product_name'];
         }
+        
 
 ?>
     <div class="product-card">
