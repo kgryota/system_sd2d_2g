@@ -50,11 +50,6 @@ if(isset($user_id)){
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <div class="cart-ravel">
-    <img class="cart-img" src="../assets/img/menu/cart.svg" alt="お酒画像" height="100" width="100">
-        <h5>カート</h5>
-    </div>
-    <div class="product-list">
     <?php
         $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
         dbname=LAA1554918-kanpaisd2d;charset=utf8',
@@ -63,13 +58,14 @@ if(isset($user_id)){
         $sql = $pdo->prepare('SELECT * FROM cart JOIN product ON cart.product_id = product.product_id WHERE user_id = ?');
         $sql->execute([$user_id]);
         foreach ($sql as $row) {
-            echo $user_id;
             echo $row['price'];
-            echo $row['product_name'];
         }
-        
-
-?>
+    ?>
+    <div class="cart-ravel">
+    <img class="cart-img" src="../assets/img/menu/cart.svg" alt="お酒画像" height="100" width="100">
+        <h5>カート</h5>
+    </div>
+    <div class="product-list">
     <div class="product-card">
                     <img class="product-card-img" src="../assets/img/product-img/1000.webp">
                     <h5 class="product-card-name">お酒の名前</h5>

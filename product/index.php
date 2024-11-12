@@ -71,15 +71,15 @@
         for($i=1;$i<=$zaiko_kosuu;$i++){
         echo '<option value="',$i,'">',$i,'</option>';
         }
-        echo '<input type=hidden value=',$i,'';
-        echo '<input type=hidden value=',$product_id,'';
+        echo '<input type=hidden value=',$i,'>';
+        echo '<input type=hidden value=',$product_id,'>';
         echo '</select>';
      ?>
      </div>
      <button id="cart-tuika" class="btn" onclick="location.href='../cart/index.php'">
             <p>カートに追加</p>
         </button>
-        </form>
+    </form>
         <div class="product-info2">
         <h5><?= $product_detel ?></h5>
         <p><?= $detailed_ex ?></p>
