@@ -47,9 +47,7 @@
     ?>
     
 
-        <button id="" class="btn2">
-            <p>ゲストで続ける</p>
-        </button>
+        
     </div>
 </body>
 </html>
