@@ -59,7 +59,11 @@ if(isset($user_id)){
             dbname=LAA1554899-sd2d2g;charset=utf8',
             'LAA1554899',
             'pass2g');
-            $sql = $pdo->prepare('SELECT cart.product_id, cart.user_id, cart.count, product.product_name, product.price FROM cart JOIN product ON cart.product_id = product.product_id WHERE user_id = ?');
+            $sql = $pdo->prepare('SELECT cart.product_id, cart.user_id, cart.count, product.product_name, product.price 
+            FROM cart 
+            JOIN product ON cart.product_id = product.product_id 
+            WHERE user_id = ? 
+            ORDER BY cart.product_id DESC');
             $sql->execute([$user_id]);
             foreach ($sql as $row) {
                 $count=$row['count'];
