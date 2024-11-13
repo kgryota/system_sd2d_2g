@@ -1,29 +1,31 @@
-<?php 
-    session_start();
-    $user_id = $_SESSION['user_id'];
-    if(isset($user_id)){
-        $user_name = $_SESSION['user_name'];
-    }else{
-        header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
-        exit;
-    }
-        $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
-        dbname=LAA1554899-sd2d2g;charset=utf8',
-        'LAA1554899',
-        'pass2g');
-        
-
-        $sql=$pdo->prepare('SELECT * FROM user WHERE user_id=?');
-        $sql->execute([$user_id]);
-        foreach($sql as $row){
-        $email=$row['email'];
-        $user_name=$row['user_name'];
-        $address=$row['address'];
-
-        
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+$user_id = $_SESSION['user_id'];
+if(isset($user_id)){
+    $user_name = $_SESSION['user_name'];
+}else{
+    header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
+    exit;
 }
+$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+dbname=LAA1554899-sd2d2g;charset=utf8',
+'LAA1554899',
+'pass2g');
 
+$user_name=$_POST['user_name'];
+$email=$_POST['email'];
+$password=$_POST['password'];
+$address=$_POST['address'];
+
+$sql=$pdo->prepare('UPDATE user SET email=?,password=?,user_name=?,address=? WHERE user_id=?');
+$sql->execute([$email,$password,$user_name,$address,$user_id]);
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -56,20 +58,15 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <h1 class="page-title">ユーザ情報</h1><br>
-    <p><?= $user_name ?></p><br>
-    <p><?= $email ?></p><br>
-    <p><?= $password ?></p><br>
-    <p><?= $address ?></p><br>
-    <a class="btn" href="../logout/index.php">ログアウト</a>
-    <button id="hensyu" class="btn" onclick="location.href='../user-update/index.php'">
-            <p>編集</p>
-    </button>
-    <button id="sakujo" class="btn" onclick="location.href='../user-delete-complete/index.php'">
-            <p>アカウント削除</p>
-    </button>
+    <div class="page-title">
+            <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
+            <h1 class="complete-title">アカウント情報を<br>
+            更新しました<br></h1>
+        </div>
+        <a href="../" class="btn back-home-btn">
+            <p>ユーザー情報に戻る</p>
+        </a>
+        
     </div>
-
-    </button>
 </body>
 </html>
