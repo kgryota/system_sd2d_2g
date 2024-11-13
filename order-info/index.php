@@ -4,8 +4,9 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-$user_id = $_SESSION['user_id'];
-if(isset($user_id)){
+
+if(isset($_SESSION['user_id'])){
+    $user_id = $_SESSION['user_id'];
     $user_name = $_SESSION['user_name'];
 }else{
     header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
@@ -74,19 +75,54 @@ $address=$row['address'];
             $product_price = $row['price'] * $row['count']; // 商品単価に数量を掛けて小計を計算
             $sum_price += $product_price; // 合計金額に商品ごとの小計を加算
         }
-        echo $sum_price;
+        echo '<h2>合計：'.$sum_price.'円</h2>';
     ?>
-    <h2>合計：5,600円</h2>
+    <h2 style="color: red;" id="out_price"></h2>
     <input type="text" name="" class="forminput1" placeholder="クレジットカード番号">
     <input type="text" name="" class="forminput1" placeholder="有効期限">
-    <input type="text" name="" class="forminput1" placeholder="パスワード">
-    <select name="" class="selectstyle">
-            <option value="">クーポンを選択</option>
-            <option value="">テスト</option>
-        </select>
-        <button id="" class="btn">
+    <input type="password" name="" class="forminput1" placeholder="パスワード">
+    <select id="coupon_select" name="" class="selectstyle">
+        <option value="">クーポンを選択</option>
+        <?php
+        foreach ($pdo->query('select * from coupon') as $row){
+            echo '<option value="'.$row['coupon_id'].'">'.$row['coupon_name'].'</option>';
+        }
+        $pdo = null;
+        ?>
+    </select>
+        <a href="../order-complete/" class="btn">
             <p>購入を確定</p>
-        </button>
+        </a>
     </div>
+    <script>
+        const print_price = document.getElementById('out_price');
+        const before_price = <?= $sum_price ?>;
+        const coupon_select = document.getElementById('coupon_select');
+
+        coupon_select.addEventListener('change',function(){
+            const coupon_value = this.value;
+            console.log(coupon_value);
+            const after_price = coupon_calc(before_price,coupon_value);
+            print_price.innerText = '値引き後：' + after_price + '円';
+        });
+
+        function coupon_calc(before_price,coupon_value){
+            var after_price = 0;
+            if(!coupon_value){
+                after_price = before_price;
+            }
+            if(coupon_value == 1){//10%off
+                const waribiki = before_price / 10;
+                after_price = before_price - waribiki;
+            }
+            if(coupon_value == 2){//50%off
+                const waribiki = before_price / 2;
+                after_price = before_price - waribiki;
+            }
+
+            return Math.floor(after_price);
+        }
+        
+    </script>
 </body>
 </html>

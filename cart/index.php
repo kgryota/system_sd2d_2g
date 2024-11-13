@@ -82,11 +82,20 @@ if(isset($user_id)){
         ?>
     </div>
     <div class="cart-money">
-        合計：金額
+    <?php
+        $sql = $pdo->prepare('SELECT cart.product_id, cart.user_id, cart.count, product.product_name, product.price FROM cart JOIN product ON cart.product_id = product.product_id WHERE user_id = ?');
+        $sql->execute([$user_id]);
+        $sum_price = 0;
+        foreach ($sql as $row) {
+            $product_price = $row['price'] * $row['count']; // 商品単価に数量を掛けて小計を計算
+            $sum_price += $product_price; // 合計金額に商品ごとの小計を加算
+        }
+        echo '合計：'.$sum_price.'円';
+    ?>
     </div>
-    <button id="konyu" class="btn">
+    <a href="../order-info/" class="btn">
             <p>購入手続き</p>
-        </button>
+    </あ>
     </div>
 </body>
 </html>
