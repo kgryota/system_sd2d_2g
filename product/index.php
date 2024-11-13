@@ -14,7 +14,6 @@ error_reporting(E_ALL);
  'LAA1554899',
  'pass2g');
  $product_id=$_GET['product_id'];
- echo $product_id;
  $sql=$pdo->prepare('SELECT * FROM product WHERE product_id=?');
  $sql->execute([$product_id]);
  foreach($sql as $row){
@@ -84,11 +83,8 @@ error_reporting(E_ALL);
 
      </div>
     <?php
-    if(!isset($_SESSION['user_id'])){
-        $sql = $pdo->prepare('SELECT cart.product_id, cart.user_id, cart.count, product.product_name, product.price 
-        FROM cart 
-        JOIN product ON cart.product_id = product.product_id 
-        WHERE user_id = ?');
+    if(isset($_SESSION['user_id'])){
+        $sql = $pdo->prepare('SELECT * FROM cart WHERE user_id = ?');
         $sql->execute([$user_id]);
         foreach ($sql as $row) {
             if($product_id == $row['product_id']){
@@ -97,9 +93,9 @@ error_reporting(E_ALL);
         }
     }
 
-    if (!isset($add_product_duplication)) {
+    if (isset($add_product_duplication)) {
         echo '
-        <button id="cart-tuika" class="btn add_product_none"">
+        <button id="cart-tuika" class="btn add_product_none">
             <p>すでに追加されています</p>
         </button>';
     } else {
