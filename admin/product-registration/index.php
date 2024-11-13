@@ -31,7 +31,7 @@
     <div class="content-area">
     <h1 class="page-title">商品登録</h1><br>
    <p><h2>商品画像</h2></p>
-    <form action="../login-complete/index.php" method="post">
+    <form action="../product-complete/index.php" method="post">
         <input type="file" name="product">
         <input type="text" name="product_name" class="forminput1" placeholder="商品名">
         <input type="text" name="price" class="forminput1" placeholder="価格">
