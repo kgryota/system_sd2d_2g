@@ -80,11 +80,10 @@ error_reporting(E_ALL);
         echo '<option value="',$i,'">',$i,'</option>';
         }
         echo '<input type=hidden name=kosuu value=',$i,'>';
-        echo '<input type="hidden" name="product_id"　value=',$product_id,'>';
+        echo '<input type="hidden" name="product_id" value=',$product_id,'>';
         echo '</select>';
      ?>
      </div>
-    <!--すでにカートにある場合は非表示-->
 
      <button id="cart-tuika" class="btn" onclick="location.href='../cart/index.php'">
             <p>カートに追加</p>
