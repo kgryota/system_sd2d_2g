@@ -5,6 +5,12 @@ $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
 dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
 'pass2g');
+//$sql2=>pdo->prepare('SELECT product_id count FROM cart WHERE user_id=?');
+//$sql2->execute([$user_id]);
+//foreach($sql as $row){
+// $product_id=$row['product_id'];
+// $purchase_count=$['count'];
+// }
 $purchase_date=date("Y-m-d");
 $purchase_count=$_POST['purchase_count'];
 $states='未発送';
