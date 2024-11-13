@@ -2,7 +2,6 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
 session_start();
 $user_id = $_SESSION['user_id'];
 if(isset($user_id)){
@@ -11,11 +10,21 @@ if(isset($user_id)){
     header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
     exit;
 }
+$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+dbname=LAA1554899-sd2d2g;charset=utf8',
+'LAA1554899',
+'pass2g');
 
+$user_name=$_POST['user_name'];
+$email=$_POST['email'];
+$password=$_POST['password'];
+$address=$_POST['address'];
 
-
-
+$sql=$pdo->prepare('UPDATE user SET email=?,password=?,user_name=?,address=? WHERE user_id=?');
+$sql->execute([$email,$password,$user_name,$address,$user_id]);
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -49,44 +58,15 @@ if(isset($user_id)){
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <div class="cart-ravel">
-    <img class="cart-img" src="../assets/img/menu/cart.svg" alt="お酒画像" height="100" width="100">
-        <h5>カート</h5>
-    </div>
-    <div class="product-list">
-        <?php
-            $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
-            dbname=LAA1554899-sd2d2g;charset=utf8',
-            'LAA1554899',
-            'pass2g');
-            $sql = $pdo->prepare('SELECT cart.product_id, cart.user_id, cart.count, product.product_name, product.price 
-            FROM cart 
-            JOIN product ON cart.product_id = product.product_id 
-            WHERE user_id = ? 
-            ORDER BY cart.product_id DESC');
-            $sql->execute([$user_id]);
-            foreach ($sql as $row) {
-                $count=$row['count'];
-                $price=$row['price'];
-                $product_name=$row['product_name'];
-                echo '
-                <div class="product-card">
-                    <img class="product-card-img" src="../assets/img/product-img/1000.webp">
-                    <h5 class="product-card-name">'.$product_name.'</h5>
-                    <p class="product-card-price">'.$count.'</p>
-                    <p class="product-card-price">'.$price.'</p>
-                    <button href="../product/" class="cart-delete">削除</button>
-                </div><!--product-card-->
-                ';
-            }
-        ?>
-    </div>
-    <div class="cart-money">
-        合計：金額
-    </div>
-    <button id="konyu" class="btn">
-            <p>購入手続き</p>
-        </button>
+    <div class="page-title">
+            <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
+            <h1 class="complete-title">アカウント情報を<br>
+            更新しました<br></h1>
+        </div>
+        <a href="../" class="btn back-home-btn">
+            <p>ユーザー情報に戻る</p>
+        </a>
+        
     </div>
 </body>
 </html>

@@ -122,6 +122,9 @@
     align-items: center;
     text-decoration: none;
 }
+.add_product_none{
+    background-color: #bcbbbb;
+}
 /*ホーム画面・検索結果画面商品カード*/
 .index-recommend,.index-repurchase{
     padding: 10px;
