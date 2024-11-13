@@ -1,4 +1,13 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+    session_start();
+    if(isset($_SESSION['user_id'])){
+        $user_id = $_SESSION['user_id'];
+        $user_name = $_SESSION['user_name'];
+    }
 
  $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
  dbname=LAA1554899-sd2d2g;charset=utf8',
@@ -11,7 +20,7 @@
  foreach($sql as $row){
   $product_name=$row['product_name'];
   $zaiko_kosuu=$row['zaiko_kosuu'];
-  $pref_id=$row['pref_id'];
+  $pref_id=$row['seisanchi'];
   $alcohol_dosuu=$row['alcohol_dosuu'];
   $price=$row['price'];
   $product_image=$row['product_image'];
@@ -21,7 +30,6 @@
  }
 
 ?>
-
 
 
 
@@ -76,6 +84,8 @@
         echo '</select>';
      ?>
      </div>
+    <!--すでにカートにある場合は非表示-->
+
      <button id="cart-tuika" class="btn" onclick="location.href='../cart/index.php'">
             <p>カートに追加</p>
         </button>
