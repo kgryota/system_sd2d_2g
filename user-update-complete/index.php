@@ -63,8 +63,11 @@ $sql->execute([$email,$password,$user_name,$address,$user_id]);
             <h1 class="complete-title">アカウント情報を<br>
             更新しました<br></h1>
         </div>
+        <a href="../user-update/index.php" class="btn back-home-btn">
+            <p>ユーザー情報に戻る</p><br><br>
+        </a>
         <a href="../" class="btn back-home-btn">
-            <p>ユーザー情報に戻る</p>
+            <p>ホームに戻る</p>
         </a>
         
     </div>
