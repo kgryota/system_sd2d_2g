@@ -64,7 +64,7 @@ error_reporting(E_ALL);
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-     <img class="product-img" src="../assets/img/product-img/<?= $product_image ?>.png" alt="お酒画像">
+     <img class="product-img" src="../assets/img/product-img/<?= $product_id ?>.png" alt="お酒画像">
      <div class="product-info">
         <h5><?= $product_name ?></h5>
         <p>￥<?= $price ?></p>
@@ -95,9 +95,9 @@ error_reporting(E_ALL);
 
     if (isset($add_product_duplication)) {
         echo '
-        <button id="cart-tuika" class="btn add_product_none">
+        <div class="btn add_product_none">
             <p>すでに追加されています</p>
-        </button>';
+        </div>';
     } else {
         echo '
         <button id="cart-tuika" class="btn" onclick="location.href=\'../cart/index.php\'">

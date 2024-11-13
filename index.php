@@ -60,7 +60,7 @@ $pdo = new PDO(
                     foreach ($sql as $row) {
                         echo '
                     <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
-                        <img class="product-card-img"  src="assets/img/product-img/1000.webp">
+                        <img class="product-card-img"  src="assets/img/product-img/' . $row['product_id'] . '.png">
                         <h5 class="product-card-name">' . $row['product_name'] . '</h5>
                         <p class="product-card-price">¥' . $row['price'] . '</p>
                     </a><!--product-card-->
