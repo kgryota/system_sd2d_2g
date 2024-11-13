@@ -16,21 +16,17 @@ $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
 dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
 'pass2g');
+
 $count=$_POST['kosuu'];
 $product_id=$_POST['product_id'];
-echo $product_id;
+
+
+
 $sql=$pdo->prepare("INSERT INTO cart(product_id,user_id,count) VALUES(?,?,?)");
 $sql->execute([$product_id,$user_id,$count]);
 
 
 ?>
-
-
-
-
-
-
-
 
 
 <!DOCTYPE html>

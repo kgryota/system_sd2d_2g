@@ -14,7 +14,6 @@ error_reporting(E_ALL);
  'LAA1554899',
  'pass2g');
  $product_id=$_GET['product_id'];
- echo $product_id;
  $sql=$pdo->prepare('SELECT * FROM product WHERE product_id=?');
  $sql->execute([$product_id]);
  foreach($sql as $row){
@@ -74,21 +73,39 @@ error_reporting(E_ALL);
      <p>個数：</p>
      <form action="../cart-complete/index.php" method="post">
      <?php   
-        echo '<select name="kosuu" class="selectstyle product-count">';
-        $num=1;
-        for($i=1;$i<=$zaiko_kosuu;$i++){
-        echo '<option value="',$i,'">',$i,'</option>';
-        }
-        echo '<input type=hidden name=kosuu value=',$i,'>';
-        echo '<input type="hidden" name="product_id"　value=',$product_id,'>';
-        echo '</select>';
-     ?>
-     </div>
-    <!--すでにカートにある場合は非表示-->
+            echo '<select name="kosuu" class="selectstyle product-count">';
+            for ($i = 1; $i <= $zaiko_kosuu; $i++) {
+                echo '<option value="', $i, '">', $i, '</option>';
+            }
+            echo '</select>';
+            echo '<input type="hidden" name="product_id" value="', $product_id, '">';
+        ?>
 
-     <button id="cart-tuika" class="btn" onclick="location.href='../cart/index.php'">
+     </div>
+    <?php
+    if(isset($_SESSION['user_id'])){
+        $sql = $pdo->prepare('SELECT * FROM cart WHERE user_id = ?');
+        $sql->execute([$user_id]);
+        foreach ($sql as $row) {
+            if($product_id == $row['product_id']){
+                $add_product_duplication = 'true'; //カートにすでに同じ商品がある
+            }
+        }
+    }
+
+    if (isset($add_product_duplication)) {
+        echo '
+        <button id="cart-tuika" class="btn add_product_none">
+            <p>すでに追加されています</p>
+        </button>';
+    } else {
+        echo '
+        <button id="cart-tuika" class="btn" onclick="location.href=\'../cart/index.php\'">
             <p>カートに追加</p>
-        </button>
+        </button>';
+    }
+    
+    ?>
     </form>
         <div class="product-info2">
         <h5><?= $product_detel ?></h5>
