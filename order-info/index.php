@@ -5,7 +5,6 @@ error_reporting(E_ALL);
 
 session_start();
 $user_id = $_SESSION['user_id'];
-echo $user_id;
 if(isset($user_id)){
     $user_name = $_SESSION['user_name'];
 }else{
@@ -65,14 +64,17 @@ $address=$row['address'];
     <h2 class="order-page-title siharai">支払方法</h2><br>
     <?php
         $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
-        dbname=LAA1554918-kanpaisd2d;charset=utf8',
-        'LAA1554918',
+        dbname=LAA1554899-sd2d2g;charset=utf8',
+        'LAA1554899',
         'pass2g');
-        $sql = $pdo->prepare('SELECT * FROM cart JOIN product ON cart.product_id = product.product_id WHERE user_id = ?');
+        $sql = $pdo->prepare('SELECT cart.product_id, cart.user_id, cart.count, product.product_name, product.price FROM cart JOIN product ON cart.product_id = product.product_id WHERE user_id = ?');
         $sql->execute([$user_id]);
+        $sum_price = 0;
         foreach ($sql as $row) {
-            echo $row['price'];
+            $product_price = $row['price'] * $row['count']; // 商品単価に数量を掛けて小計を計算
+            $sum_price += $product_price; // 合計金額に商品ごとの小計を加算
         }
+        echo $sum_price;
     ?>
     <h2>合計：5,600円</h2>
     <input type="text" name="" class="forminput1" placeholder="クレジットカード番号">
