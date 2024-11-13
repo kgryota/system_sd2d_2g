@@ -45,7 +45,7 @@
                 }
             ?>
             </select>
-            <button type="submit">検索</button>
+            <button class="btn" type="submit">検索</button>
         </form>
 
         <div>

@@ -57,39 +57,46 @@ $address=$row['address'];
     </header><!--ヘッダー-->
     <div class="content-area">
     <h1 class="page-title">配送先</h1><br>
-    <h2 class="order-page-title">お客様情報</h2><br>
-    <p>お名前：<?= $user_name ?></p>
-    <p>住所：<?= $address ?></p>
-    <input type="date" name="" class="forminput1" placeholder="お届け日指定">
-    <p class="error-message">エラー：未入力の項目があります。</p>
-    <h2 class="order-page-title siharai">支払方法</h2><br>
-    <?php
-        $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
-        dbname=LAA1554899-sd2d2g;charset=utf8',
-        'LAA1554899',
-        'pass2g');
-        $sql = $pdo->prepare('SELECT cart.product_id, cart.user_id, cart.count, product.product_name, product.price FROM cart JOIN product ON cart.product_id = product.product_id WHERE user_id = ?');
-        $sql->execute([$user_id]);
-        $sum_price = 0;
-        foreach ($sql as $row) {
-            $product_price = $row['price'] * $row['count']; // 商品単価に数量を掛けて小計を計算
-            $sum_price += $product_price; // 合計金額に商品ごとの小計を加算
-        }
-        echo '<h2>合計：'.$sum_price.'円</h2>';
-    ?>
-    <h2 style="color: red;" id="out_price"></h2>
+    <div >
+        <h2 class="order-page-title">お客様情報</h2>
+        <p class="user-orderinfo">お名前：<?= $user_name ?></p>
+        <p class="user-orderinfo">住所：<?= $address ?></p>
+        <input type="date" name="" class="forminput1" placeholder="お届け日指定">
+        <p class="error-message">エラー：未入力の項目があります。</p>
+    </div>
+
+    <h2 class="order-page-title siharai">支払方法</h2>
     <input type="text" name="" class="forminput1" placeholder="クレジットカード番号">
     <input type="text" name="" class="forminput1" placeholder="有効期限">
     <input type="password" name="" class="forminput1" placeholder="パスワード">
-    <select id="coupon_select" name="" class="selectstyle">
-        <option value="">クーポンを選択</option>
-        <?php
-        foreach ($pdo->query('select * from coupon') as $row){
-            echo '<option value="'.$row['coupon_id'].'">'.$row['coupon_name'].'</option>';
-        }
-        $pdo = null;
+    <div class="order-price">
+        <select id="coupon_select" name="" class="selectstyle">
+            <option value="">クーポンを選択</option>
+            <?php
+            foreach ($pdo->query('select * from coupon') as $row){
+                echo '<option value="'.$row['coupon_id'].'">'.$row['coupon_name'].'</option>';
+            }
+            $pdo = null;
         ?>
-    </select>
+        </select>
+        <?php
+            $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+            dbname=LAA1554899-sd2d2g;charset=utf8',
+            'LAA1554899',
+            'pass2g');
+            $sql = $pdo->prepare('SELECT cart.product_id, cart.user_id, cart.count, product.product_name, product.price FROM cart JOIN product ON cart.product_id = product.product_id WHERE user_id = ?');
+            $sql->execute([$user_id]);
+            $sum_price = 0;
+            foreach ($sql as $row) {
+                $product_price = $row['price'] * $row['count']; // 商品単価に数量を掛けて小計を計算
+                $sum_price += $product_price; // 合計金額に商品ごとの小計を加算
+            }
+            echo '<h2>合計：'.$sum_price.'円</h2>';
+        ?>
+        <h2 style="color: red;" id="out_price"></h2>
+
+    </div>
+    
         <a href="../order-complete/" class="btn">
             <p>購入を確定</p>
         </a>
