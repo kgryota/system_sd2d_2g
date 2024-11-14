@@ -14,6 +14,11 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
 'pass2g');
 
+$sql2=$pdo->query("SELECT MAX(product_id) AS max_id FROM product");
+foreach($sql2 as $row){
+    $maxproduct_id=$row['max_id'];
+}
+$maxproduct_id++;
 ?>
 
 
@@ -54,6 +59,8 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
    <p><h2>商品画像</h2></p>
     <form action="../product-complete/index.php" method="post">
         <!--<input type="file" name="product">-->
+        <p>商品ID　限定商品以外はデフォルトのままで</p>
+        <input type="number" name="product_id" value=<?=$maxproduct_id?> class="forminput1">
         <input type="text" name="product" class="forminput1" placeholder="テスト　本来は画像ファイル">
         <input type="text" name="product_name" class="forminput1" placeholder="商品名">
         <input type="number" name="zaiko_kosuu" class="forminput1" placeholder="在庫個数">

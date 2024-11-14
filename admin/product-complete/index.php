@@ -15,6 +15,8 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
 'pass2g');
 
+
+
 $product_name=$_POST['product_name'];
 $zaiko_kosuu=$_POST['zaiko_kosuu'];
 $seisanchi=$_POST['seisanchi'];
@@ -81,13 +83,6 @@ $sql->execute([$product_name,$zaiko_kosuu,$seisanchi,$alcohol_dosuu,$price,$prod
         <a href="../" class="btn back-home-btn">
             <p>ホームに戻る</p>
         </a>
-
-    <?php
-        $err = $_GET['err'];
-        if($err){
-            echo '<p class="error-message">エラー：IDまたはパスワードが違います。</p>';
-        }
-    ?>
     
 
         
