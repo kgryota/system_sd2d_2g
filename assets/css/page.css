@@ -348,3 +348,12 @@
 .button-add:hover {
     background-color: #a58b60;
 }
+
+.order-price{
+    padding: 20px 0;
+}
+
+.user-orderinfo{
+    font-size: 20px;
+    padding: 15px 10px;
+}

@@ -29,17 +29,14 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <h1 class="page-title">商品登録</h1><br>
-   <p><h2>商品画像</h2></p>
-    <form action="../product-complete/index.php" method="post">
-        <input type="file" name="product">
-        <input type="text" name="product_name" class="forminput1" placeholder="商品名">
-        <input type="text" name="price" class="forminput1" placeholder="価格">
-        <input type="text" name="explanation" class="forminput1" placeholder="説明">
-        <button id="" class="btn">
-            <p>登録</p>
-        </button>
-    </form>
+    <div class="page-title">
+            <img class="complete-title-img" src="../../assets/img/cart-complete/cart.svg"><br>
+            <h1 class="complete-title">商品登録を<br>
+            完了しました<br></h1>
+        </div>
+        <a href="../" class="btn back-home-btn">
+            <p>ホームに戻る</p>
+        </a>
 
     <?php
         $err = $_GET['err'];

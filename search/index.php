@@ -45,7 +45,7 @@
                 }
             ?>
             </select>
-            <button type="submit">検索</button>
+            <button class="btn" type="submit">検索</button>
         </form>
 
         <div>
@@ -66,7 +66,7 @@
                 foreach ($sql as $row) {
                     echo '
                     <a class="product-card" href="../product/?product_id='.$row['product_id'].'">
-                        <img class="product-card-img"  src="../assets/img/product-img/1000.webp">
+                        <img class="product-card-img"  src="../assets/img/product-img/'. $row['product_id']. '.png">
                         <h5 class="product-card-name">'. $row['product_name']. '</h5>
                         <p class="product-card-price">¥'.$row['price'].'</p>
                         <button href="../product/" class="product-card-add-btn">商品を見る</button>
