@@ -35,7 +35,7 @@
         <input type="text" name="product_name" class="forminput1" placeholder="商品名">
         <input type="text" name="price" class="forminput1" placeholder="価格">
         <input type="text" name="explanation" class="forminput1" placeholder="説明">
-        <a href="" class="delete" >削除</p>
+        <a href="../product-delete-complete/index.php" class="delete" >削除</p>
         <button id="" class="btn">
             <p>更新</p>
         </button>
