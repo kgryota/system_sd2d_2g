@@ -1,3 +1,24 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+if(isset( $_SESSION['admin_id'])){
+    $user_name = $_SESSION['user_name'];
+}else{
+    header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
+    exit;
+}
+$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+dbname=LAA1554899-sd2d2g;charset=utf8',
+'LAA1554899',
+'pass2g');
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -32,21 +53,36 @@
     <h1 class="page-title">商品登録</h1><br>
    <p><h2>商品画像</h2></p>
     <form action="../product-complete/index.php" method="post">
-        <input type="file" name="product">
+        <!--<input type="file" name="product">-->
+        <input type="text" name="product" class="forminput1" placeholder="テスト　本来は画像ファイル">
         <input type="text" name="product_name" class="forminput1" placeholder="商品名">
+        <input type="number" name="zaiko_kosuu" class="forminput1" placeholder="在庫個数">
+        <?php
+        echo '<select name="kosuu" class="selectstyle product-count">';
+        $sql = $pdo->query('SELECT * FROM `pref`');
+        foreach($sql as $row){
+            echo'<option value="'.$row['pref_id'].'">'.$row['pref_name'].'</option>';
+        }
+        echo '</select>';
+        echo '<input type="hidden" name="seisanchi" value="', $pref_id, '">';?>
+        <input type="number" name="alcohol_dosuu" class="forminput1" placeholder="アルコール度数">
         <input type="text" name="price" class="forminput1" placeholder="価格">
-        <input type="text" name="explanation" class="forminput1" placeholder="説明">
-        <button id="" class="btn">
+        <input type="text" name="product_detel" class="forminput1" placeholder="説明">
+        <input type="text" name="detel_ex" class="forminput1" placeholder="詳しい説明">
+        <?php
+        echo '<select name="kosuu1" class="selectstyle product-count">';
+        $sql1 = $pdo->query('SELECT * FROM `category_type`');
+        foreach($sql1 as $row){
+            echo'<option value="'.$row['category_id'].'">'.$row['category_name'].'</option>';
+        }
+        echo '</select>';
+        echo '<input type="hidden" name="category_id" value="', $category_id, '">';?>
+        <button class="btn">
             <p>登録</p>
         </button>
     </form>
 
-    <?php
-        $err = $_GET['err'];
-        if($err){
-            echo '<p class="error-message">エラー：IDまたはパスワードが違います。</p>';
-        }
-    ?>
+    
     
 
         
