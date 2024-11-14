@@ -50,6 +50,13 @@ $pdo = new PDO(
                 </button>
                 <input type="text" name="keyword" placeholder="お酒の名前で検索">
             </form>
+            <div class="pref-search-card">
+                <img src="assets/img/index/pref-search.png">
+                <div>
+                    <h2>地域のお酒を発見</h2>
+                    <h5>都道府県でお酒を検索！</h5>
+                </div>
+            </div>
             <div class="index-recommend">
                 <h2 class="index-list-title">商品一覧</h2>
                 <div class="index-recommend-list">
