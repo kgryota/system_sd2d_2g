@@ -74,12 +74,12 @@ $address=$row['address'];
             <option value="">クーポンを選択</option>
             <?php
             foreach ($pdo->query('select * from coupon') as $row){
-                $sql2=$pdo->prepare('SELECT * FROM user WHERE user_id=?');
+                $sql2=$pdo->prepare('SELECT * FROM coupon_usage_history WHERE user_id=?');
                 $sql2->execute([$user_id]);
                 foreach($sql2 as $row2){
-                    $row2 
+                    $row2['coupon_id']; 
                 }
-                if(){
+                if($row['coupon_id'] != $row2['coupon_id']){
                     echo '<option value="'.$row['coupon_id'].'">'.$row['coupon_name'].'</option>';
                 }
             }
