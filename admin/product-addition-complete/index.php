@@ -29,15 +29,14 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <h1 class="page-title">商品追加</h1><br>
-   <p>商品ID：〇〇</p>
-   <p>商品名：〇〇</p>
-    <form action="../product-addition-complete/index.php" method="post">
-    <input type="text" name="addition_num" class="forminput1" placeholder="追加する数">
-        <button id="" class="btn">
-            <p>追加</p>
-        </button>
-    </form>
+    <div class="page-title">
+            <img class="complete-title-img" src="../../assets/img/cart-complete/cart.svg"><br>
+            <h1 class="complete-title">商品追加が<br>
+            完了しました<br></h1>
+        </div>
+        <a href="../product-list/index.php" class="btn back-home-btn">
+            <p>商品登録一覧へ</p>
+        </a>
 
     <?php
         $err = $_GET['err'];
