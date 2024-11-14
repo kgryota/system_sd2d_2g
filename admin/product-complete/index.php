@@ -34,8 +34,8 @@
             <h1 class="complete-title">商品登録を<br>
             完了しました<br></h1>
         </div>
-        <a href="../" class="btn back-home-btn">
-            <p>ホームに戻る</p>
+        <a href="../product-list/index.php" class="btn back-home-btn">
+            <p>商品登録一覧へ</p>
         </a>
 
     <?php
