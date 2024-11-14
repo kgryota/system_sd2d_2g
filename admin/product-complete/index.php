@@ -24,6 +24,7 @@ $product_image=$_POST['product'];//ファイル送信に変えるとき削除
 $product_detel=$_POST['product_detel'];
 $detailed_ex=$_POST['detel_ex'];
 $category_id=$_POST['category_id'];
+echo $category_id;
 
 //if(is_uploaded_file($_FILES['product']['tmp_name'])){
   //  if(!file_exists('upload')){
@@ -33,7 +34,7 @@ $category_id=$_POST['category_id'];
     //move_uploaded_file($_FILES['product']['tmp_name'],$file);
 //}
 
-$sql=$pdo->prepare('INSERT INTO product(product_name,zaiko_kosuu,seisanchi,alcohol_dosuu,price,product_image,product_detel,detailed_ex,category_id) VALUES(?,?,?,?,?,?,?,?,?)');
+$sql=$pdo->prepare("INSERT INTO product(product_name,zaiko_kosuu,seisanchi,alcohol_dosuu,price,product_image,product_detel,detailed_ex,category_id) VALUES(?,?,?,?,?,?,?,?,?)");
 $sql->execute([$product_name,$zaiko_kosuu,$seisanchi,$alcohol_dosuu,$price,$product_image,$product_detel,$detailed_ex,$category_id]);
 
 

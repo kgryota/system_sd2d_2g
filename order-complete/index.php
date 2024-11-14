@@ -31,14 +31,18 @@ foreach ($sql2->fetchAll() as $row) {
     $after_count = $before_count - $purchase_count;
     $sql_del = $pdo->prepare("UPDATE `product` SET `zaiko_kosuu` = ? WHERE `product`.`product_id` = ?;");
     $sql_del->execute([$after_count,$product_id]);
-    echo $after_count;
     //クーポン削除
+    if(isset($_POST['coupon'])){
+        $coupon = $_POST['coupon'];
+        $sql_coupon_del = $pdo->prepare("INSERT INTO `coupon_usage_history` (`coupon_id`, `user_id`) VALUES (?,?)");
+        $sql_coupon_del->execute([$coupon,$user_id]);
+    }
 
 }
 
 $sql1 = $pdo->prepare('DELETE FROM cart WHERE user_id = ?');
 $sql1->execute([$user_id]);
-
+echo $_POST['coupon'];
 ?>
 
 

@@ -58,25 +58,25 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
         <input type="text" name="product_name" class="forminput1" placeholder="商品名">
         <input type="number" name="zaiko_kosuu" class="forminput1" placeholder="在庫個数">
         <?php
-        echo '<select name="kosuu" class="selectstyle product-count">';
+        echo '<select name="seisanchi" class="selectstyle product-count">';
         $sql = $pdo->query('SELECT * FROM `pref`');
         foreach($sql as $row){
             echo'<option value="'.$row['pref_id'].'">'.$row['pref_name'].'</option>';
         }
         echo '</select>';
-        echo '<input type="hidden" name="seisanchi" value="', $pref_id, '">';?>
+        ?>
         <input type="number" name="alcohol_dosuu" class="forminput1" placeholder="アルコール度数">
         <input type="text" name="price" class="forminput1" placeholder="価格">
         <input type="text" name="product_detel" class="forminput1" placeholder="説明">
         <input type="text" name="detel_ex" class="forminput1" placeholder="詳しい説明">
         <?php
-        echo '<select name="kosuu1" class="selectstyle product-count">';
+        echo '<select name="category_id" class="selectstyle product-count">';
         $sql1 = $pdo->query('SELECT * FROM `category_type`');
         foreach($sql1 as $row){
             echo'<option value="'.$row['category_id'].'">'.$row['category_name'].'</option>';
         }
         echo '</select>';
-        echo '<input type="hidden" name="category_id" value="', $category_id, '">';?>
+        ?>
         <button class="btn">
             <p>登録</p>
         </button>
