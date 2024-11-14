@@ -17,11 +17,23 @@ foreach ($sql2->fetchAll() as $row) {
     $purchase_count = $row['count'];
     $purchase_date = date("Y-m-d");
     $states = '未発送';
-
+    //カートから削除
     $sql = $pdo->prepare(
         'INSERT INTO purchase_history (purchase_date, purchase_count, status, user_id, product_id) VALUES (?, ?, ?, ?, ?)'
     );
     $sql->execute([$purchase_date, $purchase_count, $states, $user_id, $product_id]);
+    //在庫削除
+    $sql_productcount = $pdo->prepare('SELECT * FROM product WHERE product_id = ?');
+    $sql_productcount->execute([$product_id]);
+    foreach($sql_productcount as $row){
+        $before_count = $row['zaiko_kosuu'];
+    }
+    $after_count = $before_count - $purchase_count;
+    $sql_del = $pdo->prepare("UPDATE `product` SET `zaiko_kosuu` = ? WHERE `product`.`product_id` = ?;");
+    $sql_del->execute([$after_count,$product_id]);
+    echo $after_count;
+    //クーポン削除
+
 }
 
 $sql1 = $pdo->prepare('DELETE FROM cart WHERE user_id = ?');
