@@ -31,7 +31,7 @@
     <div class="content-area">
     <h1 class="page-title"><span class="page-title-admin">管理者</span><br>新規登録</h1><br>
     管理者アカウントをお持ちの場合、<a href="../login/">ログイン</a>
-    <form action="../login-complete/index.php" method="post">
+    <form action="../sineup-complete/index.php" method="post">
         <input type="text" name="name" class="forminput1" placeholder="お名前">
         <input type="text" name="email" class="forminput1" placeholder="メールアドレス">
         <input type="password" name="password" class="forminput1" placeholder="パスワード">
