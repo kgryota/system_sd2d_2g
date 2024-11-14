@@ -31,7 +31,7 @@
     <div class="content-area">
     <h1 class="page-title">商品更新</h1><br>
    <h2>商品ID：〇〇の情報を更新します</h2>
-    <form action="" method="post">
+    <form action="../product-update-complete/index.php" method="post">
         <input type="text" name="product_name" class="forminput1" placeholder="商品名">
         <input type="text" name="price" class="forminput1" placeholder="価格">
         <input type="text" name="explanation" class="forminput1" placeholder="説明">
