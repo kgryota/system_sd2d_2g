@@ -74,6 +74,7 @@ $address=$row['address'];
             <option value="">クーポンを選択</option>
             <?php
             foreach ($pdo->query('select * from coupon') as $row){
+                if
                 echo '<option value="'.$row['coupon_id'].'">'.$row['coupon_name'].'</option>';
             }
             $pdo = null;
@@ -96,21 +97,24 @@ $address=$row['address'];
         <h2 style="color: red;" id="out_price"></h2>
 
     </div>
-    
-        <a href="../order-complete/" class="btn">
-            <p>購入を確定</p>
-        </a>
+    <form action="../order-complete/" method="post">
+        <input type="hidden" name="coupon" id="coupon_input">
+        <button class="btn">購入を確定</button>
+    </form>
     </div>
     <script>
         const print_price = document.getElementById('out_price');
         const before_price = <?= $sum_price ?>;
         const coupon_select = document.getElementById('coupon_select');
+        const coupon_input = document.getElementById('coupon_input');
 
         coupon_select.addEventListener('change',function(){
             const coupon_value = this.value;
             console.log(coupon_value);
             const after_price = coupon_calc(before_price,coupon_value);
             print_price.innerText = '値引き後：' + after_price + '円';
+            coupon_input.value = coupon_value;
+
         });
 
         function coupon_calc(before_price,coupon_value){
