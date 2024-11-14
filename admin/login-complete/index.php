@@ -12,8 +12,8 @@
             $rowCount = $sql->rowCount();
             if($rowCount == 1){
                 foreach ($sql as $row) {
-                    $_SESSION['user_id'] = $row['user_id'];
-                    $_SESSION['user_name'] = $row['user_name'];
+                    $_SESSION['admin_id'] = $row['admin_id'];
+                    $_SESSION['name'] = $row['name'];
                 }
             }else{
                 header("Location: ../admin/login/index.php?err=notpassid"); // ログイン画面へのリダイレクト
@@ -26,9 +26,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/reset.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/page.css">
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/page.css">
 
     <!--googleFont-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,16 +45,16 @@
                 <h1>乾杯市場</h1>
             </a>
             <div class="header-menu">
-                <a class="header-menu-btn" href="../search"><img src="../assets/img/menu/search.svg"></a>
-                <a class="header-menu-btn" href="../user"><img src="../assets/img/menu/user.svg"></a>
-                <a class="header-menu-btn" href="../cart"><img src="../assets/img/menu/cart.svg"></a>
+                <a class="header-menu-btn" href="../search"><img src="../../assets/img/menu/search.svg"></a>
+                <a class="header-menu-btn" href="../user"><img src="../../assets/img/menu/user.svg"></a>
+                <a class="header-menu-btn" href="../cart"><img src="../../assets/img/menu/cart.svg"></a>
             </div>
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
     <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">こんにちは<?= $_SESSION['user_name'] ?>さん<br>
+            <img class="complete-title-img" src="../../assets/img/cart-complete/cart.svg"><br>
+            <h1 class="complete-title">こんにちは<?= $_SESSION['name'] ?>さん<br>
             <br></h1>
         </div>
         <a href="../product-list/index.php" class="btn back-home-btn">
