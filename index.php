@@ -1,4 +1,9 @@
 <?php
+    session_start();
+    $user_id = $_SESSION['user_id'];
+    if(isset($user_id)){
+        $user_name = $_SESSION['user_name'];
+    }
 $pdo = new PDO(
     'mysql:host=mysql309.phy.lolipop.lan;
     dbname=LAA1554899-sd2d2g;charset=utf8',
@@ -61,8 +66,7 @@ $pdo = new PDO(
                 <h2 class="index-list-title">商品一覧</h2>
                 <div class="index-recommend-list">
                     <?php
-                    /*検索結果*/
-
+                    
                     $sql = $pdo->query('SELECT * FROM product');
                     foreach ($sql as $row) {
                         echo '
@@ -79,51 +83,23 @@ $pdo = new PDO(
             <div class="index-repurchase">
                 <h2 class="index-list-title">再度購入</h2>
                 <div class="index-recommend-list">
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
-                    <a href="#" class="index-product-card">
-                        <img class="product-card-img" src="assets/img/product-img/1000.webp">
-                        <h5 class="product-card-name">お酒の名前</h5>
-                        <p class="product-card-price">￥2000</p>
-                    </a><!--product-card-->
+                    <?php
+                        $sql = $pdo->prepare('SELECT * FROM purchase_history join product on purchase_history.product_id = product.product_id where user_id = ?');
+                        $sql->execute([$user_id]);
+                        $rowCount = $sql->rowCount();
+                        if($rowCount != 0){
+                            foreach ($sql as $row) {
+                                echo '
+                                <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
+                                    <img class="product-card-img"  src="assets/img/product-img/' . $row['product_id'] . '.png">
+                                    <h5 class="product-card-name">' . $row['product_name'] . '</h5>
+                                    <p class="product-card-price">¥' . $row['price'] . '</p>
+                                </a><!--product-card-->
+                            ';}
+                        }else{
+                            echo '<div class="history_none">購入すると履歴が表示されます</div>';
+                        }
+                    ?>
 
                 </div>
             </div>
