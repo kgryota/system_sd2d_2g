@@ -1,3 +1,41 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+if(isset($_SESSION['admin_id'])){
+    $user_name = $_SESSION['name'];
+}else{
+    header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
+    exit;
+}
+
+$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+dbname=LAA1554899-sd2d2g;charset=utf8',
+'LAA1554899',
+'pass2g');
+
+
+
+
+
+
+//foreach($sql->$pdo('SELECT product_id,product_name FROM product') as $row){
+  //  $product_id=$row['product_id'];
+    //$product_name=$row['product_name'];
+//}
+
+
+
+
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -34,6 +72,37 @@
             <button class="header-button">注文情報</button>
             <button class="header-button">新規登録</button>
         </div>
+
+    <form method="post">
+        <?php
+        foreach($sql=$pdo->query('SELECT product_id,product_name FROM product') as $row){
+            echo '<div class="product-list">';
+            echo '<div class="product-item">';
+            echo '<div class="product-info">';
+            $product_id=$row['product_id'];
+            echo '<p>商品ID：',$product_id,'</p>';
+            $product_name=$row['product_name'];
+            echo '<p>商品名：',$product_name,'</p>';
+            echo '</div>';
+            echo '<div class="product-buttons">';
+            echo '<p><a class="button-add" href="../product-update,delete/?product_id='.$row['product_id'].'">更新</a></p><br>';
+            echo '<p><a class="button-add" href="../product-addition/?product_id='.$row['product_id'].'">在庫追加</a></p>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+
+        }
+        
+        ?>
+    </form>
+
+
+
+
+
+
+
+
 
         <div class="product-list">
             <!-- Repeat this block for each product -->
@@ -93,6 +162,7 @@
         </div>
     </div>
 
+    
         
     </div>
 </body>

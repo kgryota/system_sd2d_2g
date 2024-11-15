@@ -1,3 +1,32 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+if(isset($_SESSION['admin_id'])){
+    $user_name = $_SESSION['name'];
+}else{
+    header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
+    exit;
+}
+
+$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+dbname=LAA1554899-sd2d2g;charset=utf8',
+'LAA1554899',
+'pass2g');
+
+$product_id=$_GET['product_id'];
+
+$sql=$pdo->prepare('SELECT product_name FROM product WHERE product_id=?');
+$sql->execute([$product_id]);
+foreach($sql as $row){
+    $product_name=$row['product_name'];
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -30,21 +59,17 @@
     </header><!--ヘッダー-->
     <div class="content-area">
     <h1 class="page-title">商品追加</h1><br>
-   <p>商品ID：〇〇</p>
-   <p>商品名：〇〇</p>
+   <p>商品ID：<?= $product_id ?></p>
+   <p>商品名：<?= $product_name ?></p>
     <form action="../product-addition-complete/index.php" method="post">
+        <input type="hidden" name="tuika" value="$product_id">
     <input type="text" name="addition_num" class="forminput1" placeholder="追加する数">
         <button id="" class="btn">
             <p>追加</p>
         </button>
     </form>
 
-    <?php
-        $err = $_GET['err'];
-        if($err){
-            echo '<p class="error-message">エラー：IDまたはパスワードが違います。</p>';
-        }
-    ?>
+    
     
 
         

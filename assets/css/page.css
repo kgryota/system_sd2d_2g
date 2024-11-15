@@ -82,6 +82,7 @@
     height: 150px;
     border-radius: 15px;
     padding: 10px;
+    margin-bottom: 10px;
     background-color: #d4e9ad;
 }
 
@@ -92,6 +93,18 @@
 .pref-search-card div{
     bottom: 0;
     right: 0;
+}
+
+.pref-search-card h2{
+    font-size: 20px;
+}
+
+.history_none{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*完了画面*/
@@ -156,6 +169,7 @@
 .index-list-title{
     color: #333;
     font-size: 20px;
+    padding-bottom: 10px;
 }
 
 .index-recommend-list{
@@ -331,7 +345,6 @@
 }
 
 .product-item {
-    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
