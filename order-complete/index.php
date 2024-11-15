@@ -1,7 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 
 session_start();
 $user_id=$_SESSION['user_id'];
@@ -42,7 +40,6 @@ foreach ($sql2->fetchAll() as $row) {
 
 $sql1 = $pdo->prepare('DELETE FROM cart WHERE user_id = ?');
 $sql1->execute([$user_id]);
-echo $_POST['coupon'];
 ?>
 
 

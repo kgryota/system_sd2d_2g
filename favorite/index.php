@@ -1,3 +1,25 @@
+<?php
+$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+ dbname=LAA1554899-sd2d2g;charset=utf8',
+ 'LAA1554899',
+ 'pass2g');
+$category_id=$_GET['category_id'];
+echo $category_id;
+$sql=$pdo->query('SELECT * FROM category_type s');
+
+foreach($sql as $row){
+ echo  $row['category_name'];
+ echo $row['category_id'];
+}
+?>
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -49,14 +71,15 @@
     </label>
     <h2 class="page-title">好きなお酒のカテゴリーを教えてください</h2><br>
     <p>*複数回答可</p>
-    <input type="checkbox" name="cotegory" value="brrr">ビール<br>
-    <input type="checkbox" name="cotegory" value="brrr">ビール<br>
-    <input type="checkbox" name="cotegory" value="brrr">ビール<br>
-    <input type="checkbox" name="cotegory" value="brrr">ビール<br>
-    <input type="checkbox" name="cotegory" value="brrr">ビール<br>
-    <button id="" class="btn">
+    
+
+    
+    
+
+    <button id="okonomi-touroku" class="btn" onclick="location.href=' '">
             <p>登録</p>
         </button>
+    </div>
     </div>
 </body>
 </html>
