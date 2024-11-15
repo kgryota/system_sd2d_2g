@@ -1,3 +1,43 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+if(isset($_SESSION['admin_id'])){
+    $user_name = $_SESSION['name'];
+}else{
+    header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
+    exit;
+}
+
+$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+dbname=LAA1554899-sd2d2g;charset=utf8',
+'LAA1554899',
+'pass2g');
+ echo $product_id=$_POST['product_id'];
+$addition_num=$_POST['addition_num'];
+
+$sql=$pdo->prepare('SELECT zaiko_kosuu FROM product WHERE product_id=?');
+$sql->execute([$product_id]);
+foreach($sql as $row){
+    $zaiko_kosuu=$row['zaiko_kosuu'];
+    echo $zaiko_kosuu;
+}
+
+$new_zaiko_kosuu=$addition_num+$count;
+
+$sql1=$pdo->prepare('UPDATE product SET zaiko_kosuu=? WHERE product_id=?');
+$sql1->execute([$new_zaiko_kosuu,$product_id]);
+
+
+
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -37,14 +77,6 @@
         <a href="../product-list/index.php" class="btn back-home-btn">
             <p>商品登録一覧へ</p>
         </a>
-
-    <?php
-        $err = $_GET['err'];
-        if($err){
-            echo '<p class="error-message">エラー：IDまたはパスワードが違います。</p>';
-        }
-    ?>
-    
 
         
     </div>
