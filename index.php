@@ -63,6 +63,23 @@ $pdo = new PDO(
                 </div>
             </div>
             <div class="index-recommend">
+                <h2 class="index-list-title">おすすめ</h2>
+                <div class="index-recommend-list">
+                    <?php
+                    $sql = $pdo->query('SELECT * FROM product');
+                    foreach ($sql as $row) {
+                        echo '
+                    <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
+                        <img class="product-card-img"  src="assets/img/product-img/' . $row['product_id'] . '.png">
+                        <h5 class="product-card-name">' . $row['product_name'] . '</h5>
+                        <p class="product-card-price">¥' . $row['price'] . '</p>
+                    </a><!--product-card-->
+                    ';
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="index-recommend">
                 <h2 class="index-list-title">商品一覧</h2>
                 <div class="index-recommend-list">
                     <?php
@@ -102,6 +119,9 @@ $pdo = new PDO(
                     ?>
 
                 </div>
+            </div>
+            <div class="index-repurchase">
+                <h2>
             </div>
         </div>
 
