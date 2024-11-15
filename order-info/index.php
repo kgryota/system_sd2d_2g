@@ -73,16 +73,18 @@ $address=$row['address'];
         <select id="coupon_select" name="" class="selectstyle">
             <option value="">クーポンを選択</option>
             <?php
-            foreach ($pdo->query('select * from coupon') as $row){
-                $sql2=$pdo->prepare('SELECT * FROM coupon_usage_history WHERE user_id=?');
+                // ユーザーの使用済みクーポンIDを取得
+                $sql2 = $pdo->prepare('SELECT coupon_id FROM coupon_usage_history WHERE user_id = ?');
                 $sql2->execute([$user_id]);
-                foreach($sql2 as $row2){
-                    $row2['coupon_id']; 
+                $used_coupons = $sql2->fetchAll(PDO::FETCH_COLUMN);
+
+                foreach ($pdo->query('SELECT * FROM coupon') as $row) {
+                    // 使用済みクーポンIDリストに含まれていない場合のみ表示
+                    if (!in_array($row['coupon_id'], $used_coupons)) {
+                        echo '<option value="'.$row['coupon_id'].'">'.$row['coupon_name'].'</option>';
+                    }
                 }
-                if($row['coupon_id'] != $row2['coupon_id']){
-                    echo '<option value="'.$row['coupon_id'].'">'.$row['coupon_name'].'</option>';
-                }
-            }
+
             $pdo = null;
         ?>
         </select>
