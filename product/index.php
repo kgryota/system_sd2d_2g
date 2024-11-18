@@ -107,7 +107,17 @@ error_reporting(E_ALL);
     
     ?>
     </form>
-        <div class="product-info2">
+    <div class="product-info-card">
+        <div class="product-info-pref">
+            <p>生産地</p>
+            <h5 class="pref-name">福岡県</h5>
+        </div>
+        <div class="product-info-alcohol">
+            <p>アルコール度数</p>
+            <h5 class="pref-name">10%</h5>
+        </div>
+    </div>
+    <div class="product-info2">
         <h5><?= $product_detel ?></h5>
         <p><?= $detailed_ex ?></p>
     </div>

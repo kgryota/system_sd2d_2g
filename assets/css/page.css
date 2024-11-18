@@ -132,7 +132,7 @@
     width: 100%;
 }
 .product-info{
-    padding: 30px 0;
+    padding: 10px 0;
 }
 .product-info h5{
     font-size: 40px;
@@ -141,6 +141,8 @@
     font-size: 30px;
     color: #666;
 }
+
+
 .product-kosu{
     display: flex;
     justify-content: right;
@@ -167,6 +169,37 @@
 }
 .add_product_none{
     background-color: #bcbbbb;
+}
+
+.product-info-card{
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-info-pref{
+    width: 49%;
+    height: 100px;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #d4e9ad;
+}
+.product-info-card p{
+    font-size: 15px;
+    color: #666666;
+}
+
+.pref-name{
+    font-size: 25px;
+    color: #83ba1c;
+}
+
+.product-info-alcohol{
+    width: 49%;
+    height: 100px;
+    border-radius: 15px;
+    background-color: #f3cb96;
 }
 /*ホーム画面・検索結果画面商品カード*/
 .index-recommend,.index-repurchase{
