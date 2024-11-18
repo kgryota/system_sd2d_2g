@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
 if(isset( $_SESSION['admin_id'])){
-    $user_name = $_SESSION['user_name'];
+    $user_name = $_SESSION['name'];
 }else{
     header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
     exit;

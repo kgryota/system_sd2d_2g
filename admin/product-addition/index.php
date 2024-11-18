@@ -62,7 +62,7 @@ foreach($sql as $row){
    <p>商品ID：<?= $product_id ?></p>
    <p>商品名：<?= $product_name ?></p>
     <form action="../product-addition-complete/index.php" method="post">
-        <input type="hidden" name="product_id" value="$product_id">
+        <?= "<input type=hidden name=product_id value=",$product_id,">" ?>
         <input type="number" name="addition_num" class="forminput1" placeholder="追加する数">
         <button type="submit" class="btn">
             <p>追加</p>
