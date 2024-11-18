@@ -49,19 +49,19 @@ $pdo = new PDO(
     <h1 class="hero-title">乾杯市場</h1>
     <div class="content-area index">
         <div class="index-content">
-            <form action="search/" method="post" class="index-search-input">
-                <button class="search-btn" type="button" id="search-button">
+            <form action="search/index.php" method="post" class="index-search-input">
+                <button class="search-btn" type="submit">
                     <img class="search-btn-img" src="assets/img/index/search.svg" alt="検索">
                 </button>
                 <input type="text" name="keyword" placeholder="お酒の名前で検索">
             </form>
-            <div class="pref-search-card">
+            <a href="search/" class="pref-search-card">
                 <img src="assets/img/index/pref-search.png">
                 <div>
                     <h2>地域のお酒を発見</h2>
                     <h5>都道府県でお酒を検索！</h5>
                 </div>
-            </div>
+            </a>
             <div class="index-recommend">
                 <h2 class="index-list-title">おすすめ</h2>
                 <div class="index-recommend-list">
@@ -121,7 +121,8 @@ $pdo = new PDO(
                 </div>
             </div>
             <div class="index-repurchase">
-                <h2>
+                <h2 class="index-list-title"></h2>
+                
             </div>
         </div>
 
