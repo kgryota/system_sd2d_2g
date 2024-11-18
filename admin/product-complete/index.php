@@ -16,7 +16,7 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
 'pass2g');
 
 
-
+$product_id=$_POST['product_id'];
 $product_name=$_POST['product_name'];
 $zaiko_kosuu=$_POST['zaiko_kosuu'];
 $seisanchi=$_POST['seisanchi'];
@@ -26,7 +26,6 @@ $product_image=$_POST['product'];//ファイル送信に変えるとき削除
 $product_detel=$_POST['product_detel'];
 $detailed_ex=$_POST['detel_ex'];
 $category_id=$_POST['category_id'];
-echo $category_id;
 
 //if(is_uploaded_file($_FILES['product']['tmp_name'])){
   //  if(!file_exists('upload')){
@@ -36,8 +35,8 @@ echo $category_id;
     //move_uploaded_file($_FILES['product']['tmp_name'],$file);
 //}
 
-$sql=$pdo->prepare("INSERT INTO product(product_name,zaiko_kosuu,seisanchi,alcohol_dosuu,price,product_image,product_detel,detailed_ex,category_id) VALUES(?,?,?,?,?,?,?,?,?)");
-$sql->execute([$product_name,$zaiko_kosuu,$seisanchi,$alcohol_dosuu,$price,$product_image,$product_detel,$detailed_ex,$category_id]);
+$sql=$pdo->prepare("INSERT INTO product(product_id,product_name,zaiko_kosuu,seisanchi,alcohol_dosuu,price,product_image,product_detel,detailed_ex,category_id) VALUES(?,?,?,?,?,?,?,?,?,?)");
+$sql->execute([$product_id,$product_name,$zaiko_kosuu,$seisanchi,$alcohol_dosuu,$price,$product_image,$product_detel,$detailed_ex,$category_id]);
 
 
 
@@ -80,7 +79,7 @@ $sql->execute([$product_name,$zaiko_kosuu,$seisanchi,$alcohol_dosuu,$price,$prod
             <h1 class="complete-title">商品登録を<br>
             完了しました<br></h1>
         </div>
-        <a href="../" class="btn back-home-btn">
+        <a href="../product-list/index.php" class="btn back-home-btn">
             <p>ホームに戻る</p>
         </a>
     
