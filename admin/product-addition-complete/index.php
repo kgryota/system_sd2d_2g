@@ -14,17 +14,17 @@ $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
 dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
 'pass2g');
- echo $product_id=$_POST['product_id'];
+ $product_id=$_POST['product_id'];
+ 
 $addition_num=$_POST['addition_num'];
 
 $sql=$pdo->prepare('SELECT zaiko_kosuu FROM product WHERE product_id=?');
 $sql->execute([$product_id]);
 foreach($sql as $row){
     $zaiko_kosuu=$row['zaiko_kosuu'];
-    echo $zaiko_kosuu;
 }
 
-$new_zaiko_kosuu=$addition_num+$count;
+$new_zaiko_kosuu=$addition_num+$zaiko_kosuu;
 
 $sql1=$pdo->prepare('UPDATE product SET zaiko_kosuu=? WHERE product_id=?');
 $sql1->execute([$new_zaiko_kosuu,$product_id]);

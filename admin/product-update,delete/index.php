@@ -1,4 +1,30 @@
-<!DOCTYPE html>
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+if(isset($_SESSION['admin_id'])){
+    $user_name = $_SESSION['name'];
+}else{
+    header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
+    exit;
+}
+$product_id=$_GET['product_id'];
+
+$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+dbname=LAA1554899-sd2d2g;charset=utf8',
+'LAA1554899',
+'pass2g');
+
+$sql=$pdo->prepare('SELECT product_name FROM product WHERE product_id=?');
+$sql->execute([$product_id]);
+foreach($sql as $row){
+    $product_name=$row['product_name'];
+}
+
+
+
+?><!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -30,23 +56,20 @@
     </header><!--ヘッダー-->
     <div class="content-area">
     <h1 class="page-title">商品更新</h1><br>
-   <h2>商品ID：〇〇の情報を更新します</h2>
+   <h2>商品ID：<?= $product_id ?><br>
+   商品名：<?= $product_name ?>の情報を更新します</h2>
     <form action="../product-update-complete/index.php" method="post">
         <input type="text" name="product_name" class="forminput1" placeholder="商品名">
         <input type="text" name="price" class="forminput1" placeholder="価格">
         <input type="text" name="explanation" class="forminput1" placeholder="説明">
-        <a href="../product-delete-complete/index.php" class="delete" >削除</a>
-        <button id="" class="btn">
-            <p>更新</p>
+        <?="<input type=hidden name=product_id value=",$product_id,">"; ?>
+        <a href="../product-delete-complete/?product_id=".$product_id. class="delete" >削除</a>
+        <button type="submit" class="btn">
+          <p>更新</p>
         </button>
+        
     </form>
 
-    <?php
-        $err = $_GET['err'];
-        if($err){
-            echo '<p class="error-message">エラー：IDまたはパスワードが違います。</p>';
-        }
-    ?>
     
 
         
