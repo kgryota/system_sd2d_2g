@@ -15,6 +15,15 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
 'pass2g');
 
+//商品IDでproductから商品名を参照する
+//user_idから名前と住所を参照する
+foreach($sql=$pdo->query('SELECT * FROM purchase_history JOIN product ON purchase_history.purchase')as $row){
+    $product_id=$row['product_id'];
+    echo '<p>商品ID：',$product_id,'</p>';
+    $product_name=$row['product_name'];
+    echo '<p><span class=name_span>',$product_name,'</span></p>';
+}
+
 
 
 ?>
