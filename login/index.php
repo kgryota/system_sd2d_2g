@@ -32,21 +32,18 @@
     <h1 class="page-title">ログイン</h1><br>
     アカウントをお持ちでない場合、<a href="../singup">新規作成</a>
     <form action="../login-complete/index.php" method="post" id="app">
-        <input v-model="email1" type="text" name="email" class="forminput1" placeholder="メールアドレス">
-        <!--<input v-model="password1" type="password" name="password" class="forminput1" placeholder="パスワード">-->
+        <input v-mdel="email" type="text" name="email" class="forminput1" placeholder="メールアドレス">
+        <input v-mdel="password" type="password" name="password" class="forminput1" placeholder="パスワード">
         <p v-if="error" class="error-message">エラー：IDまたはパスワードが違います。</p>
         <button id="" class="btn">
             <p>ログイン</p>
         </button>
     </form>
 
-    
-
         <button id="" class="btn2">
             <p>ゲストで続ける</p>
         </button>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="../assets/js/script.js"></script>
+    
 </body>
 </html>
