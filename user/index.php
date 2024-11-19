@@ -69,7 +69,7 @@
             <p>アカウント削除</p>
     </button>
     </div>
-
+    
     </button>
 </body>
 </html>
