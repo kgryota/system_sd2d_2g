@@ -110,11 +110,17 @@ error_reporting(E_ALL);
     <div class="product-info-card">
         <div class="product-info-pref">
             <p>生産地</p>
-            <h5 class="pref-name">福岡県</h5>
+            <?php
+                $sql=$pdo->prepare('SELECT * FROM pref WHERE pref_id=?');
+                $sql->execute([$pref_id]);
+                foreach($sql as $row){ ?>
+                    <h5 class="pref-name"><?=$row['pref_name']?></h5>
+                <?php }
+            ?>
         </div>
         <div class="product-info-alcohol">
             <p>アルコール度数</p>
-            <h5 class="pref-name">10%</h5>
+            <h5 class="alcohol-level"><?= $alcohol_dosuu ?>%</h5>
         </div>
     </div>
     <div class="product-info2">
