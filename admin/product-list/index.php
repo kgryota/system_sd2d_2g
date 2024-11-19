@@ -84,7 +84,7 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
             $product_id=$row['product_id'];
             echo '<p>商品ID：',$product_id,'</p>';
             $product_name=$row['product_name'];
-            echo '<p>商品名：',$product_name,'</p>';
+            echo '<p class="product_name_size">商品名：',$product_name,'</p>';
             echo '</div>';
             echo '<div class="product-buttons">';
             echo '<p><a class="button-add" href="../product-update,delete/?product_id='.$row['product_id'].'">更新</a></p><br>';
