@@ -198,8 +198,14 @@
 .product-info-alcohol{
     width: 49%;
     height: 100px;
+    padding: 20px;
     border-radius: 15px;
     background-color: #f3cb96;
+}
+
+.alcohol-level{
+    font-size: 25px;
+    color: #f09319;
 }
 /*ホーム画面・検索結果画面商品カード*/
 .index-recommend,.index-repurchase{
