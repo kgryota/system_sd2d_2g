@@ -198,8 +198,14 @@
 .product-info-alcohol{
     width: 49%;
     height: 100px;
+    padding: 20px;
     border-radius: 15px;
     background-color: #f3cb96;
+}
+
+.alcohol-level{
+    font-size: 25px;
+    color: #f09319;
 }
 /*ホーム画面・検索結果画面商品カード*/
 .index-recommend,.index-repurchase{
@@ -247,9 +253,9 @@
 
 .product-list{
     display: flex;
-    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    overflow-wrap: break-word;
 }
 
 .product-card{
@@ -392,11 +398,15 @@
     align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid #ccc;
+    
 }
 
 .product-info p {
     margin: 2px 0;
     font-size: 20px;
+    word-break: break-word;
+    
+    margin-right: 0;
 }
 
 /* Button styles */
