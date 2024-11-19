@@ -252,10 +252,13 @@
 }
 
 .product-list{
-    display: flex;
+    
     align-items: center;
     flex-wrap: wrap;
-    overflow-wrap: break-word;
+}
+
+.name_span{
+    display: inline-block;
 }
 
 .product-card{
@@ -403,7 +406,7 @@
 
 .product-info p {
     margin: 2px 0;
-    font-size: 20px;
+    font-size: 18apx;
     word-break: break-word;
     
     margin-right: 0;
