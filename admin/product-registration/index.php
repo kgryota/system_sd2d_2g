@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
 if(isset( $_SESSION['admin_id'])){
-    $user_name = $_SESSION['user_name'];
+    $user_name = $_SESSION['name'];
 }else{
     header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
     exit;
@@ -60,7 +60,7 @@ $maxproduct_id++;
     <form action="../product-complete/index.php" method="post">
         <!--<input type="file" name="product">-->
         <p>商品ID　限定商品以外はデフォルトのままで</p>
-        <input type="number" name="product_id" value=<?=$maxproduct_id?> class="forminput1">
+        <input type="number" name="product_id" value="<?=htmlspecialchars($maxproduct_id, ENT_QUOTES, 'UTF-8')?>" class="forminput1">
         <input type="text" name="product" class="forminput1" placeholder="テスト　本来は画像ファイル">
         <input type="text" name="product_name" class="forminput1" placeholder="商品名">
         <input type="number" name="zaiko_kosuu" class="forminput1" placeholder="在庫個数">
