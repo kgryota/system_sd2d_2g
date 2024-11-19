@@ -5,12 +5,7 @@ $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
  'pass2g');
 $category_id=$_GET['category_id'];
 echo $category_id;
-$sql=$pdo->query('SELECT * FROM category_type s');
-
-foreach($sql as $row){
- echo  $row['category_name'];
- echo $row['category_id'];
-}
+$sql=$pdo->query('SELECT * FROM category_type ');
 ?>
 
 
@@ -71,13 +66,19 @@ foreach($sql as $row){
     </label>
     <h2 class="page-title">好きなお酒のカテゴリーを教えてください</h2><br>
     <p>*複数回答可</p>
+    <?php
+    
+    foreach($sql as $row){
+        echo '<p><input type="checkbox" name="category_type[]" value="">'.$row['category_name'].'</p>';
+       }
+    ?>
+    <form></form>
+    
+    
     
 
-    
-    
-
-    <button id="okonomi-touroku" class="btn" onclick="location.href=' '">
-            <p>登録</p>
+    <button type="submit">登録</button>
+            
         </button>
     </div>
     </div>
