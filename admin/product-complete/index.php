@@ -37,13 +37,13 @@ $category_id=$_POST['category_id'];
 
 //$sql=$pdo->prepare("INSERT INTO product(product_id,product_name,zaiko_kosuu,seisanchi,alcohol_dosuu,price,product_detel,detailed_ex,category_id) VALUES(?,?,?,?,?,?,?,?,?)");
 //$sql->execute([$product_id,$product_name,$zaiko_kosuu,$seisanchi,$alcohol_dosuu,$price,$product_detel,$detailed_ex,$category_id]);
-$uploadDir = 'uploads/';
+$uploadDir = '../../assets/img/product-img/';
 
-if (!is_dir($uploadDir)) {
+/*if (!is_dir($uploadDir)) {
 
     mkdir($uploadDir, 0777, true); // フォルダを作成
 
-}
+}*/
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
