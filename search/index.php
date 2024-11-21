@@ -3,6 +3,12 @@
     dbname=LAA1554899-sd2d2g;charset=utf8',
     'LAA1554899',
     'pass2g');
+
+    $stmt = $pdo->query("SELECT product_image FROM product");
+    $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -48,6 +54,8 @@
             <button class="btn" type="submit">検索</button>
         </form>
 
+
+        
         <div>
             <h3 class="result-title">「<?= $_POST['keyword'] ,$_POST['keypref']?>」の検索結果</h3>
             <div class="product-list">
@@ -58,14 +66,23 @@
                 if (!$_POST['keyword']){
                     $sql = $pdo->prepare('SELECT * FROM product WHERE seisanchi = ?');
                     $sql->execute([$_POST['keypref']]);
+                    
                 } else {
                     $sql = $pdo->prepare('SELECT * FROM product WHERE product_name LIKE ?');
                     $sql->execute([$keyword]);
                 }
 
                 foreach ($sql as $row) {
+                    
                     echo '
-                    <a class="product-card" href="../product/?product_id='.$row['product_id'].'">
+                    <a class="product-card" href="../product/?product_id='.$row['product_id'].'">';
+                    $image=$sql->fetch(PDO::FETCH_ASSOC);
+                    if($image){
+                        $filename=htmlspecialchars($row['product_image']);
+                        echo '<img class="product-card-img" src="uploads/'.$filename.'">';
+                    }
+                        
+                        echo'
                         <img class="product-card-img"  src="../assets/img/product-img/'. $row['product_id']. '.png">
                         <h5 class="product-card-name">'. $row['product_name']. '</h5>
                         <p class="product-card-price">¥'.$row['price'].'</p>
@@ -73,6 +90,7 @@
                     </a><!--product-card-->
                     ';
                 }
+                
             ?>
             </div>
 
@@ -80,3 +98,13 @@
     </div>
 </body>
 </html>
+
+
+
+
+
+<?php
+//$images = $sql->fetchAll(PDO::FETCH_ASSOC);
+//<img src="uploads/<?php echo htmlspecialchars('.$row.'["product_image"]); " alt="Image" style="max-width: 300px;"> <p>ファイル名: <?php echo htmlspecialchars('.$row.'["product_image"]); 
+
+?>
