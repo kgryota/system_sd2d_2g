@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
     session_start();
     $user_id = $_SESSION['user_id'];
     if(isset($user_id)){
@@ -12,7 +15,7 @@
     dbname=LAA1554899-sd2d2g;charset=utf8',
     'LAA1554899',
     'pass2g');
-    $sql=$pdo->prepare('DELETE FROM user WHERE user_id=?');
+    $sql=$pdo->prepare('DELETE FROM user JOIN category_user_join ON user.user_id=category_user_join.user_id WHERE user.user_id=?');
     $sql->execute([$user_id]);
 ?>
 <!DOCTYPE html>
