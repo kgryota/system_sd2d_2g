@@ -35,7 +35,7 @@ session_unset();
     </header><!--ヘッダー-->
     <div class="content-area">
     <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
+            <img class="complete-title-img" src="../assets/img/icon/logout.svg"><br>
             <h1 class="complete-title">アカウントから<br>
             ログアウトしました<br></h1>
         </div>

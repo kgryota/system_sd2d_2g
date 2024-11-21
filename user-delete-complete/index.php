@@ -47,7 +47,7 @@
     </header><!--ヘッダー-->
     <div class="content-area">
     <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
+            <img class="complete-title-img" src="../assets/img/icon/deliteaccount.svg"><br>
             <h1 class="complete-title">アカウントを<br>
             削除しました<br></h1>
         </div>
