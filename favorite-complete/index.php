@@ -1,8 +1,5 @@
 <?php
 session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
     $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
     dbname=LAA1554899-sd2d2g;charset=utf8',
@@ -60,11 +57,11 @@ error_reporting(E_ALL);
     <div class="content-area">
     <div class="page-title">
             <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">とうろくしました。<br>
+            <h1 class="complete-title">登録しました。<br>
             <br></h1>
         </div>
-        <a href="../" class="btn back-home-btn">
-            <p>ホームに戻る</p>
+        <a href="../login/" class="btn back-home-btn">
+            <p>買い物を始める</p>
         </a>
     </div>
 </body>
