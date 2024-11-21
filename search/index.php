@@ -4,9 +4,7 @@
     'LAA1554899',
     'pass2g');
 
-    $stmt = $pdo->query("SELECT product_image FROM product");
-    $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+   
 
 
 ?>
@@ -74,16 +72,11 @@
 
                 foreach ($sql as $row) {
                     
-                    echo '
-                    <a class="product-card" href="../product/?product_id='.$row['product_id'].'">';
-                    $image=$sql->fetch(PDO::FETCH_ASSOC);
-                    if($image){
-                        $filename=htmlspecialchars($row['product_image']);
-                        echo '<img class="product-card-img" src="uploads/'.$filename.'">';
-                    }
+                    echo '<a class="product-card" href="../product/?product_id=',$row['product_id'],'">';
+                    
+                    echo '<img class="product-card-img" src="../assets/img/product-img/'.$row['product_image'].'">';
                         
                         echo'
-                        <img class="product-card-img"  src="../assets/img/product-img/'. $row['product_id']. '.png">
                         <h5 class="product-card-name">'. $row['product_name']. '</h5>
                         <p class="product-card-price">¥'.$row['price'].'</p>
                         <button href="../product/" class="product-card-add-btn">商品を見る</button>
