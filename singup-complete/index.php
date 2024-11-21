@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
 dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
@@ -8,10 +9,20 @@ $password=$_POST['password'];
 $date=$_POST['date'];
 $user_name=$_POST['user_name'];
 $address=$_POST['address'];
+
+$sql=$pdo->prepare('SELECT * FROM user WHERE email=?');
+$sql->execute([$email]);
+$row_count = $sql->rowCount();
+if($row_count != 0){
+    echo 'このメールアドレスは既に登録されています。';
+    exit;
+}
+
 $sql=$pdo->prepare('INSERT INTO user(email,password,date,user_name,address) VALUES(?,?,?,?,?)');
 $sql->execute([$email,$password,$date,$user_name,$address]);
 $pdo=null;
-
+session_start();
+$_SESSION['email'] = $email;
 
 ?>
 

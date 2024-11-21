@@ -63,19 +63,37 @@ $pdo = new PDO(
                 </div>
             </a>
             <div class="index-recommend">
-                <h2 class="index-list-title">おすすめ</h2>
+                <h2 class="index-list-title">あなたの好み</h2>
                 <div class="index-recommend-list">
                     <?php
-                    $sql = $pdo->query('SELECT * FROM product');
-                    foreach ($sql as $row) {
-                        echo '
-                    <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
-                        <img class="product-card-img"  src="assets/img/product-img/' . $row['product_id'] . '.png">
-                        <h5 class="product-card-name">' . $row['product_name'] . '</h5>
-                        <p class="product-card-price">¥' . $row['price'] . '</p>
-                    </a><!--product-card-->
-                    ';
-                    }
+                        // ユーザーのお気に入りカテゴリを取得
+                        $favorite_sql = $pdo->prepare('SELECT `category_id` FROM `category_user_join` WHERE `user_id` = ?');
+                        $favorite_sql->execute([$user_id]);
+
+                        // お気に入りカテゴリIDを配列として取得
+                        $category_ids = $favorite_sql->fetchAll(PDO::FETCH_COLUMN);
+
+                        if (!empty($category_ids)) {
+                            // 動的なプレースホルダーを生成
+                            $placeholders = implode(',', array_fill(0, count($category_ids), '?'));
+
+                            // `product` テーブルから該当カテゴリの商品を取得
+                            $sql = $pdo->prepare("SELECT * FROM `product` WHERE `category_id` IN ($placeholders)");
+                            $sql->execute($category_ids);
+
+                            // 結果を取得して出力
+                            foreach ($sql as $row) {
+                                echo '
+                                <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
+                                    <img class="product-card-img"  src="assets/img/product-img/' . $row['product_id'] . '.png">
+                                    <h5 class="product-card-name">' . $row['product_name'] . '</h5>
+                                    <p class="product-card-price">¥' . $row['price'] . '</p>
+                                </a><!--product-card-->';
+                            }
+                        } else {
+                            echo "ログインお気に入りを登録すると利用できます";
+                        }
+
                     ?>
                 </div>
             </div>
@@ -119,10 +137,6 @@ $pdo = new PDO(
                     ?>
 
                 </div>
-            </div>
-            <div class="index-repurchase">
-                <h2 class="index-list-title"></h2>
-                
             </div>
         </div>
 

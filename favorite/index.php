@@ -3,14 +3,10 @@ $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
  dbname=LAA1554899-sd2d2g;charset=utf8',
  'LAA1554899',
  'pass2g');
-$category_id=$_GET['category_id'];
-echo $category_id;
+//$category_id=$_GET['category_id'];
+//echo $category_id;
 $sql=$pdo->query('SELECT * FROM category_type s');
 
-foreach($sql as $row){
- echo  $row['category_name'];
- echo $row['category_id'];
-}
 ?>
 
 
@@ -51,9 +47,9 @@ foreach($sql as $row){
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <h2 class="page-title">性別を教えてください</h2><br>
+    <h2 class="page-title">好みの種類を選択してください</h2><br>
     <div class="option-container">
-    <label class="option">
+    <!--<label class="option">
         <input type="radio" name="gender" value="男性">
         男性
     </label>
@@ -70,15 +66,27 @@ foreach($sql as $row){
         回答しない
     </label>
     <h2 class="page-title">好きなお酒のカテゴリーを教えてください</h2><br>
-    <p>*複数回答可</p>
-    
+    <p>*複数回答可</p>-->
 
     
-    
+    <form action="../favorite-complete/" method="post">
 
-    <button id="okonomi-touroku" class="btn" onclick="location.href=' '">
+        <?php
+            $sql=$pdo->query('SELECT * FROM category_type');
+            foreach($sql as $row){
+                echo '        
+                <div>
+                    <input type="checkbox" name="category'.$row['category_id'].'">
+                    <label>'.$row['category_name'].'</label>
+                </div>';
+            }
+        ?>
+
+        <button id="okonomi-touroku" class="btn" onclick="location.href=' '">
             <p>登録</p>
         </button>
+    </form>
+
     </div>
     </div>
 </body>
