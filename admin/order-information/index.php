@@ -9,32 +9,18 @@ if(isset($_SESSION['admin_id'])){
     header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
     exit;
 }
-
 $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
 dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
 'pass2g');
 
-//商品IDでproductから商品名を参照する
-//user_idから名前と住所を参照する
-foreach($sql=$pdo->query('SELECT * FROM purchase_history JOIN product ON purchase_history.purchase')as $row){
-    $product_id=$row['product_id'];
-    echo '<p>商品ID：',$product_id,'</p>';
-    $product_name=$row['product_name'];
-    echo '<p><span class=name_span>',$product_name,'</span></p>';
+if(isset($_GET['id'])){
+    $id=$_GET['id'];
+    $sql2=$pdo->prepare('UPDATE purchase_history SET status="発送済" WHERE purchase_id=?');
+    $sql2->execute([$id]);
 }
 
-
-
 ?>
-
-
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -69,26 +55,33 @@ foreach($sql=$pdo->query('SELECT * FROM purchase_history JOIN product ON purchas
     <div class="content-area">
     <h1 class="page-title">注文情報</h1><br>
     <div class="order-info">
-        <div class="order-item">
-            <p>商品ID：〇〇〇</p>
-            <p>商品名：〇〇〇</p>
-            <p>個数：〇個</p>
-            <p>お名前：〇〇〇</p>
-            <p>住所：</p>
-            <div class="status">未発送</div>
-            <p class="status-text">指定：〇月〇日</p>
-            <a href="#" class="change-status">発送完了に変更</a>
-        </div>
-        <div class="order-item">
-            <p>商品ID：〇〇〇</p>
-            <p>商品名：〇〇〇</p>
-            <p>個数：〇個</p>
-            <p>お名前：〇〇〇</p>
-            <p>住所：</p>
-            <div class="status1">発送済</div>
-            <p class="status-text">指定：〇月〇日</p>
-            <a href="#" class="change-status">発送完了に変更</a>
-        </div>
+
+    <?php
+    foreach($sql=$pdo->query('SELECT * FROM purchase_history JOIN product ON purchase_history.product_id=product.product_id JOIN user ON purchase_history.user_id=user.user_id')as $row){
+        echo '<div class="order-item">';
+    $product_id=$row['product_id'];
+    echo '<p>商品ID：',$product_id,'</p>';
+    $product_name=$row['product_name'];
+    echo '<p><span class=name_span>',$product_name,'</span></p>';
+    $kosuu=$row['purchase_count'];
+    echo '<p>個数：',$kosuu,'個</p>';
+    $name=$row['user_name'];
+    echo '<p>お名前：',$name,'</p>';
+    $address=$row['address'];
+    echo '<p>住所：',$address,'</p>';
+    $status=$row['status'];
+    $purchase_id=$row['purchase_id'];
+    if($status==='未発送'){
+        echo '<div class="status">',$status,'</div>';
+        echo '<a href="../order-information?id=',$purchase_id,'" class="change-status">発送完了に変更</a>';
+    }else{
+        echo '<div class="status1">',$status,'</div>';
+    }
+    echo '</div>';
+    }
+    
+    ?>
+        
     </div>
 
         

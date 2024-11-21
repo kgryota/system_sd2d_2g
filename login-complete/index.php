@@ -53,7 +53,7 @@
     </header><!--ヘッダー-->
     <div class="content-area">
     <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
+            <img class="complete-title-img" src="../assets/img/icon/login.svg"><br>
             <h1 class="complete-title">こんにちは<?= $_SESSION['user_name'] ?>さん<br>
             <br></h1>
         </div>

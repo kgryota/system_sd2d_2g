@@ -59,7 +59,7 @@ $sql->execute([$email,$password,$user_name,$address,$user_id]);
     </header><!--ヘッダー-->
     <div class="content-area">
     <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
+            <img class="complete-title-img" src="../assets/img/icon/user.svg"><br>
             <h1 class="complete-title">アカウント情報を<br>
             更新しました<br></h1>
         </div>
