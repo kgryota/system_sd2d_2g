@@ -97,76 +97,8 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
         }
         
         ?>
-    </form>
-
-
-
-
-
-
-
-
-
-        <div class="product-list">
-            <!-- Repeat this block for each product -->
-            <div class="product-item">
-                <div class="product-info">
-                    <p>商品ID：〇〇</p>
-                    <p>商品名：〇〇</p>
-                </div>
-                <div class="product-buttons">
-                    <button type="button" class="button-update">更新</button>
-                    <button type="button" class="button-add">在庫追加</button>
-                </div>
-            </div>
-            <!-- End of product block -->
-        </div>
-        <div class="product-list">
-            <!-- Repeat this block for each product -->
-            <div class="product-item">
-                <div class="product-info">
-                    <p>商品ID：〇〇</p>
-                    <p>商品名：〇〇</p>
-                </div>
-                <div class="product-buttons">
-                    <button type="button" class="button-update">更新</button>
-                    <button type="button" class="button-add">在庫追加</button>
-                </div>
-            </div>
-            <!-- End of product block -->
-        </div>
-        <div class="product-list">
-            <!-- Repeat this block for each product -->
-            <div class="product-item">
-                <div class="product-info">
-                    <p>商品ID：〇〇</p>
-                    <p>商品名：〇〇</p>
-                </div>
-                <div class="product-buttons">
-                    <button type="button" class="button-update">更新</button>
-                    <button type="button" class="button-add">在庫追加</button>
-                </div>
-            </div>
-            <!-- End of product block -->
-        </div>
-        <div class="product-list">
-            <!-- Repeat this block for each product -->
-            <div class="product-item">
-                <div class="product-info">
-                    <p>商品ID：〇〇</p>
-                    <p>商品名：〇〇</p>
-                </div>
-                <div class="product-buttons">
-                    <button type="button" class="button-update">更新</button>
-                    <button type="button" class="button-add">在庫追加</button>
-                </div>
-            </div>
-            <!-- End of product block -->
-        </div>
+    </form>  
     </div>
-
-    
-        
     </div>
 </body>
 </html>
