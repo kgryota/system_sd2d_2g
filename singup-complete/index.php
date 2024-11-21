@@ -52,9 +52,10 @@ $pdo=null;
             <h1 class="complete-title">登録が<br>
             完了しました！<br></h1>
         </div>
-        <a href="../" class="btn back-home-btn">
-            <p>好みの登録</p>
-        </a>
+        <form action="../favorite/" method="post">
+            <input type="hidden" name="send_email" value="<?= $email ?>">
+            <button href="../" class="btn back-home-btn"><p>好みの登録</p></button>
+        </form>
     </div>
 </body>
 </html>
