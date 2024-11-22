@@ -29,7 +29,10 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <h1 class="page-title">ログイン</h1><br>
+    <div class="page-title-area">
+        <img class="page-title-img" src="../assets/img/icon/user.svg">
+        <h1 class="page-title">ログイン</h1>
+    </div>
     アカウントをお持ちでない場合、<a href="../singup">新規作成</a>
     <form action="../login-complete/index.php" method="post" id="app">
         <input v-mdel="email" type="text" name="email" class="forminput1" placeholder="メールアドレス">

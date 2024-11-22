@@ -47,7 +47,11 @@ $sql=$pdo->query('SELECT * FROM category_type s');
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <h2 class="page-title">好みの種類を選択してください</h2><br>
+    <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/favorite.svg">
+            <h3 class="page-title">好みのお酒を選択してください</h3>
+            <h5>ここで選択するとホームでおすすめが表示されるようになります。</h5>
+        </div>
     <div class="option-container">
     <!--<label class="option">
         <input type="radio" name="gender" value="男性">

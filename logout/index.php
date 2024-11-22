@@ -34,10 +34,9 @@ session_unset();
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/icon/logout.svg"><br>
-            <h1 class="complete-title">アカウントから<br>
-            ログアウトしました<br></h1>
+        <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/user.svg">
+            <h3 class="page-title">ログアウトしました</h3>
         </div>
         <a href="../" class="btn back-home-btn">
             <p>ホームに戻る</p>
