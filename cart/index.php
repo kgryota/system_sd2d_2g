@@ -51,9 +51,9 @@ if (isset($_SESSION['user_id'])) {
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-        <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/menu/cart.svg" alt="お酒画像" height="100" width="100">
-            <h1 class="complete-title">カート</h1>
+        <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/cart.svg">
+            <h1 class="page-title">カート</h1>
         </div>
         <div class="product-list">
             <?php

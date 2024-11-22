@@ -56,8 +56,9 @@ session_start();
     </header><!--ヘッダー-->
     <div class="content-area">
     <div class="page-title-area">
-            <img class="page-title-img" src="../assets/img/icon/user.svg">
-            <h3 class="page-title">ユーザー登録しました</h3>
+            <img class="page-title-img" src="../assets/img/icon/favorite.svg">
+            <h1 class="page-title">登録しました。</h1>
+            <h5>先ほど登録した内容で再度ログインしてください</h5>
         </div>
         <a href="../login/" class="btn back-home-btn">
             <p>買い物を始める</p>

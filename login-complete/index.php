@@ -52,11 +52,9 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/icon/login.svg"><br>
-            <h1>おかえりなさい</h1>
-            <br>
-            <h2 class="complete-title">こんにちは<?= $_SESSION['user_name'] ?>さん</h2>
+    <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/login.svg">
+            <h3 class="page-title">ログインしました。</h3>
         </div>
         <a href="../" class="btn back-home-btn">
             <p>ホームに戻る</p>

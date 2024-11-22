@@ -260,7 +260,8 @@
 }
 
 .product-list{
-    
+    display: flex;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -342,6 +343,18 @@
 .order-page-title{
     color: #B79862;
 }
+
+.sub-title{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.sub-title img{
+    width: 35px;
+    margin-right: 10px;
+}
+
 .siharai{
     padding: 10px 0;
 }

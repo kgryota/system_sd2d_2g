@@ -57,10 +57,9 @@ $sql->execute([$product_id,$user_id,$count]);
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-        <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">カートに商品を<br>
-            追加しました<br></h1>
+        <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/addcart.svg">
+            <h3 class="page-title">カートに追加しました。</h3>
         </div>
         <a href="../" class="btn back-home-btn">
             <p>ショッピングに戻る</p>

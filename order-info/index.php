@@ -56,16 +56,24 @@ $address=$row['address'];
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <h1 class="page-title">配送先</h1><br>
-    <div >
-        <h2 class="order-page-title">お客様情報</h2>
+        <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/deliver.svg">
+            <h1 class="page-title">注文情報入力</h1>
+        </div>
+    <div>
+        <div class="sub-title">
+            <img src="../assets/img/icon/user.svg">
+            <h2 class="order-page-title">お客様情報</h2>
+        </div>
         <p class="user-orderinfo">お名前：<?= $user_name ?></p>
         <p class="user-orderinfo">住所：<?= $address ?></p>
         <input type="date" name="" class="forminput1" placeholder="お届け日指定">
-        <p class="error-message">エラー：未入力の項目があります。</p>
     </div>
 
-    <h2 class="order-page-title siharai">支払方法</h2>
+    <div class="sub-title">
+            <img src="../assets/img/icon/card.svg">
+            <h2 class="order-page-title">お支払情報</h2>
+        </div>
     <input type="text" name="" class="forminput1" placeholder="クレジットカード番号">
     <input type="text" name="" class="forminput1" placeholder="有効期限">
     <input type="password" name="" class="forminput1" placeholder="パスワード">

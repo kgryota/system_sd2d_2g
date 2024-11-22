@@ -76,11 +76,12 @@ $sql1->execute([$user_id]);
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">ご注文ありがとうご<br>
-            ざいました<br></h1>
+        <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/cmp.svg">
+            <h1 class="page-title">注文完了</h1>
+            <h5>ご注文ありがとうございました。またのご利用お待ちしております。</h5>
         </div>
+    <div>
         <a href="../" class="btn back-home-btn">
             <p>ホームに戻る</p>
         </a>
