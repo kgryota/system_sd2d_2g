@@ -43,7 +43,10 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <h1 class="page-title">情報更新</h1><br>
+        <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/user.svg">
+            <h1 class="page-title">情報更新</h1>
+        </div>
     <form action="../user-update-complete/index.php" method="post">
     <input type="text" name="user_name" class="forminput1" placeholder="お名前">
     <input type="text" name="email" class="forminput1" placeholder="メールアドレス">
