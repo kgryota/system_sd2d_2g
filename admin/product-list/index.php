@@ -69,7 +69,9 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
     <div class="content-area">
     <div class="container">
         <div class="header">
+            <form action="../order-information/index.php">
             <button class="header-button">注文情報</button>
+            </form>
             <form action="../product-registration/index.php">
             <button class="header-button">新規登録</button>
             </form>
@@ -77,7 +79,7 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
 
     <form method="post">
         <?php
-        foreach($sql=$pdo->query('SELECT product_id,product_name FROM product') as $row){
+        foreach($sql=$pdo->query('SELECT product_id,product_name,zaiko_kosuu FROM product') as $row){
             echo '<div class="product-list">';
             echo '<div class="product-item">';
             echo '<div class="product-info">';
@@ -85,6 +87,8 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
             echo '<p>商品ID：',$product_id,'</p>';
             $product_name=$row['product_name'];
             echo '<p class="product_name_size">商品名：',$product_name,'</p>';
+            $zaiko_kosuu=$row['zaiko_kosuu'];
+            echo '<p>在庫個数：',$zaiko_kosuu,'</p>';
             echo '</div>';
             echo '<div class="product-buttons">';
             echo '<p><a class="button-add" href="../product-update,delete/?product_id='.$row['product_id'].'">更新</a></p><br>';
