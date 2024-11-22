@@ -1,7 +1,16 @@
+.page-title-area{
+    text-align: center;
+    padding: 30px 0;
+}
+
 .page-title{
     width: 100%;
     text-align: center;
-    padding: 30px 0;
+}
+
+.page-title-img{
+    width: 100px;
+    text-align: center;
 }
 
 /*index*/
@@ -508,4 +517,17 @@
 }
 .product_name_size{
     font-size: 30px;
+}
+
+/*ユーザー画面*/
+
+.user-info{
+    padding: 20px 0;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.user-info img{
+    margin-right: 10px;
 }

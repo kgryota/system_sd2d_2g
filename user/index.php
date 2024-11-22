@@ -1,6 +1,7 @@
 <?php 
     session_start();
     if(isset($_SESSION['user_id'])){
+        $user_id = $_SESSION['user_id'];
         $user_name = $_SESSION['user_name'];
     }else{
         header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
@@ -18,8 +19,6 @@
         $email=$row['email'];
         $user_name=$row['user_name'];
         $address=$row['address'];
-
-        
 }
 
 ?>
@@ -55,11 +54,22 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <h1 class="page-title">ユーザ情報</h1><br>
-    <p><?= $user_name ?></p><br>
-    <p><?= $email ?></p><br>
-    <p><?= $password ?></p><br>
-    <p><?= $address ?></p><br>
+        <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/user.svg">
+            <h1 class="page-title">ユーザ情報</h1><br>
+        </div>
+    <div class="user-info">
+        <img src="../assets/img/icon/user_id.svg">
+        <p><?= $user_name ?></p>
+    </div>
+    <div class="user-info">
+        <img src="../assets/img/icon/mail.svg">
+        <p><?= $email ?></p>
+    </div>
+    <div class="user-info">
+        <img src="../assets/img/icon/address.svg">
+        <p><?= $address ?></p>
+    </div>
     <a class="btn" href="../logout/index.php">ログアウト</a>
     <button id="hensyu" class="btn" onclick="location.href='../user-update/index.php'">
             <p>編集</p>
