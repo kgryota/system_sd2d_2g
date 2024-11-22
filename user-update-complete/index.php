@@ -58,12 +58,11 @@ $sql->execute([$email,$password,$user_name,$address,$user_id]);
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/icon/user.svg"><br>
-            <h1 class="complete-title">アカウント情報を<br>
-            更新しました<br></h1>
+        <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/user.svg">
+            <h3 class="page-title">ユーザー情報を更新しました</h3>
         </div>
-        <a href="../user-update/index.php" class="btn back-home-btn">
+        <a href="../user/index.php" class="btn back-home-btn">
             <p>ユーザー情報に戻る</p><br><br>
         </a>
         <a href="../" class="btn back-home-btn">

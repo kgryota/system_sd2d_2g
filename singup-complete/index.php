@@ -10,6 +10,15 @@ $date=$_POST['date'];
 $user_name=$_POST['user_name'];
 $address=$_POST['address'];
 
+$today = new DateTime(); 
+$birthDate = new DateTime($date);
+$age = $today->diff($birthDate)->y;
+
+if($age < 20){
+    echo'20歳以下は登録できません。';
+    exit;
+}
+
 $sql=$pdo->prepare('SELECT * FROM user WHERE email=?');
 $sql->execute([$email]);
 $row_count = $sql->rowCount();
@@ -58,10 +67,9 @@ $_SESSION['email'] = $email;
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-        <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/icon/user.svg"><br>
-            <h1 class="complete-title">登録が<br>
-            完了しました！<br></h1>
+    <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/wine.svg">
+            <h1 class="page-title">ようこそ乾杯市場へ</h1>
         </div>
         <form action="../favorite/" method="post">
             <input type="hidden" name="send_email" value="<?= $email ?>">

@@ -29,7 +29,10 @@
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <h1 class="page-title">新規登録</h1><br>
+    <div class="page-title-area">
+        <img class="page-title-img" src="../assets/img/icon/user.svg">
+        <h1 class="page-title">新規登録</h1>
+    </div>
     アカウントをお持ちの場合、<a href="../login">ログイン</a>
     <form action="../singup-complete/index.php" method="post">
     <input type="text" name="user_name" class="forminput1" placeholder="お名前" required>
@@ -38,8 +41,6 @@
     <input type="password" name="password" class="forminput1" placeholder="パスワード" required>
     <input type="text" name="address" class="forminput1" placeholder="住所" required><br>
     
-    <p class="error-message">エラー：未入力の項目があります。</p><br>
-    <p class="error-message">エラー：IDまたはパスワードが違います。</p>
     <button id="" class="btn">
             <p>登録</p>
         </button>
