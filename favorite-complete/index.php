@@ -1,5 +1,9 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 session_start();
+
 
     $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
     dbname=LAA1554899-sd2d2g;charset=utf8',

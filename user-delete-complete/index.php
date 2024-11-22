@@ -15,7 +15,9 @@ error_reporting(E_ALL);
     dbname=LAA1554899-sd2d2g;charset=utf8',
     'LAA1554899',
     'pass2g');
-    $sql=$pdo->prepare('DELETE FROM user JOIN category_user_join ON user.user_id=category_user_join.user_id WHERE user.user_id=?');
+    $sql1=$pdo->prepare('DELETE FROM category_user_join WHERE user_id=?');
+    $sql1->execute([$user_id]);
+    $sql=$pdo->prepare('DELETE FROM user WHERE user.user_id=?');
     $sql->execute([$user_id]);
 ?>
 <!DOCTYPE html>
