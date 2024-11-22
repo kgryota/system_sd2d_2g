@@ -10,6 +10,15 @@ $date=$_POST['date'];
 $user_name=$_POST['user_name'];
 $address=$_POST['address'];
 
+$today = new DateTime(); 
+$birthDate = new DateTime($date);
+$age = $today->diff($birthDate)->y;
+
+if($age <= 20){
+    echo'20歳以下は登録できません。';
+    exit;
+}
+
 $sql=$pdo->prepare('SELECT * FROM user WHERE email=?');
 $sql->execute([$email]);
 $row_count = $sql->rowCount();
