@@ -66,22 +66,15 @@ $pdo = new PDO(
                 <h2 class="index-list-title">あなたの好み</h2>
                 <div class="index-recommend-list">
                     <?php
-                        // ユーザーのお気に入りカテゴリを取得
                         $favorite_sql = $pdo->prepare('SELECT `category_id` FROM `category_user_join` WHERE `user_id` = ?');
                         $favorite_sql->execute([$user_id]);
-
-                        // お気に入りカテゴリIDを配列として取得
                         $category_ids = $favorite_sql->fetchAll(PDO::FETCH_COLUMN);
 
                         if (!empty($category_ids)) {
-                            // 動的なプレースホルダーを生成
                             $placeholders = implode(',', array_fill(0, count($category_ids), '?'));
-
-                            // `product` テーブルから該当カテゴリの商品を取得
                             $sql = $pdo->prepare("SELECT * FROM `product` WHERE `category_id` IN ($placeholders)");
                             $sql->execute($category_ids);
 
-                            // 結果を取得して出力
                             foreach ($sql as $row) {
                                 echo '
                                 <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
@@ -91,7 +84,13 @@ $pdo = new PDO(
                                 </a><!--product-card-->';
                             }
                         } else {
-                            echo "ログインお気に入りを登録すると利用できます";
+                            echo '<div class="history_none">
+                                    <div>
+                                    <img src="assets/img/icon/user.svg">
+                                    <p>登録すると利用できます</p>
+                                    <a class="none-btn" href="singup/">新規登録</a>
+                                    </div>
+                                </div>';
                         }
 
                     ?>
@@ -102,7 +101,7 @@ $pdo = new PDO(
                 <div class="index-recommend-list">
                     <?php
                     
-                    $sql = $pdo->query('SELECT * FROM product');
+                    $sql = $pdo->query('SELECT * FROM product ORDER BY product_id DESC');
                     foreach ($sql as $row) {
                         echo '
                     <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
@@ -132,7 +131,12 @@ $pdo = new PDO(
                                 </a><!--product-card-->
                             ';}
                         }else{
-                            echo '<div class="history_none">購入すると履歴が表示されます</div>';
+                            echo '<div class="history_none">
+                                <div>
+                                <img src="assets/img/icon/history.svg">
+                                <p>購入すると表示されます</p>
+                                </div>
+                            </div>';
                         }
                     ?>
 
