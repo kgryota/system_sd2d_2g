@@ -74,11 +74,20 @@
     <button id="hensyu" class="btn" onclick="location.href='../user-update/index.php'">
             <p>編集</p>
     </button>
-    <button id="sakujo" class="btn" onclick="location.href='../user-delete-complete/index.php'">
+    <button id="user_del" class="btn">
             <p>アカウント削除</p>
     </button>
     </div>
     
     </button>
 </body>
+<script>
+    const user_del = document.getElementById('user_del');
+    user_del.addEventListener('click',function(){
+        if(window.confirm('アカウントを削除しますか。この変更は取り消せません')){
+            window.location.href = "../user-delete-complete/index.php"
+        }
+        
+    })
+</script>
 </html>
