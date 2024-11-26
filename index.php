@@ -97,11 +97,29 @@ $pdo = new PDO(
                 </div>
             </div>
             <div class="index-recommend">
-                <h2 class="index-list-title">商品一覧</h2>
+                <h2 class="index-list-title">お酒一覧</h2>
                 <div class="index-recommend-list">
                     <?php
                     
-                    $sql = $pdo->query('SELECT * FROM product ORDER BY product_id ');
+                    $sql = $pdo->query('SELECT * FROM product WHERE category_id != 8 ORDER BY product_id');
+                    foreach ($sql as $row) {
+                        echo '
+                    <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
+                        <img class="product-card-img"  src="assets/img/product-img/' . $row['product_image'] .'">
+                        <h5 class="product-card-name">' . $row['product_name'] . '</h5>
+                        <p class="product-card-price">¥' . $row['price'] . '</p>
+                    </a><!--product-card-->
+                    ';
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="index-recommend">
+                <h2 class="index-list-title">おつまみ一覧</h2>
+                <div class="index-recommend-list">
+                    <?php
+                    
+                    $sql = $pdo->query('SELECT * FROM `product` WHERE `category_id` = 8 ORDER BY `product_image`');
                     foreach ($sql as $row) {
                         echo '
                     <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
