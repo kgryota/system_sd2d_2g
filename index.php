@@ -78,7 +78,7 @@ $pdo = new PDO(
                             foreach ($sql as $row) {
                                 echo '
                                 <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
-                                    <img class="product-card-img"  src="assets/img/product-img/' . $row['product_id'] . '.png">
+                                    <img class="product-card-img"  src="assets/img/product-img/' .  $row['product_image'] .'">
                                     <h5 class="product-card-name">' . $row['product_name'] . '</h5>
                                     <p class="product-card-price">¥' . $row['price'] . '</p>
                                 </a><!--product-card-->';
@@ -101,11 +101,11 @@ $pdo = new PDO(
                 <div class="index-recommend-list">
                     <?php
                     
-                    $sql = $pdo->query('SELECT * FROM product ORDER BY product_id DESC');
+                    $sql = $pdo->query('SELECT * FROM product ORDER BY product_id ');
                     foreach ($sql as $row) {
                         echo '
                     <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
-                        <img class="product-card-img"  src="assets/img/product-img/' . $row['product_id'] . '.png">
+                        <img class="product-card-img"  src="assets/img/product-img/' . $row['product_image'] .'">
                         <h5 class="product-card-name">' . $row['product_name'] . '</h5>
                         <p class="product-card-price">¥' . $row['price'] . '</p>
                     </a><!--product-card-->
@@ -125,7 +125,7 @@ $pdo = new PDO(
                             foreach ($sql as $row) {
                                 echo '
                                 <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
-                                    <img class="product-card-img"  src="assets/img/product-img/' . $row['product_id'] . '.png">
+                                    <img class="product-card-img"  src="assets/img/product-img/' . $row['product_image'] .'">
                                     <h5 class="product-card-name">' . $row['product_name'] . '</h5>
                                     <p class="product-card-price">¥' . $row['price'] . '</p>
                                 </a><!--product-card-->
