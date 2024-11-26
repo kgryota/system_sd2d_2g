@@ -60,7 +60,9 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
                 <h1>乾杯市場</h1>
             </a>
             <div class="header-menu">
-                
+            <form action="../user-ban/index.php">
+            <button class="header-button">ユーザー削除</button>
+            </form>
             </div>
         </div>
     </header><!--ヘッダー-->

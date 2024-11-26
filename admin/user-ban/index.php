@@ -60,7 +60,7 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
                 echo '<li>',$user_id,'   ';
                 
                 echo $row['user_name'],'   ';
-                echo "<a href=../../user-delete-complete/index.php'?user_id=".$user_id."' >ユーザー削除</a></li>";
+                echo "<a href=../user-delete-complete/index.php?user_id=".$user_id.">ユーザー削除</a></li>";
                 echo '</ul>';
             }
             ?>
@@ -70,4 +70,13 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
         </a>
     </div>
 </body>
+<script>
+    const user_del = document.getElementById('user_del');
+    user_del.addEventListener('click',function(){
+        if(window.confirm('アカウントを削除しますか。この変更は取り消せません')){
+            window.location.href = "../user-delete-complete/index.php?user_id=".$user_id
+        }
+        
+    })
+</script>
 </html>
