@@ -3,8 +3,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
     session_start();
-    $user_id = $_SESSION['user_id'];
-    if(isset($user_id)){
+    if(isset($_SESSION['user_id'])){
+        $user_id = $_SESSION['user_id'];
         $user_name = $_SESSION['user_name'];
     }else{
         header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
@@ -17,8 +17,15 @@ error_reporting(E_ALL);
     'pass2g');
     $sql1=$pdo->prepare('DELETE FROM category_user_join WHERE user_id=?');
     $sql1->execute([$user_id]);
-    $sql=$pdo->prepare('DELETE FROM user WHERE user.user_id=?');
+    $sql=$pdo->prepare('DELETE FROM coupon_usage_history WHERE user_id=?');
     $sql->execute([$user_id]);
+    $sql=$pdo->prepare('DELETE FROM purchase_history WHERE user_id=?');
+    $sql->execute([$user_id]);
+    $sql=$pdo->prepare('DELETE FROM user WHERE user_id=?');
+    $sql->execute([$user_id]);
+    
+    session_start();
+    session_unset();
 ?>
 <!DOCTYPE html>
 <html lang="ja">

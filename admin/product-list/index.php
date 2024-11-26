@@ -70,6 +70,7 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
             <form action="../order-information/index.php">
             <button class="header-button">注文情報</button>
             </form>
+            
             <form action="../product-registration/index.php">
             <button class="header-button">新規登録</button>
             </form>
