@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
     session_start();
     if(isset($_SESSION['user_id'])){
         $user_id = $_SESSION['user_id'];
@@ -23,7 +20,7 @@ error_reporting(E_ALL);
     $sql->execute([$user_id]);
     $sql=$pdo->prepare('DELETE FROM user WHERE user_id=?');
     $sql->execute([$user_id]);
-    
+
     session_start();
     session_unset();
 ?>
