@@ -55,9 +55,7 @@ $sql->execute([$product_id]);
                 <h1>乾杯市場</h1>
             </a>
             <div class="header-menu">
-                <a class="header-menu-btn" href="../../search"><img src="../../assets/img/menu/search.svg"></a>
-                <a class="header-menu-btn" href="../../user"><img src="../../assets/img/menu/user.svg"></a>
-                <a class="header-menu-btn" href="../../cart"><img src="../../assets/img/menu/cart.svg"></a>
+                
             </div>
         </div>
     </header><!--ヘッダー-->

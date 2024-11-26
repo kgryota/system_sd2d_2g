@@ -55,7 +55,7 @@
     <div class="coupon-card">
         <img src="../assets/img/coupon/beer_woman 1.png">
         <div class="coupon-card-viwe">
-            <p class="coupon-title">15%OFF</p>
+            <p class="coupon-title"></p>
             <p>日頃の感謝の気持ちです。ぜひご利用ください</p>
         </div>
     </div>
