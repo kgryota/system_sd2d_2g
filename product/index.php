@@ -64,7 +64,7 @@ error_reporting(E_ALL);
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-     <img class="product-img" src="../assets/img/product-img/<?= $product_id ?>.png" alt="お酒画像">
+     <img class="product-img" src="../assets/img/product-img/<?= $product_image ?>" alt="お酒画像">
      <div class="product-info">
         <h5><?= $product_name ?></h5>
         <p>￥<?= $price ?></p>
@@ -107,6 +107,7 @@ error_reporting(E_ALL);
     
     ?>
     </form>
+
     <div class="product-info-card">
         <div class="product-info-pref">
             <p>生産地</p>
@@ -118,6 +119,11 @@ error_reporting(E_ALL);
                 <?php }
             ?>
         </div>
+        <?php
+        if($category_id == 8){
+            $alcohol_dosuu = '---';
+        }
+        ?>
         <div class="product-info-alcohol">
             <p>アルコール度数</p>
             <h5 class="alcohol-level"><?= $alcohol_dosuu ?>%</h5>

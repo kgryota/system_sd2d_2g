@@ -4,6 +4,12 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
 'pass2g');
 $email=$_POST['email'];
+if (preg_match('/@aso\.com$/', $email)) {
+
+} else {
+    echo "このメールアドレスでは管理者に登録できません。";
+    exit;
+}
 $password=$_POST['password'];
 $name=$_POST['name'];
 $sql=$pdo->prepare('INSERT INTO admin(email,password,name) VALUES(?,?,?)');
