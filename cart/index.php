@@ -14,7 +14,6 @@ if (isset($_SESSION['user_id'])) {
 
 
 
-
 ?>
 
 
@@ -63,6 +62,12 @@ if (isset($_SESSION['user_id'])) {
                 'LAA1554899',
                 'pass2g'
             );
+            if(isset($_GET['product_id'])){
+                $product_id=$_GET['product_id'];
+                $sql=$pdo->prepare('DELETE FROM cart WHERE product_id=?');
+                $sql->execute([$product_id]);
+            }
+            
             $sql = $pdo->prepare('SELECT cart.product_id, cart.user_id, cart.count, product.product_name, product.price 
             FROM cart 
             JOIN product ON cart.product_id = product.product_id 
@@ -80,10 +85,11 @@ if (isset($_SESSION['user_id'])) {
                     <h5 class="product-card-name">' . $product_name . '</h5>
                     <p class="product-card-price">' . $count . '</p>
                     <p class="product-card-price">' . $price . '</p>
-                    <button href="../product/" class="cart-delete">削除</button>
+                    <a href="../cart/?product_id='.$product_id.'" class="cart-delete">削除</a>
                 </div><!--product-card-->
                 ';
             }
+            
             ?>
         </div>
         <div class="cart-money">

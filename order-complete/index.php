@@ -1,5 +1,7 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 session_start();
 $user_id=$_SESSION['user_id'];
@@ -14,18 +16,26 @@ foreach ($sql2->fetchAll() as $row) {
     $product_id = $row['product_id'];
     $purchase_count = $row['count'];
     $purchase_date = date("Y-m-d");
-    $states = '未発送';
+    $states = '未発送';$sql_productcount = $pdo->prepare('SELECT * FROM product WHERE product_id = ?');
+    $sql_productcount->execute([$product_id]);
+    foreach($sql_productcount as $row){
+        $before_count = $row['zaiko_kosuu'];
+    }
+    if($purchase_count>$before_count){
+        echo '<h2>在庫不足</h2>';
+        $fusoku=$purchase_count-$before_count;
+        echo '<p>',$fusoku,'個不足しています。</p>';
+        echo '<a href="../cart/index.php">カートへ戻る</a>';
+        exit;
+    }
     //カートから削除
     $sql = $pdo->prepare(
         'INSERT INTO purchase_history (purchase_date, purchase_count, status, user_id, product_id) VALUES (?, ?, ?, ?, ?)'
     );
     $sql->execute([$purchase_date, $purchase_count, $states, $user_id, $product_id]);
     //在庫削除
-    $sql_productcount = $pdo->prepare('SELECT * FROM product WHERE product_id = ?');
-    $sql_productcount->execute([$product_id]);
-    foreach($sql_productcount as $row){
-        $before_count = $row['zaiko_kosuu'];
-    }
+    
+    
     $after_count = $before_count - $purchase_count;
     $sql_del = $pdo->prepare("UPDATE `product` SET `zaiko_kosuu` = ? WHERE `product`.`product_id` = ?;");
     $sql_del->execute([$after_count,$product_id]);
