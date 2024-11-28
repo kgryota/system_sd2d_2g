@@ -101,7 +101,7 @@ $pdo = new PDO(
                 <div class="index-recommend-list">
                     <?php
                     
-                    $sql = $pdo->query('SELECT * FROM product WHERE category_id != 8 ORDER BY product_id');
+                    $sql = $pdo->query('SELECT * FROM product WHERE category_id != 8 ORDER BY product_id DESC');
                     foreach ($sql as $row) {
                         echo '
                     <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">

@@ -70,18 +70,18 @@ $sql->execute([$product_id,$user_id,$count]);
         <div class="osusume-otumami">
         <p>おすすめのおつまみ</p>
         <div class="product-list">
-        <div class="product-card">
-                    <img class="product-card-img" src="../assets/img/product-img/1000.webp">
-                    <h5 class="product-card-name">お酒の名前</h5>
-                    <p class="product-card-price">￥2000</p>
-                    <button href="../product/" class="product-card-add-btn">商品を見る</button>
-                </div><!--product-card--> 
-                <div class="product-card">
-                    <img class="product-card-img" src="../assets/img/product-img/1000.webp">
-                    <h5 class="product-card-name">お酒の名前</h5>
-                    <p class="product-card-price">￥2000</p>
-                    <button href="../product/" class="product-card-add-btn">商品を見る</button>
-                </div><!--product-card--> 
+        <?php
+            $sql = $pdo->query('SELECT * FROM `product` WHERE `category_id` = 8 ORDER BY `product_image`');
+            foreach ($sql as $row) {
+                echo '
+            <a class="index-product-card" href="../product/?product_id=' . $row['product_id'] . '">
+                <img class="product-card-img"  src="../assets/img/product-img/' . $row['product_image'] .'">
+                <h5 class="product-card-name">' . $row['product_name'] . '</h5>
+                <p class="product-card-price">¥' . $row['price'] . '</p>
+            </a><!--product-card-->
+            ';
+            }
+        ?>
                 <form action="../order-complete/index.php" method="post">
                     <input type="hidden" value="$count">
                     <input type="hidden" value="$product_id">
