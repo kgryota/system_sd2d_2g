@@ -68,7 +68,7 @@ if (isset($_SESSION['user_id'])) {
                 $sql->execute([$product_id]);
             }
             
-            $sql = $pdo->prepare('SELECT cart.product_id, cart.user_id, cart.count, product.product_name, product.price 
+            $sql = $pdo->prepare('SELECT cart.product_id, cart.user_id, cart.count, product.product_name, product.price ,product.product_image
             FROM cart 
             JOIN product ON cart.product_id = product.product_id 
             WHERE user_id = ? 
@@ -76,12 +76,13 @@ if (isset($_SESSION['user_id'])) {
             $sql->execute([$user_id]);
             foreach ($sql as $row) {
                 $product_id = $row['product_id'];
+                $product_img = $row['product_image'];
                 $count = $row['count'];
                 $price = $row['price'];
                 $product_name = $row['product_name'];
                 echo '
                 <div class="product-card">
-                    <img class="product-card-img" src="../assets/img/product-img/' . $product_id . '.png">
+                    <img class="product-card-img" src="../assets/img/product-img/' . $product_img . '">
                     <h5 class="product-card-name">' . $product_name . '</h5>
                     <p class="product-card-price">' . $count . '</p>
                     <p class="product-card-price">' . $price . '</p>

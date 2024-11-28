@@ -34,17 +34,20 @@
         <h1 class="page-title">新規登録</h1>
     </div>
     アカウントをお持ちの場合、<a href="../login">ログイン</a>
-    <form action="../singup-complete/index.php" method="post">
-    <input type="text" name="user_name" class="forminput1" placeholder="お名前" required>
-    <input type="date" name="date" class="forminput1" placeholder="生年月日" required>
-    <input type="email" name="email" class="forminput1" placeholder="メールアドレス" required>
-    <input type="password" name="password" class="forminput1" placeholder="パスワード" required>
-    <input type="text" name="address" class="forminput1" placeholder="住所" required><br>
-    
-    <button id="" class="btn">
+    <form action="../singup-complete/index.php" method="post" id="app">
+        <input type="text" name="user_name" class="forminput1" placeholder="お名前" v-model="name" required>
+        <p v-if="isInValldName" class="err">名前は4文字以上で入力してください。</p>
+        <input type="date" name="date" class="forminput1" placeholder="生年月日" required>
+        <input type="email" name="email" class="forminput1" placeholder="メールアドレス" required>
+        <input type="password" name="password" class="forminput1" placeholder="パスワード" v-model="password" required>
+        <p v-if="isInValldPass" class="err">パスワードはは8文字以上で入力してください。</p>
+        <input type="text" name="address" class="forminput1" placeholder="住所" v-model="address" required><br>
+        <button id="" class="btn">
             <p>登録</p>
         </button>
-        </form>
+    </form>
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="../assets/script/script.js"></script>
 </html>
