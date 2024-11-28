@@ -55,7 +55,17 @@
 
         
         <div>
-            <h3 class="result-title">「<?= $_POST['keyword'] ,$_POST['keypref']?>」の検索結果</h3>
+            <?php
+            if(isset($_POST['keypref'])){
+            $pref_id=$_POST['keypref'];
+            $sqlpref=$pdo->prepare('SELECT pref_name FROM pref WHERE pref_id=?');
+            $sqlpref->execute([$pref_id]);
+            foreach($sqlpref as $row){
+                $pref_name=$row['pref_name'];
+            }
+            }
+            ?>
+            <h3 class="result-title">「<?= $_POST['keyword'] ,$pref_name?>」の検索結果</h3>
             <div class="product-list">
             <?php
                 // 検索キーワードを準備
