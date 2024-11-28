@@ -66,6 +66,8 @@ if(isset($_GET['id'])){
     echo '<p>お名前：',$name,'</p>';
     $address=$row['address'];
     echo '<p>住所：',$address,'</p>';
+    $delivery_date=$row['delivery_date'];
+    echo '<p>配送日：',$delivery_date,'</p>';
     $status=$row['status'];
     $purchase_id=$row['purchase_id'];
     if($status==='未発送'){

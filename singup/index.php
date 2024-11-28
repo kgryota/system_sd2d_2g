@@ -49,5 +49,5 @@
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="../assets/js/singupinput.js"></script>
+<script src="../assets/js/singup_input.js"></script>
 </html>
