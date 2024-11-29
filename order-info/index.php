@@ -67,7 +67,9 @@ $address=$row['address'];
         </div>
         <p class="user-orderinfo">お名前：<?= $user_name ?></p>
         <p class="user-orderinfo">住所：<?= $address ?></p>
-        <input type="date" name="" class="forminput1" placeholder="お届け日指定">
+        
+        <p class="user-orderinfo">お届け日指定
+        <input type="date" name="delivery_date" class="forminput1" placeholder="お届け日指定"></p>
     </div>
 
     <div class="sub-title">
@@ -79,7 +81,7 @@ $address=$row['address'];
     <input type="password" name="" class="forminput1" placeholder="パスワード">
     <div class="order-price">
         <select id="coupon_select" name="" class="selectstyle">
-            <option value="">クーポンを選択</option>
+            <option value="0">クーポンを選択</option>
             <?php
                 // ユーザーの使用済みクーポンIDを取得
                 $sql2 = $pdo->prepare('SELECT coupon_id FROM coupon_usage_history WHERE user_id = ?');
@@ -115,6 +117,8 @@ $address=$row['address'];
     </div>
     <form action="../order-complete/" method="post">
         <input type="hidden" name="coupon" id="coupon_input">
+        
+        <input type="hidden" name="delivery_date" value="<?= $delivery_date ?>">
         <button class="btn">購入を確定</button>
     </form>
     </div>

@@ -44,6 +44,7 @@
             <select name="keypref" class="selectstyle">
             <?php 
                 $sql = $pdo->query('SELECT * FROM `pref`');
+                echo '<option value="0">都道府県を選択</option>';
                 foreach($sql as $row){
                     echo'<option value="'.$row['pref_id'].'">'.$row['pref_name'].'</option>';
                 }
@@ -57,25 +58,45 @@
         <div>
             <?php
             if(isset($_POST['keypref'])){
-            $pref_id=$_POST['keypref'];
-            $sqlpref=$pdo->prepare('SELECT pref_name FROM pref WHERE pref_id=?');
+                $pref_id=$_POST['keypref'];
+                $sqlpref=$pdo->prepare('SELECT pref_name FROM pref WHERE pref_id=?');
             $sqlpref->execute([$pref_id]);
             foreach($sqlpref as $row){
                 $pref_name=$row['pref_name'];
             }
             }
+
+            if($_POST['keyword'] && $_POST['keypref']){
+                
+                echo '<h3 class="result-title">「', $_POST['keyword'],'、',$pref_name,'」の検索結果</h3>';
+            }
+            else if(isset($pref_id)){
+            if($pref_id>0){
+            echo '<h3 class="result-title">「', $pref_name,'」の検索結果</h3>';
+            }
+        }
+            else if(isset($_POST['keyword'])){
+            if($_POST['keyword']!='')
+                echo '<h3 class="result-title">「', $_POST['keyword'],'」の検索結果</h3>';
+        }
             ?>
-            <h3 class="result-title">「<?= $_POST['keyword'] ,$pref_name?>」の検索結果</h3>
+            
+            
             <div class="product-list">
             <?php
                 // 検索キーワードを準備
                 $keyword = '%' . $_POST['keyword'] . '%';
 
-                if (!$_POST['keyword']){
+                if($_POST['keyword'] && $_POST['keypref']){
+                    $sql=$pdo->prepare('SELECT * FROM product WHERE seisanchi = ? , product_name LIKE ?');
+                    $sql->execute([$_POST['keypref']],$_POST['keyword']);
+                }
+
+                else if (!$_POST['keyword']){
                     $sql = $pdo->prepare('SELECT * FROM product WHERE seisanchi = ?');
                     $sql->execute([$_POST['keypref']]);
                     
-                } else {
+                } else  {
                     $sql = $pdo->prepare('SELECT * FROM product WHERE product_name LIKE ?');
                     $sql->execute([$keyword]);
                 }
