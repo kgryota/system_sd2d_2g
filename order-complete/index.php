@@ -11,6 +11,7 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
 'pass2g');
 $sql2 = $pdo->prepare('SELECT * FROM cart WHERE user_id = ?');
 $sql2->execute([$user_id]);
+$delivery_date=$_POST['delivery_date'];
 
 foreach ($sql2->fetchAll() as $row) {
     $product_id = $row['product_id'];
@@ -30,9 +31,9 @@ foreach ($sql2->fetchAll() as $row) {
     }
     //カートから削除
     $sql = $pdo->prepare(
-        'INSERT INTO purchase_history (purchase_date, purchase_count, status, user_id, product_id) VALUES (?, ?, ?, ?, ?)'
+        'INSERT INTO purchase_history (purchase_date, purchase_count, status, delivery_date, user_id, product_id) VALUES (?, ?, ?, ?, ?, ?)'
     );
-    $sql->execute([$purchase_date, $purchase_count, $states, $user_id, $product_id]);
+    $sql->execute([$purchase_date, $purchase_count, $states, $delivery_date, $user_id, $product_id]);
     //在庫削除
     
     
@@ -42,9 +43,11 @@ foreach ($sql2->fetchAll() as $row) {
     //クーポン削除
     if(isset($_POST['coupon'])){
         $coupon = $_POST['coupon'];
+        if($coupon>0){
         $sql_coupon_del = $pdo->prepare("INSERT INTO `coupon_usage_history` (`coupon_id`, `user_id`) VALUES (?,?)");
         $sql_coupon_del->execute([$coupon,$user_id]);
     }
+}
 
 }
 
