@@ -75,10 +75,15 @@ $address=$row['address'];
     <div class="sub-title">
             <img src="../assets/img/icon/card.svg">
             <h2 class="order-page-title">お支払情報</h2>
-        </div>
-    <input type="text" name="" class="forminput1" placeholder="クレジットカード番号">
-    <input type="text" name="" class="forminput1" placeholder="有効期限">
-    <input type="password" name="" class="forminput1" placeholder="パスワード">
+    </div>
+    <div id="app">
+        <input type="text" name="" class="forminput1" placeholder="クレジットカード番号" v-model="number" required>
+        <p v-if="isInValldNumber" class="err">クレジットカード番号は14桁以上で入力してください。</p>
+        <input type="text" name="" class="forminput1" placeholder="有効期限">
+        <input type="password" name="" class="forminput1" placeholder="パスワード" v-model="password" required>
+        <p v-if="isInValldPassword" class="err">パスワードは8文字以上で入力してください。</p>
+    </div>
+    
     <div class="order-price">
         <select id="coupon_select" name="" class="selectstyle">
             <option value="0">クーポンを選択</option>

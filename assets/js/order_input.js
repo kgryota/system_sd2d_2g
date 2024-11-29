@@ -2,17 +2,16 @@ new Vue({
     el: '#app',
     data() {
         return {
-            name:'',
-            password:'',
-            address:''
+            number:'',
+            password:''
         };
     },
     computed:{
-        isInValldName(){
-            return this.name && this.name.length < 14;
+        isInValldNumber(){
+            return this.number && this.number.length < 14;
         },
 
-        isInValldPass(){
+        isInValldPassword(){
             return this.password && this.password.length < 8;
         },
 
