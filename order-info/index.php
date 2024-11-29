@@ -118,7 +118,7 @@ $address=$row['address'];
     <form action="../order-complete/" method="post">
         <input type="hidden" name="coupon" id="coupon_input">
         
-        <input type="hidden" name="delivery_date" value="<?= $delivery_date ?>">
+        <input type="hidden" name="delivery_date">
         <button class="btn">購入を確定</button>
     </form>
     </div>

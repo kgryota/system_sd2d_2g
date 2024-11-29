@@ -105,10 +105,21 @@ if (isset($_SESSION['user_id'])) {
             echo '合計：' . $sum_price . '円';
             ?>
         </div>
-        <a href="../order-info/" class="btn">
+        <?php
+        if($sum_price==0){
+            echo '<a href="../index.php" class="btn">
+            <p>ホームに戻る</p>
+        </a>';
+        }
+        else{
+            echo '<a href="../order-info/" class="btn">
             <p>購入手続き</p>
-        </a>
+        </a>';
+        }
+        ?>
+        
     </div>
+   
 </body>
 
 </html>
