@@ -35,9 +35,14 @@
 }
 
 .hero-title{
+    font-family: "Kiwi Maru", serif;
+    font-weight: 500;
+    font-style: normal;
+    color: #b79862;
+
     width: 100%;
     position: absolute;
-    font-size: 60px;
+    font-size: 80px;
     text-align: center;
     top: 130px;
     left: 50%;
@@ -51,6 +56,21 @@
     z-index: 90;
     
 }
+
+.hero img {
+    animation: zoomIn 5s cubic-bezier(0.25, 0, 0.5, 1) forwards;
+  }
+   
+  @keyframes zoomIn {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 
 
 .index-content{
@@ -117,6 +137,37 @@
 .pref-search-card h2{
     font-size: 20px;
 }
+
+.pref-search-card {
+    animation: poyoyon3 2.5s infinite;
+    opacity: 1;
+  }
+  @keyframes poyoyon3 {
+    0%, 40% {
+      transform: skew(0deg, 0deg);
+    }
+    5% {
+      transform: skew(5deg, 5deg);
+    }
+    10% {
+      transform: skew(-4deg, -4deg);
+    }
+    15% {
+      transform: skew(3deg, 3deg);
+    }
+    20% {
+      transform: skew(-2deg, -2deg);
+    }
+    25% {
+      transform: skew(1deg, 1deg);
+    }
+    30% {
+      transform: skew(-0.6deg, -0.6deg);
+    }
+    35% {
+      transform: skew(0.3deg, 0.3deg);
+    }
+  }
 
 .history_none{
     width: 100%;
@@ -569,4 +620,8 @@
 
 .err{
     color: #ff0000;
+}
+
+.btn-show{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

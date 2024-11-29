@@ -100,7 +100,7 @@ error_reporting(E_ALL);
         </div>';
     } else {
         echo '
-        <button id="cart-tuika" class="btn" onclick="location.href=\'../cart/index.php\'">
+        <button id="cart-tuika" class="btn btn-show" onclick="location.href=\'../cart/index.php\'">
             <p>カートに追加</p>
         </button>';
     }
