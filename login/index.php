@@ -35,8 +35,8 @@
     </div>
     アカウントをお持ちでない場合、<a href="../singup">新規作成</a>
     <form action="../login-complete/index.php" method="post" id="app">
-        <input v-mdel="email" type="text" name="email" class="forminput1" placeholder="メールアドレス">
-        <input v-mdel="password" type="password" name="password" class="forminput1" placeholder="パスワード">
+        <input v-mdel="email" type="text" name="email" class="forminput1" placeholder="メールアドレス" required>
+        <input v-mdel="password" type="password" name="password" class="forminput1" placeholder="パスワード" required>
         <button id="" class="btn">
             <p>ログイン</p>
         </button>
