@@ -60,10 +60,10 @@
             if(isset($_POST['keypref'])){
                 $pref_id=$_POST['keypref'];
                 $sqlpref=$pdo->prepare('SELECT pref_name FROM pref WHERE pref_id=?');
-            $sqlpref->execute([$pref_id]);
-            foreach($sqlpref as $row){
-                $pref_name=$row['pref_name'];
-            }
+                $sqlpref->execute([$pref_id]);
+                foreach($sqlpref as $row){
+                    $pref_name=$row['pref_name'];
+                }
             }
 
             if($_POST['keyword'] && $_POST['keypref']){
@@ -74,11 +74,11 @@
             if($pref_id>0){
             echo '<h3 class="result-title">「', $pref_name,'」の検索結果</h3>';
             }
-        }
-            else if(isset($_POST['keyword'])){
-            if($_POST['keyword']!='')
-                echo '<h3 class="result-title">「', $_POST['keyword'],'」の検索結果</h3>';
-        }
+            }
+                else if(isset($_POST['keyword'])){
+                if($_POST['keyword']!='')
+                    echo '<h3 class="result-title">「', $_POST['keyword'],'」の検索結果</h3>';
+            }
             ?>
             
             
@@ -88,8 +88,8 @@
                 $keyword = '%' . $_POST['keyword'] . '%';
 
                 if($_POST['keyword'] && $_POST['keypref']){
-                    $sql=$pdo->prepare('SELECT * FROM product WHERE seisanchi = ? , product_name LIKE ?');
-                    $sql->execute([$_POST['keypref']],$_POST['keyword']);
+                    $sql = $pdo->prepare('SELECT * FROM product WHERE seisanchi = ? AND product_name LIKE ?');
+                    $sql->execute([$_POST['keypref'], $keyword]);                     
                 }
 
                 else if (!$_POST['keyword']){

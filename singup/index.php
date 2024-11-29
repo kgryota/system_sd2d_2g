@@ -40,7 +40,7 @@
         <input type="date" name="date" class="forminput1" placeholder="生年月日" required>
         <input type="email" name="email" class="forminput1" placeholder="メールアドレス" required>
         <input type="password" name="password" class="forminput1" placeholder="パスワード" v-model="password" required>
-        <p v-if="isInValldPass" class="err">パスワードはは8文字以上で入力してください。</p>
+        <p v-if="isInValldPass" class="err">パスワードは8文字以上で入力してください。</p>
         <input type="text" name="address" class="forminput1" placeholder="住所" v-model="address" required><br>
         <button id="" class="btn">
             <p>登録</p>
