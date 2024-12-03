@@ -55,17 +55,14 @@ $sql->execute([$product_id]);
                 <h1>乾杯市場</h1>
             </a>
             <div class="header-menu">
-                <a class="header-menu-btn" href="../../search"><img src="../../assets/img/menu/search.svg"></a>
-                <a class="header-menu-btn" href="../../user"><img src="../../assets/img/menu/user.svg"></a>
-                <a class="header-menu-btn" href="../../cart"><img src="../../assets/img/menu/cart.svg"></a>
+                
             </div>
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <div class="page-title">
-            <img class="complete-title-img" src="../../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">商品削除が<br>
-            完了しました<br></h1>
+        <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/.svg">
+            <h3 class="page-title">商品を削除しました</h3>
         </div>
         <a href="../product-list/index.php" class="btn back-home-btn">
             <p>商品登録一覧へ</p>

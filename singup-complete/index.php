@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
 dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
@@ -8,9 +9,30 @@ $password=$_POST['password'];
 $date=$_POST['date'];
 $user_name=$_POST['user_name'];
 $address=$_POST['address'];
+
+$today = new DateTime(); 
+$birthDate = new DateTime($date);
+$age = $today->diff($birthDate)->y;
+
+if($age < 20){
+    echo'20歳未満は登録できません。';
+    exit;
+}
+
+$sql=$pdo->prepare('SELECT * FROM user WHERE email=?');
+$sql->execute([$email]);
+$row_count = $sql->rowCount();
+if($row_count != 0){
+    echo 'このメールアドレスは既に登録されています。';
+    exit;
+}
+
 $sql=$pdo->prepare('INSERT INTO user(email,password,date,user_name,address) VALUES(?,?,?,?,?)');
 $sql->execute([$email,$password,$date,$user_name,$address]);
 $pdo=null;
+session_start();
+$_SESSION['email'] = $email;
+
 ?>
 
 
@@ -45,14 +67,14 @@ $pdo=null;
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-        <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">登録が<br>
-            完了しました！<br></h1>
+    <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/wine.svg">
+            <h1 class="page-title">ようこそ乾杯市場へ</h1>
         </div>
-        <a href="../" class="btn back-home-btn">
-            <p>商品を見る</p>
-        </a>
+        <form action="../favorite/" method="post">
+            <input type="hidden" name="send_email" value="<?= $email ?>">
+            <button href="../" class="btn back-home-btn"><p>好みの登録</p></button>
+        </form>
     </div>
 </body>
 </html>

@@ -46,9 +46,13 @@ $sql=$pdo->query('SELECT * FROM category_type ');
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <h2 class="page-title">性別を教えてください</h2><br>
+    <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/favorite.svg">
+            <h3 class="page-title">好みのお酒を選択してください</h3>
+            <h5>ここで選択するとホームでおすすめが表示されるようになります。</h5>
+        </div>
     <div class="option-container">
-    <label class="option">
+    <!--<label class="option">
         <input type="radio" name="gender" value="男性">
         男性
     </label>
@@ -75,11 +79,24 @@ $sql=$pdo->query('SELECT * FROM category_type ');
     <form></form>
     
     
-    
+    <form action="../favorite-complete/" method="post">
 
-    <button type="submit">登録</button>
-            
+        <?php
+            $sql=$pdo->query('SELECT * FROM category_type WHERE category_id != 8');
+            foreach($sql as $row){
+                echo '        
+                <div>
+                    <input type="checkbox" name="category'.$row['category_id'].'">
+                    <label>'.$row['category_name'].'</label>
+                </div>';
+            }
+        ?>
+
+        <button id="okonomi-touroku" class="btn" onclick="location.href=' '">
+            <p>登録</p>
         </button>
+    </form>
+
     </div>
     </div>
 </body>

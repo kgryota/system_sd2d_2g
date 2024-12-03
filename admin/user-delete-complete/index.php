@@ -2,42 +2,24 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-session_start();
-if(isset($_SESSION['admin_id'])){
-    $user_name = $_SESSION['name'];
-}else{
-    header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
-    exit;
-}
 
-$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
-dbname=LAA1554899-sd2d2g;charset=utf8',
-'LAA1554899',
-'pass2g');
- $product_id=$_POST['product_id'];
- 
-$addition_num=$_POST['addition_num'];
-
-$sql=$pdo->prepare('SELECT zaiko_kosuu FROM product WHERE product_id=?');
-$sql->execute([$product_id]);
-foreach($sql as $row){
-    $zaiko_kosuu=$row['zaiko_kosuu'];
-}
-
-$new_zaiko_kosuu=$addition_num+$zaiko_kosuu;
-
-$sql1=$pdo->prepare('UPDATE product SET zaiko_kosuu=? WHERE product_id=?');
-$sql1->execute([$new_zaiko_kosuu,$product_id]);
-
-
-
+ $user_id=$_GET['user_id'];
+    $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+    dbname=LAA1554899-sd2d2g;charset=utf8',
+    'LAA1554899',
+    'pass2g');
+    $sql1=$pdo->prepare('DELETE FROM category_user_join WHERE user_id=?');
+    $sql1->execute([$user_id]);
+    $sql=$pdo->prepare('DELETE FROM coupon_usage_history WHERE user_id=?');
+    $sql->execute([$user_id]);
+    $sql=$pdo->prepare('DELETE FROM purchase_history WHERE user_id=?');
+    $sql->execute([$user_id]);
+    $sql=$pdo->prepare('DELETE FROM user WHERE user_id=?');
+    $sql->execute([$user_id]);
+    
+    session_start();
+    
 ?>
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -61,22 +43,18 @@ $sql1->execute([$new_zaiko_kosuu,$product_id]);
                 <h5>全国のお酒が楽しめる</h5>
                 <h1>乾杯市場</h1>
             </a>
-            <div class="header-menu">
-                
-            </div>
+           
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
     <div class="page-title">
-            <img class="complete-title-img" src="../../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">商品追加が<br>
-            完了しました<br></h1>
+            <img class="complete-title-img" src="../../assets/img/icon/deliteaccount.svg"><br>
+            <h1 class="complete-title">アカウントを<br>
+            削除しました<br></h1>
         </div>
         <a href="../product-list/index.php" class="btn back-home-btn">
-            <p>商品登録一覧へ</p>
+            <p>ホームに戻る</p>
         </a>
-
-        
     </div>
 </body>
 </html>

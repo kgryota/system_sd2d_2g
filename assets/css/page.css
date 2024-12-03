@@ -1,7 +1,16 @@
+.page-title-area{
+    text-align: center;
+    padding: 30px 0;
+}
+
 .page-title{
     width: 100%;
     text-align: center;
-    padding: 30px 0;
+}
+
+.page-title-img{
+    width: 100px;
+    text-align: center;
 }
 
 /*index*/
@@ -26,9 +35,14 @@
 }
 
 .hero-title{
+    font-family: "Yuji Boku", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #b79862;
+
     width: 100%;
     position: absolute;
-    font-size: 60px;
+    font-size: 80px;
     text-align: center;
     top: 130px;
     left: 50%;
@@ -42,6 +56,21 @@
     z-index: 90;
     
 }
+
+.hero img {
+    animation: zoomIn 5s cubic-bezier(0.25, 0, 0.5, 1) forwards;
+  }
+   
+  @keyframes zoomIn {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 
 
 .index-content{
@@ -109,18 +138,68 @@
     font-size: 20px;
 }
 
+.pref-search-card {
+    animation: poyoyon3 2.5s infinite;
+    opacity: 1;
+  }
+  @keyframes poyoyon3 {
+    0%, 40% {
+      transform: skew(0deg, 0deg);
+    }
+    5% {
+      transform: skew(5deg, 5deg);
+    }
+    10% {
+      transform: skew(-4deg, -4deg);
+    }
+    15% {
+      transform: skew(3deg, 3deg);
+    }
+    20% {
+      transform: skew(-2deg, -2deg);
+    }
+    25% {
+      transform: skew(1deg, 1deg);
+    }
+    30% {
+      transform: skew(-0.6deg, -0.6deg);
+    }
+    35% {
+      transform: skew(0.3deg, 0.3deg);
+    }
+  }
+
 .history_none{
     width: 100%;
     height: 100px;
+    margin: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.history_none div{
+    text-align: center;
+}
+
+.history_none img{
+    width: 60px;
+}
+
+.none-btn{
+    display: block;
+    background-color: #b89e72;
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 60px;
+}
+
 /*完了画面*/
 
 .complete-title{
-    font-size: 20px;
     color: #333;
 }
 .complete-title-img{
@@ -192,7 +271,7 @@
 
 .pref-name{
     font-size: 25px;
-    color: #83ba1c;
+    color: #3d5420;
 }
 
 .product-info-alcohol{
@@ -205,7 +284,7 @@
 
 .alcohol-level{
     font-size: 25px;
-    color: #f09319;
+    color: #d66920;
 }
 /*ホーム画面・検索結果画面商品カード*/
 .index-recommend,.index-repurchase{
@@ -253,9 +332,13 @@
 
 .product-list{
     display: flex;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    overflow-wrap: break-word;
+}
+
+.name_span{
+    display: inline-block;
 }
 
 .product-card{
@@ -263,10 +346,10 @@
     text-decoration: none;
 }
 
-.product-card:hover{
+/*.product-card:hover{
     width: 50%;
     transition: 1s;
-}
+}*/
 
 .product-card-img{
     width: 100%;
@@ -308,6 +391,9 @@
     padding: 50px 0 15px 0;
 }
 .cart-delete{
+    text-align: center;
+    text-decoration: none;
+    display: block;
     background-color: #FF7E7E;
     color: #fff;
     width: 100%;
@@ -331,6 +417,18 @@
 .order-page-title{
     color: #B79862;
 }
+
+.sub-title{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.sub-title img{
+    width: 35px;
+    margin-right: 10px;
+}
+
 .siharai{
     padding: 10px 0;
 }
@@ -403,7 +501,7 @@
 
 .product-info p {
     margin: 2px 0;
-    font-size: 20px;
+    font-size: 18apx;
     word-break: break-word;
     
     margin-right: 0;
@@ -502,4 +600,28 @@
     font-weight: bold;
     text-align: center;
     margin-top: 10px;
+}
+.product_name_size{
+    font-size: 30px;
+}
+
+/*ユーザー画面*/
+
+.user-info{
+    padding: 20px 0;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.user-info img{
+    margin-right: 10px;
+}
+
+.err{
+    color: #ff0000;
+}
+
+.btn-show{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

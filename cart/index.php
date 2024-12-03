@@ -4,14 +4,13 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-$user_id = $_SESSION['user_id'];
-if (isset($user_id)) {
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
     $user_name = $_SESSION['user_name'];
 } else {
     header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
     exit;
 }
-
 
 
 
@@ -51,9 +50,9 @@ if (isset($user_id)) {
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-        <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/menu/cart.svg" alt="お酒画像" height="100" width="100">
-            <h1 class="complete-title">カート</h1>
+        <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/cart.svg">
+            <h1 class="page-title">カート</h1>
         </div>
         <div class="product-list">
             <?php
@@ -63,7 +62,13 @@ if (isset($user_id)) {
                 'LAA1554899',
                 'pass2g'
             );
-            $sql = $pdo->prepare('SELECT cart.product_id, cart.user_id, cart.count, product.product_name, product.price 
+            if(isset($_GET['product_id'])){
+                $product_id=$_GET['product_id'];
+                $sql=$pdo->prepare('DELETE FROM cart WHERE product_id=?');
+                $sql->execute([$product_id]);
+            }
+            
+            $sql = $pdo->prepare('SELECT cart.product_id, cart.user_id, cart.count, product.product_name, product.price ,product.product_image
             FROM cart 
             JOIN product ON cart.product_id = product.product_id 
             WHERE user_id = ? 
@@ -71,19 +76,21 @@ if (isset($user_id)) {
             $sql->execute([$user_id]);
             foreach ($sql as $row) {
                 $product_id = $row['product_id'];
+                $product_img = $row['product_image'];
                 $count = $row['count'];
                 $price = $row['price'];
                 $product_name = $row['product_name'];
                 echo '
                 <div class="product-card">
-                    <img class="product-card-img" src="../assets/img/product-img/' . $product_id . '.png">
+                    <img class="product-card-img" src="../assets/img/product-img/' . $product_img . '">
                     <h5 class="product-card-name">' . $product_name . '</h5>
                     <p class="product-card-price">' . $count . '</p>
                     <p class="product-card-price">' . $price . '</p>
-                    <button href="../product/" class="cart-delete">削除</button>
+                    <a href="../cart/?product_id='.$product_id.'" class="cart-delete">削除</a>
                 </div><!--product-card-->
                 ';
             }
+            
             ?>
         </div>
         <div class="cart-money">
@@ -98,10 +105,21 @@ if (isset($user_id)) {
             echo '合計：' . $sum_price . '円';
             ?>
         </div>
-        <a href="../order-info/" class="btn">
+        <?php
+        if($sum_price==0){
+            echo '<a href="../index.php" class="btn">
+            <p>ホームに戻る</p>
+        </a>';
+        }
+        else{
+            echo '<a href="../order-info/" class="btn">
             <p>購入手続き</p>
-        </a>
+        </a>';
+        }
+        ?>
+        
     </div>
+   
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 <?php
     session_start();
-    $user_id = $_SESSION['user_id'];
-    if(isset($user_id)){
+    if(isset($_SESSION['user_id'])){
+        $user_id = $_SESSION['user_id'];
         $user_name = $_SESSION['user_name'];
     }else{
         header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
@@ -12,8 +12,17 @@
     dbname=LAA1554899-sd2d2g;charset=utf8',
     'LAA1554899',
     'pass2g');
+    $sql1=$pdo->prepare('DELETE FROM category_user_join WHERE user_id=?');
+    $sql1->execute([$user_id]);
+    $sql=$pdo->prepare('DELETE FROM coupon_usage_history WHERE user_id=?');
+    $sql->execute([$user_id]);
+    $sql=$pdo->prepare('DELETE FROM purchase_history WHERE user_id=?');
+    $sql->execute([$user_id]);
     $sql=$pdo->prepare('DELETE FROM user WHERE user_id=?');
     $sql->execute([$user_id]);
+
+    session_start();
+    session_unset();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -47,7 +56,7 @@
     </header><!--ヘッダー-->
     <div class="content-area">
     <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
+            <img class="complete-title-img" src="../assets/img/icon/deliteaccount.svg"><br>
             <h1 class="complete-title">アカウントを<br>
             削除しました<br></h1>
         </div>

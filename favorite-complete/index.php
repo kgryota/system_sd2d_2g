@@ -3,30 +3,31 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
-$user_id = $_SESSION['user_id'];
-if(isset($user_id)){
-    $user_name = $_SESSION['user_name'];
-}else{
-    header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
-    exit;
-}
-$pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
-dbname=LAA1554899-sd2d2g;charset=utf8',
-'LAA1554899',
-'pass2g');
 
-$user_name=$_POST['user_name'];
-$email=$_POST['email'];
-$password=$_POST['password'];
-$address=$_POST['address'];
 
-$sql=$pdo->prepare('UPDATE user SET email=?,password=?,user_name=?,address=? WHERE user_id=?');
-$sql->execute([$email,$password,$user_name,$address,$user_id]);
+    $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
+    dbname=LAA1554899-sd2d2g;charset=utf8',
+    'LAA1554899',
+    'pass2g');
+
+    $email = $_SESSION['email'];
+    $sql=$pdo->prepare('SELECT * FROM user WHERE email=?');
+    $sql->execute([$email]);
+    foreach($sql as $row){
+        $user_id = $row['user_id'];
+    }
+
+    $sql = $pdo->query('SELECT COUNT(*) FROM category_type');
+    $row_count = $sql->fetchColumn(); // 行数を取得
+
+    for($i=1;$i<=$row_count;$i++){
+        if(isset($_POST["category{$i}"])){
+            $sql = $pdo->prepare("INSERT INTO `category_user_join` (`user_id`, `category_id`) VALUES (?, ?)");
+            $sql->execute([$user_id, "{$i}"]);        
+        }
+    }
+
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -58,17 +59,14 @@ $sql->execute([$email,$password,$user_name,$address,$user_id]);
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-        <div class="page-title-area">
-            <img class="page-title-img" src="../assets/img/icon/user.svg">
-            <h3 class="page-title">ユーザー情報を更新しました</h3>
+    <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/favorite.svg">
+            <h1 class="page-title">登録しました。</h1>
+            <h5>先ほど登録した内容で再度ログインしてください</h5>
         </div>
-        <a href="../user/index.php" class="btn back-home-btn">
-            <p>ユーザー情報に戻る</p><br><br>
+        <a href="../login/" class="btn back-home-btn">
+            <p>買い物を始める</p>
         </a>
-        <a href="../" class="btn back-home-btn">
-            <p>ホームに戻る</p>
-        </a>
-        
     </div>
 </body>
 </html>

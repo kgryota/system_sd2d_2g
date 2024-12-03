@@ -29,15 +29,14 @@ session_unset();
             <div class="header-menu">
                 <a class="header-menu-btn" href="../search"><img src="../assets/img/menu/search.svg"></a>
                 <a class="header-menu-btn" href="../user"><img src="../assets/img/menu/user.svg"></a>
-                <a class="header-menu-btn" href="../cart"><img src="../assets/img/menu/cart.svg"></a>
+                <a class="header-menu-btn" ><img src="../assets/img/menu/cart.svg"></a>
             </div>
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">アカウントから<br>
-            ログアウトしました<br></h1>
+        <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/user.svg">
+            <h3 class="page-title">ログアウトしました</h3>
         </div>
         <a href="../" class="btn back-home-btn">
             <p>ホームに戻る</p>

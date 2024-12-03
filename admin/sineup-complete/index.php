@@ -4,6 +4,12 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
 'pass2g');
 $email=$_POST['email'];
+if (preg_match('/@aso\.com$/', $email)) {
+
+} else {
+    echo "このメールアドレスでは管理者に登録できません。";
+    exit;
+}
 $password=$_POST['password'];
 $name=$_POST['name'];
 $sql=$pdo->prepare('INSERT INTO admin(email,password,name) VALUES(?,?,?)');
@@ -36,15 +42,13 @@ $pdo=null;
                 <h1>乾杯市場</h1>
             </a>
             <div class="header-menu">
-                <a class="header-menu-btn" href="../search"><img src="../../assets/img/menu/search.svg"></a>
-                <a class="header-menu-btn" href="../user"><img src="../../assets/img/menu/user.svg"></a>
-                <a class="header-menu-btn" href="../cart"><img src="../../assets/img/menu/cart.svg"></a>
+                
             </div>
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
     <div class="page-title">
-            <img class="complete-title-img" src="../../assets/img/cart-complete/cart.svg"><br>
+            <img class="complete-title-img" src="../../assets/img/icon/user.svg"><br>
             <h1 class="complete-title">登録が<br>
             完了しました！<br></h1>
         </div>

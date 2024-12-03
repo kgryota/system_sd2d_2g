@@ -24,25 +24,24 @@
             <div class="header-menu">
                 <a class="header-menu-btn" href="../search"><img src="../assets/img/menu/search.svg"></a>
                 <a class="header-menu-btn" href="../user"><img src="../assets/img/menu/user.svg"></a>
-                <a class="header-menu-btn" href="../cart"><img src="../assets/img/menu/cart.svg"></a>
+                <a class="header-menu-btn" ><img src="../assets/img/menu/cart.svg"></a>
             </div>
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <h1 class="page-title">ログイン</h1><br>
+    <div class="page-title-area">
+        <img class="page-title-img" src="../assets/img/icon/user.svg">
+        <h1 class="page-title">ログイン</h1>
+    </div>
     アカウントをお持ちでない場合、<a href="../singup">新規作成</a>
     <form action="../login-complete/index.php" method="post" id="app">
-        <input v-mdel="email" type="text" name="email" class="forminput1" placeholder="メールアドレス">
-        <input v-mdel="password" type="password" name="password" class="forminput1" placeholder="パスワード">
-        <p v-if="error" class="error-message">エラー：IDまたはパスワードが違います。</p>
+        <input v-mdel="email" type="text" name="email" class="forminput1" placeholder="メールアドレス" required>
+        <input v-mdel="password" type="password" name="password" class="forminput1" placeholder="パスワード" required>
         <button id="" class="btn">
             <p>ログイン</p>
         </button>
     </form>
 
-        <button id="" class="btn2">
-            <p>ゲストで続ける</p>
-        </button>
     </div>
     
 </body>

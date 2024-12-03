@@ -48,20 +48,19 @@ $maxproduct_id++;
                 <h1>乾杯市場</h1>
             </a>
             <div class="header-menu">
-                <a class="header-menu-btn" href="../../search"><img src="../../assets/img/menu/search.svg"></a>
-                <a class="header-menu-btn" href="../../user"><img src="../../assets/img/menu/user.svg"></a>
-                <a class="header-menu-btn" href="../../cart"><img src="../../assets/img/menu/cart.svg"></a>
+               
             </div>
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
     <h1 class="page-title">商品登録</h1><br>
    <p><h2>商品画像</h2></p>
-    <form action="../product-complete/index.php" method="post">
-        <!--<input type="file" name="product">-->
+    <form action="../product-complete/index.php" method="post" enctype="multipart/form-data">
+        <!--<input type="file" name="file">-->
         <p>商品ID　限定商品以外はデフォルトのままで</p>
         <input type="number" name="product_id" value="<?=htmlspecialchars($maxproduct_id, ENT_QUOTES, 'UTF-8')?>" class="forminput1">
-        <input type="text" name="product" class="forminput1" placeholder="テスト　本来は画像ファイル">
+        画像ファイル<br>
+        <input type="file" name="file">
         <input type="text" name="product_name" class="forminput1" placeholder="商品名">
         <input type="number" name="zaiko_kosuu" class="forminput1" placeholder="在庫個数">
         <?php

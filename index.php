@@ -25,7 +25,7 @@ $pdo = new PDO(
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&family=Potta+One&family=Shippori+Mincho:wght@800&family=Stick&family=Yuji+Boku&family=Yuji+Mai&display=swap" rel="stylesheet">
     <title>乾杯市場 ～全国のお酒を販売～</title>
 </head>
 
@@ -63,14 +63,49 @@ $pdo = new PDO(
                 </div>
             </a>
             <div class="index-recommend">
-                <h2 class="index-list-title">おすすめ</h2>
+                <h2 class="index-list-title">あなたの好み</h2>
                 <div class="index-recommend-list">
                     <?php
-                    $sql = $pdo->query('SELECT * FROM product');
+                        $favorite_sql = $pdo->prepare('SELECT `category_id` FROM `category_user_join` WHERE `user_id` = ?');
+                        $favorite_sql->execute([$user_id]);
+                        $category_ids = $favorite_sql->fetchAll(PDO::FETCH_COLUMN);
+
+                        if (!empty($category_ids)) {
+                            $placeholders = implode(',', array_fill(0, count($category_ids), '?'));
+                            $sql = $pdo->prepare("SELECT * FROM `product` WHERE `category_id` IN ($placeholders)");
+                            $sql->execute($category_ids);
+
+                            foreach ($sql as $row) {
+                                echo '
+                                <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
+                                    <img class="product-card-img"  src="assets/img/product-img/' .  $row['product_image'] .'">
+                                    <h5 class="product-card-name">' . $row['product_name'] . '</h5>
+                                    <p class="product-card-price">¥' . $row['price'] . '</p>
+                                </a><!--product-card-->';
+                            }
+                        } else {
+                            echo '<div class="history_none">
+                                    <div>
+                                    <img src="assets/img/icon/user.svg">
+                                    <p>登録すると利用できます</p>
+                                    <a class="none-btn" href="singup/">新規登録</a>
+                                    </div>
+                                </div>';
+                        }
+
+                    ?>
+                </div>
+            </div>
+            <div class="index-recommend">
+                <h2 class="index-list-title">お酒一覧</h2>
+                <div class="index-recommend-list">
+                    <?php
+                    
+                    $sql = $pdo->query('SELECT * FROM product WHERE category_id != 8 ORDER BY product_id DESC');
                     foreach ($sql as $row) {
                         echo '
                     <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
-                        <img class="product-card-img"  src="assets/img/product-img/' . $row['product_id'] . '.png">
+                        <img class="product-card-img"  src="assets/img/product-img/' . $row['product_image'] .'">
                         <h5 class="product-card-name">' . $row['product_name'] . '</h5>
                         <p class="product-card-price">¥' . $row['price'] . '</p>
                     </a><!--product-card-->
@@ -80,15 +115,15 @@ $pdo = new PDO(
                 </div>
             </div>
             <div class="index-recommend">
-                <h2 class="index-list-title">商品一覧</h2>
+                <h2 class="index-list-title">おつまみ一覧</h2>
                 <div class="index-recommend-list">
                     <?php
                     
-                    $sql = $pdo->query('SELECT * FROM product');
+                    $sql = $pdo->query('SELECT * FROM `product` WHERE `category_id` = 8 ORDER BY `product_image`');
                     foreach ($sql as $row) {
                         echo '
                     <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
-                        <img class="product-card-img"  src="assets/img/product-img/' . $row['product_id'] . '.png">
+                        <img class="product-card-img"  src="assets/img/product-img/' . $row['product_image'] .'">
                         <h5 class="product-card-name">' . $row['product_name'] . '</h5>
                         <p class="product-card-price">¥' . $row['price'] . '</p>
                     </a><!--product-card-->
@@ -108,21 +143,22 @@ $pdo = new PDO(
                             foreach ($sql as $row) {
                                 echo '
                                 <a class="index-product-card" href="product/?product_id=' . $row['product_id'] . '">
-                                    <img class="product-card-img"  src="assets/img/product-img/' . $row['product_id'] . '.png">
+                                    <img class="product-card-img"  src="assets/img/product-img/' . $row['product_image'] .'">
                                     <h5 class="product-card-name">' . $row['product_name'] . '</h5>
                                     <p class="product-card-price">¥' . $row['price'] . '</p>
                                 </a><!--product-card-->
                             ';}
                         }else{
-                            echo '<div class="history_none">購入すると履歴が表示されます</div>';
+                            echo '<div class="history_none">
+                                <div>
+                                <img src="assets/img/icon/history.svg">
+                                <p>購入すると表示されます</p>
+                                </div>
+                            </div>';
                         }
                     ?>
 
                 </div>
-            </div>
-            <div class="index-repurchase">
-                <h2 class="index-list-title"></h2>
-                
             </div>
         </div>
 

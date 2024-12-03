@@ -1,40 +1,23 @@
 <?php
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
-if(isset($_SESSION['admin_id'])){
+if(isset( $_SESSION['admin_id'])){
     $user_name = $_SESSION['name'];
 }else{
     header("Location: ../login/index.php"); // ログイン画面へのリダイレクト
     exit;
 }
-
 $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
 dbname=LAA1554899-sd2d2g;charset=utf8',
 'LAA1554899',
 'pass2g');
- $product_id=$_POST['product_id'];
- 
-$addition_num=$_POST['addition_num'];
-
-$sql=$pdo->prepare('SELECT zaiko_kosuu FROM product WHERE product_id=?');
-$sql->execute([$product_id]);
-foreach($sql as $row){
-    $zaiko_kosuu=$row['zaiko_kosuu'];
-}
-
-$new_zaiko_kosuu=$addition_num+$zaiko_kosuu;
-
-$sql1=$pdo->prepare('UPDATE product SET zaiko_kosuu=? WHERE product_id=?');
-$sql1->execute([$new_zaiko_kosuu,$product_id]);
 
 
 
 ?>
-
-
-
 
 
 
@@ -62,21 +45,38 @@ $sql1->execute([$new_zaiko_kosuu,$product_id]);
                 <h1>乾杯市場</h1>
             </a>
             <div class="header-menu">
-                
+                <a class="header-menu-btn" href="../search"><img src="../../assets/img/menu/search.svg"></a>
+                <a class="header-menu-btn" href="../user"><img src="../../assets/img/menu/user.svg"></a>
+                <a class="header-menu-btn" href="../cart"><img src="../../assets/img/menu/cart.svg"></a>
             </div>
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
     <div class="page-title">
-            <img class="complete-title-img" src="../../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">商品追加が<br>
-            完了しました<br></h1>
+            <?php
+            foreach($pdo->query('SELECT * FROM user') as $row){
+                echo '<ul>';
+                $user_id=$row['user_id'];
+                echo '<li>',$user_id,'   ';
+                
+                echo $row['user_name'],'   ';
+                echo "<a href=../user-delete-complete/index.php?user_id=".$user_id.">ユーザー削除</a></li>";
+                echo '</ul>';
+            }
+            ?>
         </div>
         <a href="../product-list/index.php" class="btn back-home-btn">
-            <p>商品登録一覧へ</p>
+            <p>ホームに戻る</p>
         </a>
-
-        
     </div>
 </body>
+<script>
+    const user_del = document.getElementById('user_del');
+    user_del.addEventListener('click',function(){
+        if(window.confirm('アカウントを削除しますか。この変更は取り消せません')){
+            window.location.href = "../user-delete-complete/index.php?user_id=".$user_id
+        }
+        
+    })
+</script>
 </html>

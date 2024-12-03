@@ -22,7 +22,7 @@ $zaiko_kosuu=$_POST['zaiko_kosuu'];
 $seisanchi=$_POST['seisanchi'];
 $alcohol_dosuu=$_POST['alcohol_dosuu'];
 $price=$_POST['price'];
-$product_image=$_POST['product'];//ファイル送信に変えるとき削除
+//ファイル送信に変えるとき削除
 $product_detel=$_POST['product_detel'];
 $detailed_ex=$_POST['detel_ex'];
 $category_id=$_POST['category_id'];
@@ -35,8 +35,76 @@ $category_id=$_POST['category_id'];
     //move_uploaded_file($_FILES['product']['tmp_name'],$file);
 //}
 
-$sql=$pdo->prepare("INSERT INTO product(product_id,product_name,zaiko_kosuu,seisanchi,alcohol_dosuu,price,product_image,product_detel,detailed_ex,category_id) VALUES(?,?,?,?,?,?,?,?,?,?)");
-$sql->execute([$product_id,$product_name,$zaiko_kosuu,$seisanchi,$alcohol_dosuu,$price,$product_image,$product_detel,$detailed_ex,$category_id]);
+//$sql=$pdo->prepare("INSERT INTO product(product_id,product_name,zaiko_kosuu,seisanchi,alcohol_dosuu,price,product_detel,detailed_ex,category_id) VALUES(?,?,?,?,?,?,?,?,?)");
+//$sql->execute([$product_id,$product_name,$zaiko_kosuu,$seisanchi,$alcohol_dosuu,$price,$product_detel,$detailed_ex,$category_id]);
+$uploadDir = '../../assets/img/product-img/';
+
+/*if (!is_dir($uploadDir)) {
+
+    mkdir($uploadDir, 0777, true); // フォルダを作成
+
+}*/
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
+
+    $file = $_FILES['file'];
+
+    // エラーチェック
+
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+
+        die('アップロードエラーが発生しました。');
+
+    }
+
+    // ファイル名を安全に生成
+
+    $filename = uniqid() . '_' . basename($file['name']);
+
+    $filepath = $uploadDir . $filename;
+
+    // ファイルをサーバーに移動
+
+    if (move_uploaded_file($file['tmp_name'], $filepath)) {
+
+        // DBにファイルパスを保存
+
+        $stmt = $pdo->prepare("
+    INSERT INTO product 
+    (product_id, product_name, zaiko_kosuu, seisanchi, alcohol_dosuu, price, product_image, product_detel, detailed_ex, category_id) 
+    VALUES (:product_id, :product_name, :zaiko_kosuu, :seisanchi, :alcohol_dosuu, :price, :product_image, :product_detel, :detailed_ex, :category_id)
+");
+
+$stmt->execute([
+    ':product_id' => $product_id,
+    ':product_name' => $product_name,
+    ':zaiko_kosuu' => $zaiko_kosuu,
+    ':seisanchi' => $seisanchi,
+    ':alcohol_dosuu' => $alcohol_dosuu,
+    ':price' => $price,
+    ':product_image' => $filename,
+    ':product_detel' => $product_detel,
+    ':detailed_ex' => $detailed_ex,
+    ':category_id' => $category_id,
+]);
+
+
+        echo 'アップロード成功: ' . htmlspecialchars($filename);
+
+    } else {
+
+        echo 'ファイルの保存に失敗しました。';
+
+    }
+
+} else {
+
+    echo '無効なリクエストです。';
+
+}
+
+
+
 
 
 
@@ -67,9 +135,7 @@ $sql->execute([$product_id,$product_name,$zaiko_kosuu,$seisanchi,$alcohol_dosuu,
                 <h1>乾杯市場</h1>
             </a>
             <div class="header-menu">
-                <a class="header-menu-btn" href="../../search"><img src="../../assets/img/menu/search.svg"></a>
-                <a class="header-menu-btn" href="../../user"><img src="../../assets/img/menu/user.svg"></a>
-                <a class="header-menu-btn" href="../../cart"><img src="../../assets/img/menu/cart.svg"></a>
+                
             </div>
         </div>
     </header><!--ヘッダー-->

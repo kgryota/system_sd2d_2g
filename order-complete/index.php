@@ -1,5 +1,7 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 session_start();
 $user_id=$_SESSION['user_id'];
@@ -9,32 +11,48 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
 'pass2g');
 $sql2 = $pdo->prepare('SELECT * FROM cart WHERE user_id = ?');
 $sql2->execute([$user_id]);
+$delivery_date=$_POST['delivery_date'];
+$purchase_date = date("Y-m-d");
+
+if ($delivery_date <= $purchase_date) {
+    echo '今日以前の日付は登録できません。';
+    exit;
+}
 
 foreach ($sql2->fetchAll() as $row) {
     $product_id = $row['product_id'];
     $purchase_count = $row['count'];
-    $purchase_date = date("Y-m-d");
-    $states = '未発送';
-    //カートから削除
-    $sql = $pdo->prepare(
-        'INSERT INTO purchase_history (purchase_date, purchase_count, status, user_id, product_id) VALUES (?, ?, ?, ?, ?)'
-    );
-    $sql->execute([$purchase_date, $purchase_count, $states, $user_id, $product_id]);
-    //在庫削除
-    $sql_productcount = $pdo->prepare('SELECT * FROM product WHERE product_id = ?');
+    $status = '未発送';$sql_productcount = $pdo->prepare('SELECT * FROM product WHERE product_id = ?');
     $sql_productcount->execute([$product_id]);
     foreach($sql_productcount as $row){
         $before_count = $row['zaiko_kosuu'];
     }
+    if($purchase_count>$before_count){
+        echo '<h2>在庫不足</h2>';
+        $fusoku=$purchase_count-$before_count;
+        echo '<p>',$fusoku,'個不足しています。</p>';
+        echo '<a href="../cart/index.php">カートへ戻る</a>';
+        exit;
+    }
+    //カートから削除
+    $sql = $pdo->prepare(
+        'INSERT INTO purchase_history (purchase_date, purchase_count, status, delivery_date, user_id, product_id) VALUES (?, ?, ?, ?, ?, ?)'
+    );
+    $sql->execute([$purchase_date, $purchase_count, $status, $delivery_date, $user_id, $product_id]);
+    //在庫削除
+    
+    
     $after_count = $before_count - $purchase_count;
     $sql_del = $pdo->prepare("UPDATE `product` SET `zaiko_kosuu` = ? WHERE `product`.`product_id` = ?;");
     $sql_del->execute([$after_count,$product_id]);
     //クーポン削除
     if(isset($_POST['coupon'])){
         $coupon = $_POST['coupon'];
+        if($coupon>0){
         $sql_coupon_del = $pdo->prepare("INSERT INTO `coupon_usage_history` (`coupon_id`, `user_id`) VALUES (?,?)");
         $sql_coupon_del->execute([$coupon,$user_id]);
     }
+}
 
 }
 
@@ -76,11 +94,12 @@ $sql1->execute([$user_id]);
         </div>
     </header><!--ヘッダー-->
     <div class="content-area">
-    <div class="page-title">
-            <img class="complete-title-img" src="../assets/img/cart-complete/cart.svg"><br>
-            <h1 class="complete-title">ご注文ありがとうご<br>
-            ざいました<br></h1>
+        <div class="page-title-area">
+            <img class="page-title-img" src="../assets/img/icon/cmp.svg">
+            <h1 class="page-title">注文完了</h1>
+            <h5>ご注文ありがとうございました。またのご利用お待ちしております。</h5>
         </div>
+    <div>
         <a href="../" class="btn back-home-btn">
             <p>ホームに戻る</p>
         </a>
