@@ -625,3 +625,26 @@
 .btn-show{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+  }
+
+  .rating input {
+    display: none;
+  }
+
+  .rating label {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .rating input:checked ~ label,
+  .rating label:hover,
+  .rating label:hover ~ label {
+    color: #ffca28;
+  }

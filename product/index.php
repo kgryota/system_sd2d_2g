@@ -133,6 +133,24 @@ error_reporting(E_ALL);
         <h5><?= $product_detel ?></h5>
         <p><?= $detailed_ex ?></p>
     </div>
+    <div class="review">
+        <form action="#" method="post">
+            <div class="rating">
+            <input type="radio" id="star5" name="rating" value="5">
+            <label for="star5">★</label>
+            <input type="radio" id="star4" name="rating" value="4">
+            <label for="star4">★</label>
+            <input type="radio" id="star3" name="rating" value="3">
+            <label for="star3">★</label>
+            <input type="radio" id="star2" name="rating" value="2">
+            <label for="star2">★</label>
+            <input type="radio" id="star1" name="rating" value="1">
+            <label for="star1">★</label>
+            </div>
+            <input type="text" placeholder="">
+            <button type="submit">評価を送信</button>
+        </form>
+    </div>
     </div>
 </body>
 </html>
