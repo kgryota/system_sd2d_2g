@@ -68,8 +68,6 @@ $address=$row['address'];
         <p class="user-orderinfo">お名前：<?= $user_name ?></p>
         <p class="user-orderinfo">住所：<?= $address ?></p>
         
-        <p class="user-orderinfo">お届け日指定
-        <input type="date" name="delivery_date" class="forminput1" placeholder="お届け日指定"></p>
     </div>
 
     <div class="sub-title">
@@ -121,9 +119,11 @@ $address=$row['address'];
 
     </div>
     <form action="../order-complete/" method="post">
+        <p class="user-orderinfo">お届け日指定
+        <input type="date" name="delivery_date" class="forminput1" placeholder="お届け日指定"></p>
+
         <input type="hidden" name="coupon" id="coupon_input">
         
-        <input type="hidden" name="delivery_date">
         <button class="btn">購入を確定</button>
     </form>
     </div>

@@ -15,7 +15,7 @@ $birthDate = new DateTime($date);
 $age = $today->diff($birthDate)->y;
 
 if($age < 20){
-    echo'20歳以下は登録できません。';
+    echo'20歳未満は登録できません。';
     exit;
 }
 

@@ -25,7 +25,7 @@ $pdo = new PDO(
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&family=Shippori+Mincho:wght@800&family=Yuji+Mai&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&family=Potta+One&family=Shippori+Mincho:wght@800&family=Stick&family=Yuji+Boku&family=Yuji+Mai&display=swap" rel="stylesheet">
     <title>乾杯市場 ～全国のお酒を販売～</title>
 </head>
 

@@ -89,7 +89,8 @@
 
                 if($_POST['keyword'] && $_POST['keypref']){
                     $sql = $pdo->prepare('SELECT * FROM product WHERE seisanchi = ? AND product_name LIKE ?');
-                    $sql->execute([$_POST['keypref'], $keyword]);                     
+                    $sql->execute([$_POST['keypref'], $keyword]); 
+                    
                 }
 
                 else if (!$_POST['keyword']){

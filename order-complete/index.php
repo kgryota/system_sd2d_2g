@@ -12,12 +12,17 @@ dbname=LAA1554899-sd2d2g;charset=utf8',
 $sql2 = $pdo->prepare('SELECT * FROM cart WHERE user_id = ?');
 $sql2->execute([$user_id]);
 $delivery_date=$_POST['delivery_date'];
+$purchase_date = date("Y-m-d");
+
+if ($delivery_date <= $purchase_date) {
+    echo '今日以前の日付は登録できません。';
+    exit;
+}
 
 foreach ($sql2->fetchAll() as $row) {
     $product_id = $row['product_id'];
     $purchase_count = $row['count'];
-    $purchase_date = date("Y-m-d");
-    $states = '未発送';$sql_productcount = $pdo->prepare('SELECT * FROM product WHERE product_id = ?');
+    $status = '未発送';$sql_productcount = $pdo->prepare('SELECT * FROM product WHERE product_id = ?');
     $sql_productcount->execute([$product_id]);
     foreach($sql_productcount as $row){
         $before_count = $row['zaiko_kosuu'];
@@ -33,7 +38,7 @@ foreach ($sql2->fetchAll() as $row) {
     $sql = $pdo->prepare(
         'INSERT INTO purchase_history (purchase_date, purchase_count, status, delivery_date, user_id, product_id) VALUES (?, ?, ?, ?, ?, ?)'
     );
-    $sql->execute([$purchase_date, $purchase_count, $states, $delivery_date, $user_id, $product_id]);
+    $sql->execute([$purchase_date, $purchase_count, $status, $delivery_date, $user_id, $product_id]);
     //在庫削除
     
     

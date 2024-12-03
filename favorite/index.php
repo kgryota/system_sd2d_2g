@@ -76,7 +76,7 @@ $sql=$pdo->query('SELECT * FROM category_type s');
     <form action="../favorite-complete/" method="post">
 
         <?php
-            $sql=$pdo->query('SELECT * FROM category_type');
+            $sql=$pdo->query('SELECT * FROM category_type WHERE category_id != 8');
             foreach($sql as $row){
                 echo '        
                 <div>
