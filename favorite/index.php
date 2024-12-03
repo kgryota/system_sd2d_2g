@@ -3,10 +3,9 @@ $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
  dbname=LAA1554899-sd2d2g;charset=utf8',
  'LAA1554899',
  'pass2g');
-//$category_id=$_GET['category_id'];
-//echo $category_id;
-$sql=$pdo->query('SELECT * FROM category_type s');
-
+$category_id=$_GET['category_id'];
+echo $category_id;
+$sql=$pdo->query('SELECT * FROM category_type ');
 ?>
 
 
@@ -70,8 +69,15 @@ $sql=$pdo->query('SELECT * FROM category_type s');
         回答しない
     </label>
     <h2 class="page-title">好きなお酒のカテゴリーを教えてください</h2><br>
-    <p>*複数回答可</p>-->
-
+    <p>*複数回答可</p>
+    <?php
+    
+    foreach($sql as $row){
+        echo '<p><input type="checkbox" name="category_type[]" value="">'.$row['category_name'].'</p>';
+       }
+    ?>
+    <form></form>
+    
     
     <form action="../favorite-complete/" method="post">
 
