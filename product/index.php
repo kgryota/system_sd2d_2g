@@ -9,10 +9,20 @@ error_reporting(E_ALL);
         $user_name = $_SESSION['user_name'];
     }
 
+
  $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
  dbname=LAA1554899-sd2d2g;charset=utf8',
  'LAA1554899',
  'pass2g');
+
+     
+ if(isset($_POST['rating'])){
+    $star=$_POST['rating'];
+    $comment=$_POST['comment'];
+    $sql=$pdo->prepare('INSERT INTO `review` (`product_id`, `star`, `comment`, `user_id`) VALUES (?, ?, ?, ?, ?)');
+    $sql->execute([$product_id,$star,$comment,$user_id]);
+ }
+
  $product_id=$_GET['product_id'];
  $sql=$pdo->prepare('SELECT * FROM product WHERE product_id=?');
  $sql->execute([$product_id]);
@@ -27,6 +37,7 @@ error_reporting(E_ALL);
   $detailed_ex=$row['detailed_ex'];
   $category_id=$row['category_id'];
  }
+
 
 ?>
 
@@ -134,8 +145,11 @@ error_reporting(E_ALL);
         <p><?= $detailed_ex ?></p>
     </div>
     <div class="review">
-        <form action="#" method="post">
+        <h2>商品レビュー</h2>
+        <form action="index.php" method="post">
+            <!-- 星評価 -->
             <div class="rating">
+            <p>星評価を選択してください:</p>
             <input type="radio" id="star5" name="rating" value="5">
             <label for="star5">★</label>
             <input type="radio" id="star4" name="rating" value="4">
@@ -147,8 +161,15 @@ error_reporting(E_ALL);
             <input type="radio" id="star1" name="rating" value="1">
             <label for="star1">★</label>
             </div>
-            <input type="text" placeholder="">
-            <button type="submit">評価を送信</button>
+
+            <!-- コメント入力 -->
+            <div class="comment">
+            <p>コメントを入力してください:</p>
+            <textarea name="comment" rows="4" cols="40" placeholder="コメントを入力してください"></textarea>
+            </div>
+
+            <!-- 送信ボタン -->
+            <button type="submit">送信</button>
         </form>
     </div>
     </div>
