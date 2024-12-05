@@ -52,7 +52,8 @@
             </select>
             <button class="btn" type="submit">検索</button>
         </form>
-
+        <img src="../assets/img/menu/miku.png">
+        
 
         
         <div>
