@@ -60,7 +60,7 @@ foreach($sql as $row){
         <input type="text" name="product_name" class="forminput1" placeholder="商品名">
         <input type="text" name="price" class="forminput1" placeholder="価格">
         <input type="text" name="explanation" class="forminput1" placeholder="説明">
-        <input type=hidden name=product_id value=",$product_id,">"; ?>
+        <input type=hidden name=product_id value=",$product_id,">
         <a href="../product-delete-complete/?product_id=<?=$product_id?>" class="delete" >削除</a>
         <button type="submit" class="btn">
           <p>更新</p>
