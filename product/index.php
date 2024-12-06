@@ -15,8 +15,6 @@ error_reporting(E_ALL);
  dbname=LAA1554899-sd2d2g;charset=utf8',
  'LAA1554899',
  'pass2g');
- $a = '';
-if($a == 'true'){
     if(isset($_POST['rating'])){
         $product_id = $_POST['product_id_submit'];
         $star=$_POST['rating'];
@@ -24,8 +22,6 @@ if($a == 'true'){
         $sql=$pdo->prepare('INSERT INTO `review` (`product_id`, `star`, `comment`, `user_id`) VALUES (?, ?, ?, ?)');
         $sql->execute([$product_id,$star,$comment,$user_id]);
      }
-     $a = 'false';
-}
 
 
  $review = 'false';
@@ -164,7 +160,10 @@ if($a == 'true'){
     </div>
     <div class="review">
         <h2>商品レビュー</h2>
-        <?php if($review == 'false'){?>
+        <?php 
+        if(isset($_SESSION['user_id'])){
+            if($_SESSION['user_id'] != null && $review == 'false'){
+        ?>
                 <form action="./?product_id=<?= $product_id ?>" method="post">
                     <!-- 星評価 -->
                     <div class="rating">
@@ -185,12 +184,10 @@ if($a == 'true'){
                     <textarea class="comment-area" name="comment" rows="4" cols="40" placeholder="コメントを入力してください"></textarea>
                     </div>
 
-                    <input type="hidden" name="product_id_submit" value="<?= $product_id ?>">
-
-                    <!-- 送信ボタン -->
+                    <input type="hidden" name="product_id_submit" value="<?= $product_id ?>">                    <!-- 送信ボタン -->
                     <button type="submit" class="btn">投稿</button>
                 </form>
-         <?php } ?>
+         <?php }} ?>
 
     </div>
     <div class="review_list">
