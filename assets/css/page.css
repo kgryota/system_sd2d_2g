@@ -629,7 +629,7 @@
 .rating {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: center;
+    justify-content: left;
   }
 
   .rating input {
@@ -647,4 +647,33 @@
   .rating label:hover,
   .rating label:hover ~ label {
     color: #ffca28;
+  }
+
+  .review{
+    margin-top: 20px;
+  }
+
+  .comment-area{
+    width: 100%;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #eee3d0;
+  }
+
+  .review_card{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    background-color: #f3f0e8;
+  }
+
+  .star-img{
+    width: 200px;
+  }
+
+  .review_card_info{
+
   }

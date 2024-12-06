@@ -9,21 +9,39 @@ error_reporting(E_ALL);
         $user_name = $_SESSION['user_name'];
     }
 
+    $product_id=$_GET['product_id'];
 
  $pdo=new PDO('mysql:host=mysql309.phy.lolipop.lan;
  dbname=LAA1554899-sd2d2g;charset=utf8',
  'LAA1554899',
  'pass2g');
+ $a = '';
+if($a == 'true'){
+    if(isset($_POST['rating'])){
+        $product_id = $_POST['product_id_submit'];
+        $star=$_POST['rating'];
+        $comment=$_POST['comment'];
+        $sql=$pdo->prepare('INSERT INTO `review` (`product_id`, `star`, `comment`, `user_id`) VALUES (?, ?, ?, ?)');
+        $sql->execute([$product_id,$star,$comment,$user_id]);
+     }
+     $a = 'false';
+}
 
-     
- if(isset($_POST['rating'])){
-    $star=$_POST['rating'];
-    $comment=$_POST['comment'];
-    $sql=$pdo->prepare('INSERT INTO `review` (`product_id`, `star`, `comment`, `user_id`) VALUES (?, ?, ?, ?, ?)');
-    $sql->execute([$product_id,$star,$comment,$user_id]);
- }
 
- $product_id=$_GET['product_id'];
+ $review = 'false';
+ $sql=$pdo->prepare('SELECT * FROM review WHERE product_id=?');
+ $sql->execute([$product_id]);
+ foreach($sql as $row){ 
+     if($row['user_id'] == $user_id){
+        $review = 'ture';
+     }
+}
+
+
+
+
+
+
  $sql=$pdo->prepare('SELECT * FROM product WHERE product_id=?');
  $sql->execute([$product_id]);
  foreach($sql as $row){
@@ -146,31 +164,54 @@ error_reporting(E_ALL);
     </div>
     <div class="review">
         <h2>商品レビュー</h2>
-        <form action="index.php" method="post">
-            <!-- 星評価 -->
-            <div class="rating">
-            <p>星評価を選択してください:</p>
-            <input type="radio" id="star5" name="rating" value="5">
-            <label for="star5">★</label>
-            <input type="radio" id="star4" name="rating" value="4">
-            <label for="star4">★</label>
-            <input type="radio" id="star3" name="rating" value="3">
-            <label for="star3">★</label>
-            <input type="radio" id="star2" name="rating" value="2">
-            <label for="star2">★</label>
-            <input type="radio" id="star1" name="rating" value="1">
-            <label for="star1">★</label>
-            </div>
+        <?php if($review == 'false'){?>
+                <form action="./?product_id=<?= $product_id ?>" method="post">
+                    <!-- 星評価 -->
+                    <div class="rating">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5">★</label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4">★</label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3">★</label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2">★</label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1">★</label>
+                    </div>
 
-            <!-- コメント入力 -->
-            <div class="comment">
-            <p>コメントを入力してください:</p>
-            <textarea name="comment" rows="4" cols="40" placeholder="コメントを入力してください"></textarea>
-            </div>
+                    <!-- コメント入力 -->
+                    <div class="comment">
+                    <textarea class="comment-area" name="comment" rows="4" cols="40" placeholder="コメントを入力してください"></textarea>
+                    </div>
 
-            <!-- 送信ボタン -->
-            <button type="submit">送信</button>
-        </form>
+                    <input type="hidden" name="product_id_submit" value="<?= $product_id ?>">
+
+                    <!-- 送信ボタン -->
+                    <button type="submit" class="btn">投稿</button>
+                </form>
+         <?php } ?>
+
+    </div>
+    <div class="review_list">
+        <?php
+            $sql=$pdo->prepare('SELECT * FROM review WHERE product_id=?');
+            $sql->execute([$product_id]);
+            foreach($sql as $row){
+                $star = $row['star'];
+                $comment=$row['comment'];
+                echo '
+                <div class="review_card">
+                    <img src="../assets/img/icon/review_user.svg" width="50px">
+                    <div class="review_card_info">
+                        <img class="star-img" src="../assets/img/star/star'.$star.'.svg">
+                        <p>'.$comment.'</p>
+                    </div>
+                </div>
+                ';
+            }
+        ?>
+
     </div>
     </div>
 </body>
