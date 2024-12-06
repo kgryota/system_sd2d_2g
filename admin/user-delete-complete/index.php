@@ -39,7 +39,7 @@ error_reporting(E_ALL);
 <body>
     <header>
         <div class="header-content">
-            <a class="site-title" href="../">
+            <a class="site-title" href="../product-list/index.php">
                 <h5>全国のお酒が楽しめる</h5>
                 <h1>乾杯市場</h1>
             </a>
