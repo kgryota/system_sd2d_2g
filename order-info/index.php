@@ -79,7 +79,7 @@ $address=$row['address'];
         <p v-if="isInValldNumber" class="err">クレジットカード番号は14桁以上で入力してください。</p>
         <input type="text" name="" class="forminput1" placeholder="有効期限">
         <input type="password" name="" class="forminput1" placeholder="パスワード" v-model="password" required>
-        <p v-if="isInValldPassword" class="err">パスワードは8文字以上で入力してください。</p>
+        <p v-if="isInValldPassword" class="err">パスワードは3文字以上で入力してください。</p>
     </div>
     
     <div class="order-price">
