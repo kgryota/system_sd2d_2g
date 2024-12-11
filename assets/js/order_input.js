@@ -12,7 +12,7 @@ new Vue({
         },
 
         isInValldPassword(){
-            return this.password && this.password.length < 8;
+            return this.password && this.password.length < 3;
         },
 
     }
